@@ -8,6 +8,8 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+/*
+TC:=>O(N) SC:=>O(N)
 class Solution {
     vector<int>res;
 public:
@@ -21,6 +23,27 @@ public:
     
     int getRandom() {
        return res[rand()%res.size()] ;
+    }
+};*/
+class Solution {
+public:
+    ListNode* u;
+    Solution(ListNode* head) {
+        u = head;
+    }
+    
+    int getRandom() {
+        int index = 1;
+        int res = 0;
+        ListNode* curr = u;
+        while(curr){
+            if(rand() % index == 0){
+                res = curr->val;
+            }
+            index++;
+            curr = curr->next;
+        }
+        return res;
     }
 };
 
