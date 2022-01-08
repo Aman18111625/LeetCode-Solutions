@@ -1,5 +1,6 @@
 class Solution {
 public:
+    /* Brute Force : TC=>O(N) SC=>O(1)
     int search(vector<int>& nums,int target) {
     for(int i=0;i<nums.size();i++)
     {
@@ -9,7 +10,9 @@ public:
     return -1;
      
 }
-    /*
+    */
+    //using binary search
+    //TC:=>O(logn) SC:=>O(1)
     int search(vector<int>& nums, int target) {
    int beg=0,end=nums.size()-1,mid;
         while(beg<=end)
@@ -36,7 +39,6 @@ public:
         }
         return -1;
     }
- */
 };
 
 
