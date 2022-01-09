@@ -7,11 +7,13 @@ class Solution {
   public:
     int getLongestSubsequence(string A, string B) {
         // code here
-         int n=B.length(), m=A.length();
+        if(A==B) return A.length();
+        int n=B.length(), m=A.length();
 	    int max_len=0,c;
 	    for(int i=0;i<n;i++)
-	    {int k=i,j=0;
-	       c=0;
+	    { 
+	        int k=i,j=0;
+	         c=0;
 	        while(j<m)
 	        {
 	            if(A[j]==B[k])
