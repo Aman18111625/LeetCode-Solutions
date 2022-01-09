@@ -9,25 +9,24 @@ class Solution {
         // code here
         if(A==B) return A.length();
         int n=B.length(), m=A.length();
-	    int max_len=0,c;
+	    int max_len=0;
 	    for(int i=0;i<n;i++)
 	    { 
-	        int k=i,j=0;
-	         c=0;
-	        while(j<m)
+	        int low=0,high=i,curr=0;
+	        while(low<m)
 	        {
-	            if(A[j]==B[k])
+	            if(A[low]==B[high])
 	            {
-	                k++;
-	                j++;
-	                c++;
+	                high++;
+	                low++;
+	                curr++;
 	            }
 	            else
 	            {
-	               j++; 
+	               low++; 
 	            }
 	        }
-	        max_len=max(max_len,c);
+	        max_len=max(max_len,curr);
 	    }
 	    return max_len;
     }
