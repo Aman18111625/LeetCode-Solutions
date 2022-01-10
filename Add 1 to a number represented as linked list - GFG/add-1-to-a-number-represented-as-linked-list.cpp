@@ -64,13 +64,13 @@ class Solution
     {
         // Your Code here
         // return head of list after adding one
-        if(head==NULL) return head;
+        if(!head) return head;
         head=reverse(head);
          Node *cur=head;
         bool flag=true;
-        while(cur!=NULL and flag==true)
+        while(cur and flag==true)
         {
-            if(cur->next==NULL && cur->data==9 )
+            if(!cur->next && cur->data==9 )
             {
               cur->data=1;
               Node *temp=new Node(0);
