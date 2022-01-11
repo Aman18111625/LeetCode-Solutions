@@ -7,16 +7,10 @@ class Solution {
         int pseudoIndex=-1;
         for(int i=0;i<n;i++)
         {
-            if(st.empty()) ans.push_back(pseudoIndex);
-            else if(!st.empty() and st.top().first<heights[i])
-                ans.push_back(st.top().second);
-            else if(!st.empty() and st.top().first>=heights[i])
-            {
                while(!st.empty() and st.top().first>=heights[i])st.pop();
                 if(st.empty()) ans.push_back(pseudoIndex);
                 else ans.push_back(st.top().second);
-            }
-            st.push({heights[i],i});
+                st.push({heights[i],i});
         }
         return ans;
     }
@@ -28,15 +22,9 @@ class Solution {
         int pseudoIndex=n;
         for(int i=n-1;i>=0;i--)
         {
+            while(!st.empty() and st.top().first>=heights[i])st.pop();
             if(st.empty()) ans.push_back(pseudoIndex);
-            else if(!st.empty() and st.top().first<heights[i])
-                ans.push_back(st.top().second);
-            else if(!st.empty() and st.top().first>=heights[i])
-            {
-               while(!st.empty() and st.top().first>=heights[i])st.pop();
-                if(st.empty()) ans.push_back(pseudoIndex);
-                else ans.push_back(st.top().second);
-            }
+            else ans.push_back(st.top().second);
             st.push({heights[i],i});
         }
         reverse(ans.begin(),ans.end());
