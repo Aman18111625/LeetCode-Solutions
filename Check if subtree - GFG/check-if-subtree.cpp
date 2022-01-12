@@ -105,6 +105,7 @@ class Solution
     }
   public:
     //Function to check if S is a subtree of tree T.
+    /*
     bool isSubTree(Node* T, Node* S) 
     {
         // Your code here
@@ -120,6 +121,11 @@ class Solution
              if(node->right) q.push(node->right);
          }
          return false;
+    }*/
+    bool isSubTree(Node* T,Node* S){
+        if(!T ) return false;
+        if(helper(T,S)) return true;
+        return isSubTree(T->left,S) || isSubTree(T->right,S);
     }
 };
 
