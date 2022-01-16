@@ -11,20 +11,14 @@ class Solution
 	int minStepToReachTarget(vector<int>&KnightPos,vector<int>&TargetPos,int n)
 	{
 	    // Code here
-	     int s1=KnightPos[0];
+	    int s1=KnightPos[0];
 	    int t1=KnightPos[1];
 	    int s2=TargetPos[0];
 	    int t2=TargetPos[1];
 	    
 	    int vis[1001][1001];
+	    memset(vis,0,sizeof(vis));
 	    if(s1==s2 and t1==t2) return 0;
-	    for(int i=0;i<n;i++)
-	    {
-	        for(int j=0;j<n;j++)
-	        {
-	            vis[i][j]=0;
-	        }
-	    }
 	    queue<pair<int,int>>q;
 	    q.push({s1-1,t1-1});
 	    while(!q.empty())
