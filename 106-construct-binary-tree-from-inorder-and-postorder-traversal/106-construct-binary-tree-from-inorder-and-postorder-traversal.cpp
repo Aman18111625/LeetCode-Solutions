@@ -10,6 +10,8 @@
  * };
  */
 class Solution {
+    /*
+    //TC:=>O(N^2) SC:=>O(N)
     TreeNode* helper(vector<int>&post,int sp,int ep,vector<int>&in,int si,int ei)
     {
         if(si>ei) return NULL;
@@ -25,5 +27,31 @@ public:
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
         int n=inorder.size();
         return helper(postorder,0,n-1,inorder,0,n-1);
-    }
+    }*/
+    
+//TC:=>O(N) SC:=>O(N)
+unordered_map<int,int>m;
+TreeNode* solve(vector<int>& inorder,vector<int>& postorder,int start,int end,int &postIndex)
+{
+        if(start>end) return NULL;
+         int inorderIndex = m[postorder[postIndex]];
+
+        TreeNode* root = new TreeNode(inorder[inorderIndex]);    
+        
+        (postIndex)--;
+        root->right=solve(inorder,postorder,inorderIndex+1,end,postIndex);
+        root->left=solve(inorder,postorder,start,inorderIndex-1,postIndex);
+        return root;
+}
+    
+public:    
+TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder)
+{
+        int n=inorder.size();
+        for(int i=0;i<n;i++){
+           m[inorder[i]] = i;      
+        }
+        int postIndex=n-1;
+        return solve(inorder,postorder,0,n-1,postIndex);
+}
 };
