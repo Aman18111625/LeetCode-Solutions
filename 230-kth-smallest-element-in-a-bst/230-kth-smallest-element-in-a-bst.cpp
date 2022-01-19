@@ -10,19 +10,20 @@
  * };
  */
 class Solution {
-    priority_queue<int>pq;
+ //   priority_queue<int>pq;
+      vector<int>in;
     void inorder(TreeNode* root,int k)
     {
         if(!root) return ;
         inorder(root->left,k);
-        pq.push(root->val);
-        if(pq.size()>k) pq.pop();
+        in.push_back(root->val);
         inorder(root->right,k);
     }
 public:
     int kthSmallest(TreeNode* root, int k) {
         if(!root) return -1;
+        in.clear();
         inorder(root,k);
-        return pq.top();
+        return in[k-1];
     }
 };
