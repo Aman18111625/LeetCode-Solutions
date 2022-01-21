@@ -128,7 +128,7 @@ Node * convertToDLL(Node *root){
         Node* node=new Node(ans[i]);
         temp->right=node;
         node->left=temp;
-        prev=temp;
+      //  prev=temp;
         temp=node;
     }
     return head;
