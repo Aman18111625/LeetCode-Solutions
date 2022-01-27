@@ -5,8 +5,7 @@ using namespace std;
  // } Driver Code Ends
 class Solution{
 public:
-    int count(int N){
-        // code here
+  /* Recursive Solution
         if(N%2) return 0;//even number
         if(N==0) return 1;//base case
         int res=0;
@@ -14,7 +13,20 @@ public:
         {
             res+=(count(i)*count(N-i-2));
         }
-        return res;
+        return res;*/
+    int count(int N){
+        // code here
+        int dp[N+1];
+        memset(dp,0,sizeof(dp));
+        dp[0]=1;//base case
+        for(int i=2;i<=N;i+=2)
+        {
+            for(int j=2;j<=i;j+=2)
+            {
+                  dp[i]+=(dp[i-j]*dp[j-2]);
+            }
+        }
+        return dp[N];
     }
 };
 
