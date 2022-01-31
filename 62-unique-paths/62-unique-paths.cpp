@@ -16,6 +16,7 @@ public:
         return helper(0,0,m,n);
     }*/
   public:
+  /*
   //Bottom-up DP
   //TC:=>O(M*N) SC:=>(M*N)
   int uniquePaths(int m, int n) {
@@ -34,5 +35,18 @@ public:
         }
         
         return dp[m - 1][n - 1];
+    }*/
+  
+  //Using combinations 
+  //TC:=>O(min(m-1,n-1))
+  //SC:=>O(1)
+    int uniquePaths(int m, int n) {
+        int N = n + m -2;  //N=3
+        int r = m-1;       //right = 2
+        double res = 1;   //result = 1
+        for(int i=1;i<=r;i++) {
+            res = res * (N-r+i)/i;
+        }
+        return (int)res;
     }
 };
