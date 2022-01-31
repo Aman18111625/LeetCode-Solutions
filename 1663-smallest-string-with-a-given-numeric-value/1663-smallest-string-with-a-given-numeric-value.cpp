@@ -16,7 +16,7 @@ public:
             }else{
               char curr=(char)(k+97-1);
               arr[i]=curr;
-              k-=(arr[i]+97);
+              k-=(arr[i]-'a'+1);
             }
           }
           else break;
