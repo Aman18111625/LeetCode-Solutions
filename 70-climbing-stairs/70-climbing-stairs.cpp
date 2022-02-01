@@ -5,6 +5,9 @@ public:
         if(n<2) return 1;
         return climbStairs(n-1)+climbStairs(n-2);
     }*/
+  /*
+  //Recursive + Memoization
+  //TC:=>O(N) SC:=>O(N)
     int dp[46];
    int helper(int n)
    {
@@ -19,7 +22,7 @@ public:
         memset(dp,-1,sizeof(dp));
      return helper(n);
     }
-    
+    */
   /*
   //Bottom-up approach :=>TC =(N) SC=O(N)
     int climbStairs(int n){
@@ -29,4 +32,15 @@ public:
       for(int i=3;i<=n;i++) dp[i]=dp[i-1]+dp[i-2];
       return dp[n];
     }*/
+   int climbStairs(int n) {
+    if(n<2) return 1;
+     int prev=1,next=2,curr=2;
+     for(int i=3;i<=n;i++)
+     {
+       curr=prev+next;
+       prev=next;
+       next=curr;
+     }
+     return curr;
+  }
 };
