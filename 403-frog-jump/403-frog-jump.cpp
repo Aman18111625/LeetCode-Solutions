@@ -1,6 +1,6 @@
 class Solution {
-  int dp[2001][2002];
-  bool helper(vector<int>&stones,int start=0,int jump=0)
+  int dp[2001][2001];
+  bool helper(vector<int>&stones,int start,int jump)
   {
     if(start==stones.size()-1) return true;//we reach the (n-1)th position
     if(dp[start][jump]!=-1) return dp[start][jump];
