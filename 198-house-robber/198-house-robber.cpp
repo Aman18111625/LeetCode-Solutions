@@ -19,7 +19,9 @@ public:
         memset(dp,-1,sizeof(dp));
        return helper(nums,n-1);
     }*/
+  
   public:
+  /*
   //Bottom-up approach
   //TC:=>O(N) SC:=>O(N)
     int rob(vector<int>& nums) {
@@ -34,5 +36,22 @@ public:
         dp[i]=max(take,nonTake);
       }
       return dp[n-1];
+    }*/
+  //Space-Optimization
+  //TC:=>O(N) SC:=>O(1)
+  int rob(vector<int>&nums)
+  {
+    int n=nums.size();
+    int prev=nums[0],prev2=0;
+    for(int i=1;i<n;i++)
+    {
+      int take=nums[i];
+      if(i>1) take+=prev2;
+      int nonTake=prev;
+      int curr=max(take,nonTake);
+      prev2=prev;
+      prev=curr;
     }
+    return prev;
+  }
 };
