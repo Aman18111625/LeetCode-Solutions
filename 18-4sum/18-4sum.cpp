@@ -1,5 +1,9 @@
 class Solution {
 public:
+  /*
+  //Approach-1 
+  //Time Complexity :=>O(N^4)
+  //Space Complexity :=>O(1)
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
         vector<vector<int>>res;
         if(nums.empty()) return res;
@@ -37,5 +41,48 @@ public:
          }
        }
       return res;
+    }*/
+  
+  //Approach-2 
+  //Time-Complexity:=>O(N^3)
+  //Space-Complexity:=>O(1)
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        vector<vector<int>>res;
+        if(nums.empty()) return res;
+        int n=nums.size();
+        sort(nums.begin(),nums.end());//it'll help us to skip duplicates
+        for(int i=0;i<n-3;i++)
+        {
+          for(int j=i+1;j<n-2;j++)
+          {
+           int target_2=target-nums[i]-nums[j];
+              int front =j+1;
+              int back=n-1;
+              while(front<back)
+              {
+                  int two_sum=nums[front]+nums[back];
+                  if(two_sum<target_2) front++;
+                  else if(two_sum>target_2) back--;
+                  else
+                  {
+                       vector<int>quadruplets(4,0);
+                      quadruplets[0]=nums[i];
+                      quadruplets[1]=nums[j];
+                      quadruplets[2]=nums[front];
+                     quadruplets[3]=nums[back];
+                      res.push_back(quadruplets);
+                  //number 3
+               while(front<back && nums[front]==quadruplets[2]) ++front;
+                  //number 4
+               while(front<back && nums[back]==quadruplets[3]) --back;
+              }
+          }
+        //number2
+            while(j+1<n && nums[j+1]==nums[j]) ++j;
+        }
+     //number1
+        while(i+1<n && nums[i+1]==nums[i]) ++i;
+    }
+        return res;
     }
 };
