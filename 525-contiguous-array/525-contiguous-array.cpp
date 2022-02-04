@@ -24,16 +24,18 @@ public:
         int res=0,n=nums.size();
         if(n<2) return res;
         unordered_map<int,int>mpp;
-        mpp[0]=-1;
         int sum=0;
         for(int i=0;i<n;i++)
         {
            if(nums[i]==1) sum++;
            else sum--;
-           if(mpp.find(sum)!=mpp.end()) res=max(res,i-mpp[sum]);
+           if(sum==0 && res<i+1) res=i+1; 
+           else if(mpp.find(sum)!=mpp.end()) res=max(res,i-mpp[sum]);
            else mpp[sum]=i;
         }
       return res;
     }
   
 };
+      
+       
