@@ -9,22 +9,7 @@
  * };
  */
 class Solution {
-   struct node{
-       ListNode *curr;
-        int idx;
-        node(ListNode *a,int b)
-        {
-           curr=a;
-            idx=b;
-        }
-    };
-    struct cmp{
-      bool operator()(node a,node b)
-      {
-        return a.curr->val > b.curr->val; 
-      }
-    };
-public:
+
   /*
   //Time-Complextity:=>O(N*k)+O(Nklogn(NK));
   //Space-Complexity:=>O(N*k)
@@ -54,39 +39,32 @@ public:
       return dummy->next;
     }*/
   //Approach-2 
-  //Time-Complexity:O(N)
-  //Space-Complexity:O(NK)
+  //Time-Complexity:O(NlogN)
+  //Space-Complexity:O(N)
   //initally we have pushed all the head of the k lists into pq then take top of pq and move to the next of top && if it's not null then push into pq and again do the same process again and again untill pq is not empty
-  ListNode* mergeKLists(vector<ListNode*>& lists){
-    int n=lists.size();
-    if(n==0) return NULL;
-    if(n==1) return lists[0];
-    ListNode* head=NULL,*tail=NULL;
-    priority_queue<node,vector<node>,cmp>heap;
-    vector<ListNode*>ptr(n);
-    for(int i=0;i<n;i++)
-    {
-      ptr[i]=lists[i];
-      if(ptr[i]) heap.push(node(ptr[i],i));
+  struct compare{
+        bool operator()(ListNode *a, ListNode *b){
+            return a->val > b->val;
+        }
+    };
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        priority_queue<ListNode*, vector<ListNode*>, compare> pq;
+        
+        for(auto li : lists){
+            if(li) pq.push(li);
+        }
+        if(pq.empty()) return NULL;
+        ListNode *dummy = new ListNode(0), *temp = dummy;
+        while(pq.size()){
+            auto curr = pq.top(); pq.pop();
+            temp->next = curr;
+            temp = temp->next;
+            curr = curr->next;
+            if(curr) pq.push(curr);
+        }
+        return dummy->next;
     }
-    if(heap.empty()) return NULL;
-    head=tail=heap.top().curr;
-    int idx=heap.top().idx;
-    heap.pop();
-    ptr[idx]=ptr[idx]->next;
-    if(ptr[idx]) heap.push(node(ptr[idx],idx));
-    while(!heap.empty())
-    {
-      ListNode* temp=heap.top().curr;
-      idx=heap.top().idx;
-      heap.pop();
-      tail->next=temp;
-      tail=tail->next;
-      ptr[idx]=ptr[idx]->next;
-      if(ptr[idx]) heap.push(node(ptr[idx],idx));
-    }
-    return head;
-  }
 };
 
 
