@@ -41,6 +41,7 @@ public:
     }
   */
   public:
+  /*
   //Tabulation 
   //Time-Complexity:=>O(N*N)
   //Space-Complexity:=>O(N*N)
@@ -60,5 +61,25 @@ public:
          }
       }
       return dp[0][0];
+    }*/
+  
+   int minimumTotal(vector<vector<int>>& triangle) {
+      int n=triangle.size();
+       vector<int>prev(n);
+       for(int j=0;j<n;j++)//base case
+          prev[j]=triangle[n-1][j];
+      
+      for(int i=n-2;i>=0;i--)
+      {
+         vector<int>curr(n);
+         for(int j=i;j>=0;j--)
+         {
+            int down=prev[j];
+            int diag=prev[j+1];
+            curr[j]=triangle[i][j]+min(down,diag);
+         }
+        prev=curr;
+      }
+      return prev[0];
     }
 };
