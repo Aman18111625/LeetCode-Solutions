@@ -9,10 +9,11 @@
  * };
  */
 class Solution {
-  void helper(ListNode* root,stack<int>&st)
+  stack<int>st;
+  void helper(ListNode* root)
   {
     if(!root) return ;
-    helper(root->next,st);
+    helper(root->next);
     while(!st.empty() && st.top()<=root->val) st.pop();
     int val=root->val;
     root->val=st.empty()?0:st.top();
@@ -23,8 +24,7 @@ public:
       vector<int>ans;
       if(!head ) return ans;
       if(!head->next) return {0};
-      stack<int>st;
-      helper(head,st);
+      helper(head);
       ListNode* curr=head;
       while(curr) 
       {
