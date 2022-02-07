@@ -14,7 +14,6 @@ class Solution
 	    // Code here
 	    int n=nums.size();
 	    vector<pair<int,int>>ans(n);
-	    vector<bool>vis(n,false);
 	    for(int i=0;i<n;i++)
 	    {
 	        ans[i]={nums[i],i};
@@ -23,17 +22,12 @@ class Solution
 	    int res=0;
 	    for(int i=0;i<n;i++)
 	    {
-	        if(vis[i] || ans[i].second==i)//already visited or already in correct position
-	         continue;
-	        int j=i,size=0;
-	        while(!vis[j])
+	        if(ans[i].second!=i)
 	        {
-	            vis[j]=true;
-	            j=ans[j].second;
-	            size++;
+	            res++;
+	            swap(ans[i],ans[ans[i].second]);
+	            i--;
 	        }
-	        if(size>0)
-	        res+=(size-1);
 	    }
 	    return res;
 	}
