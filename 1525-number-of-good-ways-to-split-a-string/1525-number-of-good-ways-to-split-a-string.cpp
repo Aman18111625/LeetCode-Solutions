@@ -2,7 +2,7 @@ class Solution {
 public:
     int numSplits(string s) {
          int cnt=0;
-         unordered_map<char,int>left,right;
+         map<char,int>left,right;
          for(auto &it : s) 
             right[it]++;
          for(auto &it : s)
