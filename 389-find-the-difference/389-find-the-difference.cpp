@@ -1,5 +1,6 @@
 class Solution {
 public:
+  /* TC:=>O(NLogN) SC:=>O(1)
     char findTheDifference(string s, string t) {
         if(s=="") return t[0];
         sort(s.begin(),s.end());
@@ -11,5 +12,18 @@ public:
         else break;
       }
         return t[j];
+    }*/
+  char findTheDifference(string s, string t) {
+       int freq[26]= {0};
+        for(auto &it : s)
+            freq[it-'a']--;
+        
+        for(auto &it : t)
+            freq[it-'a']++;
+        
+        for(int i = 0 ; i < 26 ; i++){
+            if(freq[i]) return i+'a';
+        }
+        return 'b';
     }
 };
