@@ -1,4 +1,5 @@
 class Solution {
+  /*
   int getDigit(int n)
   {
     int cnt=0;
@@ -20,5 +21,20 @@ public:
           num/=10;
         }
       return addDigits(sum);
-    }
+    }*/
+  public:
+  int addDigits(int num)
+  {
+        int sum=0;
+        while(num)
+        {
+            sum+=(num%10);
+            num/=10;
+        }
+        if(sum<10)
+            return sum;
+        else
+            return addDigits(sum);
+  }
+ 
 };
