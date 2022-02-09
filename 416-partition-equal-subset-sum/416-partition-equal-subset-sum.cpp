@@ -21,9 +21,10 @@ public:
         return helper(nums,n,sum,dp);
     }*/
   public:
-  
-  
-  
+  /*
+    //Bottom up Approach
+  //Time-Complexity:=>O(N*target)
+  //Space-Complexity:=>O(N*target)
     bool canPartition(vector<int>& nums){
         int sum=0,n=nums.size();
         if(n==1) return false;
@@ -41,9 +42,9 @@ public:
      {
         dp[0][j] = false;
      }
-    // step 2: recursive code to iterative code
-    for(int i=1; i<n+1; i++)
-    {
+     // step 2: recursive code to iterative code
+     for(int i=1; i<n+1; i++)
+     {
         for(int j=1; j<sum+1; j++)
         {
             if(nums[i-1] <= j)
@@ -55,8 +56,32 @@ public:
                 dp[i][j] = dp[i-1][j];
             }
         }
-    }
-   return dp[n][sum];
+     }
+    return dp[n][sum];
+    }*/
+    bool canPartition(vector<int>& nums){
+        int sum=0,n=nums.size();
+        if(n==1) return false;
+        for(auto &num : nums) sum+=num;
+        if(sum&1) return false;
+        sum/=2;
+       vector<int>prev(sum+1,0);
+        prev[0]=true;
+        if(nums[0]<=sum)
+          prev[nums[0]]=true;
+       for(int i=1;i<n;i++)
+       {
+         vector<int>curr(sum+1,0);
+         for(int j=1;j<=sum;j++)
+         {
+            bool nonTake=prev[j];
+            bool take=false;
+            if(nums[i]<=j) take=prev[j-nums[i]];
+            curr[j]= take | nonTake;
+         }
+         prev=curr;
+       }
+      return prev[sum];
     }
 };
 
