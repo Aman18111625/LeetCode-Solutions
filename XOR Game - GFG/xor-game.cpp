@@ -12,11 +12,13 @@ public:
     int xorCal(int k){
         // code here
         if(k==1) return 2;
-        int n=k/2;
-        int x=n^n+1;
-        if(x==k) return n;
+        int n=1;
+         while(n<=k){
+             if((n^(n+1))==k) return n;
+             n++;
+         }
          return -1;
-    }
+    } 
 };
 
 // { Driver Code Starts.
