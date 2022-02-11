@@ -1,8 +1,9 @@
 class Solution {
 public:
     int scoreOfParentheses(string s) {
+      /*TC:=>O(N) SC:=>O(N)
        stack<int>st;
-       st.push(0);
+       st.push(0);// pushing 0 because let's say we have "()" think about it.
        for(auto &it : s)
        {
           // if meets this '(' then just add 0 to stack
@@ -26,7 +27,16 @@ public:
            st.top()+=newVal;
          }
        }
-      return st.top();
+      return st.top();*/
+      int depth=0;
+      int ans=0,n=s.size();
+      for(int i=0;i<n;i++)
+      {
+        if(s[i]=='(') depth++;
+        else depth--;
+        if(i-1>=0 && s[i-1]=='(' && s[i]==')') ans+=(pow(2,depth));
+      }
+      return ans;
     }
 };
    
