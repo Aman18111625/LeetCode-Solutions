@@ -1,7 +1,8 @@
 class Solution {
 public:
     int countCharacters(vector<string>& words, string chars) {
-        map<char,int>mpp1,mpp2;
+      /*  
+      map<char,int>mpp1,mpp2;
         for(auto &it : chars) mpp1[it]++;
         int ans=0;
         for(auto &str: words)
@@ -19,6 +20,27 @@ public:
           mpp2.clear();
           if(cnt==str.size()) ans+=str.size();
         }
-      return ans;
+      return ans;*/
+    unordered_map<char,int>mpp;
+    for(auto &it : chars) mpp[it]++;
+    int ans=0;
+    for(auto &str: words)
+    {
+        unordered_map<char,int>mpp2;
+        bool flag=true;
+        for(auto &it: str)
+        {
+            mpp2[it]++;
+        }
+        for(auto &it : str)
+        {
+          if(mpp2[it]>mpp[it])
+          {
+              flag=false;break;
+          }
+        }
+        if(flag) ans+=str.size();
+    }
+    return ans;
     }
 };
