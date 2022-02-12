@@ -20,14 +20,14 @@ class Solution {
         sort(A.begin(),A.end());
         
         int i = 0, res = 0, d = 0;
-        while (pq.size() > 0 || i < N) {
-            if (pq.size() == 0)
+        while (!pq.empty() || i < N) {
+            if (pq.empty())
                 d = A[i].first;
             while (i < N && A[i].first <= d)
                 pq.push(A[i++].second);
             pq.pop();
             ++res, ++d;
-            while (pq.size() > 0 && pq.top() < d)
+            while (!pq.empty() && pq.top() < d)
                 pq.pop();
 
         }
