@@ -1,0 +1,40 @@
+// { Driver Code Starts
+// Initial Template for C++
+#include <bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+// User function Template for C++
+class Solution {
+     long long int mod = 1e9 + 7;
+    long long int helper(int i,int j,int &m,int &n,vector<vector<int>>&dp)
+    {
+        if(i==m-1 && j==n-1) return 1;
+        if(i>=m || j>=n) return 0;
+        if(dp[i][j]!=-1) return dp[i][j]%mod;
+        long long int num1=helper(i,j+1,m,n,dp);
+        long long int num2=helper(i+1,j,m,n,dp);
+        dp[i][j]=(num1+num2)%mod;
+        return dp[i][j]%mod;
+    }
+  public:
+    long long int numberOfPaths(int m, int n){
+        // code here
+       vector<vector<int>>dp(m,vector<int>(n, -1));
+       return helper(0,0,m,n,dp);
+    }
+};
+
+// { Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, m;
+        cin >> m >> n;
+        Solution ob;
+        cout<<ob.numberOfPaths(m,n)<<endl;
+    }
+    return 0;
+}
+  // } Driver Code Ends
