@@ -22,7 +22,8 @@ public:
         return (res==INT_MAX || res == INT_MAX-1) ? -1 : res;
     }*/
   public:
-  //Tabulation :=>
+  /*
+  //Tabulation 
   //Time-Complexity:=>O(N*target)
   //Space-Complexity:=>O(N*target)
     int coinChange(vector<int>& coins, int sum) {
@@ -45,6 +46,29 @@ public:
         }
       if(dp[n-1][sum]>=1e9) return -1;
       return dp[n-1][sum];
+    }*/
+  //Space-Optimization
+   int coinChange(vector<int>& coins, int sum) {
+        int n= coins.size();
+        vector<int>prev(sum+1,0),curr(sum+1,0);
+         for(int target=0;target<=sum;target++)
+         {
+           if(target%coins[0]==0) prev[target]=target/coins[0];
+           else prev[target]=1e9;
+         }
+        for(int i=1;i<n;i++)
+        {
+          for(int j=0;j<=sum;j++)
+          {
+            int notTake=prev[j];
+            int take=INT_MAX;
+            if(coins[i]<=j) take=1+curr[j-coins[i]];
+            curr[j]= min(notTake,take);
+          }
+          prev=curr;
+        }
+      if(prev[sum]>=1e9) return -1;
+      return prev[sum];
     }
 };
 
