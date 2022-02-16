@@ -37,7 +37,7 @@ public:
         prev->next=forward;
         forward->next=current;
         current->next=temp;
-       prev=current;
+        prev=current;
     }
     return dummy->next;
   }
