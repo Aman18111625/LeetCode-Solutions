@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> maxSubsequence(vector<int>& nums, int k) {
-     priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+  priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq,pq2;
       //min-Heap ->where we'll store value as key and key as index
         int n=nums.size();
         for(int i=0;i<n;i++)
@@ -10,17 +10,18 @@ public:
             if(pq.size()>k)//we have to only take care about k-length
                 pq.pop();
         }
-        vector<pair<int,int>>ans;
         while(!pq.empty())
         {
             auto x=pq.top();
             pq.pop();
-            ans.push_back({x.second,x.first});
+            pq2.push({x.second,x.first});
         }
-        sort(ans.begin(),ans.end());//sort according to their index because According to question
         vector<int>res;
-        for(auto i:ans)
-            res.push_back(i.second);
+        while(!pq2.empty())
+        {
+            res.push_back(pq2.top().second);
+            pq2.pop();
+        }
         
         return res;
     }
