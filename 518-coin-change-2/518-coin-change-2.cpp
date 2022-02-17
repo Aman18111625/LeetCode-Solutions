@@ -24,6 +24,10 @@ public:
         return helper(coins,0,n,amount,dp);
     }*/
     public:
+  /*
+  //Tabulation
+  //Time-Complexity:=>O(N*amount)
+  //Space-Complexity:=>O(N*amount)
     int change(int amount, vector<int>& coins) {
          int n=coins.size();
          vector<vector<int>>dp(n,vector<int>(amount+1,0));
@@ -40,5 +44,23 @@ public:
            }
          }
       return dp[n-1][amount];
+    }*/
+   int change(int amount, vector<int>& coins) {
+         int n=coins.size();
+         vector<int>prev(amount+1,0),curr(amount+1,0);
+         for(int amt=0;amt<=amount;amt++)
+         {
+           prev[amt]=(amt%coins[0]==0);
+         }
+         for(int ind=1;ind<n;ind++){
+           for(int t=0;t<=amount;t++){
+             int notTake=prev[t];
+             int take=0;
+             if(coins[ind]<=t) take=curr[t-coins[ind]];
+               curr[t]=notTake+take;
+           }
+           prev=curr;
+         }
+      return prev[amount];
     }
 };
