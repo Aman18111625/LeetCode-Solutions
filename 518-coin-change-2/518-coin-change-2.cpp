@@ -45,6 +45,10 @@ public:
          }
       return dp[n-1][amount];
     }*/
+  //Space-Optimization:=>
+  //TC:=>O(N*amount)
+  //SC:=>O(amount)
+  /*
    int change(int amount, vector<int>& coins) {
          int n=coins.size();
          vector<int>prev(amount+1,0),curr(amount+1,0);
@@ -62,5 +66,19 @@ public:
            prev=curr;
          }
       return prev[amount];
+    }*/
+    int change(int amount, vector<int>& coins) {
+         int n=coins.size();
+         vector<int>dp(amount+1,0);
+          dp[0]=1;//there is always 1 way to make amount ==0
+         for(int i=0;i<n;i++)
+        {
+           for(int t=0;t<=amount;t++)
+           {
+             if(coins[i]<=t)dp[t]+=dp[t-coins[i]];
+           }
+        }
+      return dp[amount];
     }
+  
 };
