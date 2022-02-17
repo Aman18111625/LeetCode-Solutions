@@ -12,7 +12,9 @@
 class Solution {
      int helper(TreeNode* root,unordered_map<int,int>&mpp,int &max_freq){
      if(!root) return 0;
-     int sum=root->val+helper(root->left,mpp,max_freq)+helper(root->right,mpp,max_freq);
+     int sum=root->val;
+     sum+=helper(root->left,mpp,max_freq);
+     sum+=helper(root->right,mpp,max_freq);
      mpp[sum]++;
      max_freq=max(max_freq,mpp[sum]);
      return sum;
