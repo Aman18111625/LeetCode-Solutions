@@ -15,6 +15,7 @@ class Solution{
     {
         // Your code goes here
         int n=mat.size(),m=mat[0].size();
+        /*
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<m;j++)
@@ -34,6 +35,18 @@ class Solution{
                         }
                     }
                 }
+            }
+        }*/
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                int cnt=0;
+                for(int col=0;col<m;col++){
+                    if(mat[i][col] && mat[j][col])
+                    {
+                        cnt++;
+                    }
+                }
+                if(cnt>=2) return true;
             }
         }
       return false;
