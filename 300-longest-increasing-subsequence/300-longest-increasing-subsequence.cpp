@@ -1,5 +1,6 @@
 class Solution {
 public:
+  /*
   // initialize dp array with maximum constraints
     int dp[2501][2501];
 	// ind is current index and prev is last index what we need to compare current indexed element with
@@ -21,12 +22,23 @@ public:
 		 // we cant store negative index so leave this case
         if(prev>-1) dp[ind][prev]=res;
         return res;
-        
     }
     
     int lengthOfLIS(vector<int>& v) {
         memset(dp,-1,sizeof(dp));
         return solve(v,0,-1);
+    }*/
+   int lengthOfLIS(vector<int>& v) {
+        int n=v.size();
+        vector<int>dp(n);
+        dp[0]=1;
+        for(int i=1;i<n;i++){
+          dp[i]=1;
+          for(int j=0;j<i;j++){
+            if(v[i]>v[j]) dp[i]=max(dp[i],1+dp[j]);
+          }
+        }
+       return *max_element(dp.begin(),dp.end());
     }
   /*
   //TC:->O(N^2) SC:=>O(N)
