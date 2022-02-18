@@ -48,6 +48,7 @@ public:
   */
   int maxProduct(vector<int>&nums)
   {
+    //prod1 ->store till ith index ->max 
      int prod1 = nums[0],prod2 = nums[0],result = nums[0],n=nums.size();
      for(int i=1;i<n;i++)
      {
