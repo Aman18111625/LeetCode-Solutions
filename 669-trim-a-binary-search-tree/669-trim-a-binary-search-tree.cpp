@@ -1,0 +1,32 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+  TreeNode *in(TreeNode *root, int low, int high){
+        if(!root) return NULL;        
+//if the current root satisfies the condition then call for the left and the right subtree
+        if(root -> val >= low and root -> val <= high ){
+            root -> left = in(root -> left, low, high);
+            root -> right = in(root -> right, low, high);
+            return root;
+        }        
+// if the current root value is high then we will make root points to its left subtree as the right subtree will also be higher
+        else if(root -> val > high) root = root -> left;        
+//if the current root value is low then we will make root points to the right subtree as the left subtree will also be lower
+        else if(root -> val < low) root = root -> right;
+        return in(root, low, high);;
+    }
+public:
+    TreeNode* trimBST(TreeNode* root, int low, int high) {
+        if(!root) return root;
+        return in(root,low,high);
+    }
+};
