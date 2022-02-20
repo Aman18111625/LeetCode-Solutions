@@ -1,4 +1,5 @@
 class Solution {
+  /*
   bool static cmp(vector<int>&a,vector<int>&b){
     if(a[0]>b[0]) return 0;
     else if(a[1]>b[1]) return 1;
@@ -18,6 +19,18 @@ public:
           }
         }
       return cnt;
+    }*/
+  public:
+   int removeCoveredIntervals(vector<vector<int>>& intervals) {
+        map<int,int>mpp;//we're ordered map because we need interval in sequence
+        for(auto &i: intervals) if(i[1]>mpp[i[0]]) mpp[i[0]]=i[1];
+        int x = mpp.begin()->first, y = mpp.begin()->second; //assign x as key and y as value
+        int cnt = 1; 
+        for(auto &it: mpp){
+            if(x<=it.first and y>=it.second)continue; 
+            else cnt++, x=it.first,y=it.second; 
+        }
+        return cnt;
     }
 };
 
