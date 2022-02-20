@@ -1,5 +1,6 @@
 class Solution {
 public:
+  /*
   //Using hashmap and Priority_queue 
   //Time-Complexity:=>O(N)(traversing string) 
   //Space-Complexity:=>O(N)+O(N)
@@ -34,5 +35,41 @@ public:
                 }
             }
            return res;
+    }*/
+  //Using Stack
+   string repeatLimitedString(string s, int k) {
+        string ans="";
+        int arr[26]={0};//to store freq
+        for(auto &ch:s)
+            arr[ch-'a']++;
+        
+        stack<pair<int,int>>st;
+        for(int i=0;i<26;i++)
+            if(arr[i]) st.push({i,arr[i]});
+        
+        while(!st.empty())
+        {
+            auto temp=st.top(); st.pop();
+            int ch=temp.first;
+            int freq=temp.second;
+            int t=min(k,freq);
+            while(t--)
+                ans+=('a'+ch);
+            if(freq-k>0)
+            {
+                if(st.empty())
+                    break;
+                else
+                {
+                    auto p=st.top(); st.pop();
+                    if(p.second-1>0)
+                        st.push({p.first,p.second-1});
+                    st.push({ch,freq-k});
+                    st.push({p.first,1});
+                }
+            }
+        }
+        
+        return ans;
     }
 };
