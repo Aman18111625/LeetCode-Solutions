@@ -15,18 +15,18 @@ public:
        if(!root) return 0;
        if(!root->left && !root->right) return root->val;
        queue<TreeNode*>q;
+       vector<int>ans;
        q.push(root);
        while(!q.empty()){
           int size=q.size();
-          vector<int>ans;
+          ans.clear();
           for(int i=0;i<size;i++){
             auto node=q.front(); q.pop();
             ans.push_back(node->val);
             if(node->left) q.push(node->left);
             if(node->right) q.push(node->right);
           }
-         if(q.empty()) return ans[0];
       }
-      return -1;
+      return ans[0];
     }
 };
