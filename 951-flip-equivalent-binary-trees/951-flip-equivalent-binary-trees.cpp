@@ -11,9 +11,23 @@
  */
 class Solution {
 public:
+  /*
     bool flipEquiv(TreeNode* root1, TreeNode* root2) {
         if(!root1 && !root2) return true;
         if(!root1 or !root2) return false;
         return root1->val==root2->val && ((flipEquiv(root1->left,root2->left) && flipEquiv(root1->right,root2->right))|| (flipEquiv(root1->left,root2->right)&& flipEquiv(root1->right,root2->left)));
+    }*/
+   bool flipEquiv(TreeNode* root1, TreeNode* root2) {
+        if(!root1 && !root2) {
+            return true;
+        }
+        else if(!root1 || !root2 || root1->val!=root2->val) {
+            return false;
+        }
+        bool one=flipEquiv(root1->left,root2->left)
+                  && flipEquiv(root1->right,root2->right);
+        bool two=flipEquiv(root1->left,root2->right)
+                  && flipEquiv(root1->right,root2->left);
+        return one || two;
     }
 };
