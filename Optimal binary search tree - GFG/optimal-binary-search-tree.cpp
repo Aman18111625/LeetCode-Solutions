@@ -10,6 +10,7 @@ using namespace std;
 class Solution{
     public:
      int dp[101][101];
+     //it'll give us sum
       int sumFreq(int i,int j,int freq[]){
           int sum=0;
           for(int k=i;k<=j;k++){
@@ -19,17 +20,22 @@ class Solution{
       }
       
       int optimalBST(int keys[],int freq[],int i,int j){
+          //base case
           if(i>j) return dp[i][j]=0;
           if(i==j) return dp[i][j]=freq[i];
+          //if already calculated
           if(dp[i][j]!=-1) return dp[i][j];
           int sum=sumFreq(i,j,freq);
           int mini=INT_MAX;
+          //now check for every possible way
           for(int k=i;k<=j;k++){
               int cost=optimalBST(keys,freq,i,k-1)+optimalBST(keys,freq,k+1,j);
-              mini=min(mini,cost);
+              mini=min(mini,cost);//take mini of them
           }
-          return dp[i][j]=mini+sum;
+          return dp[i][j]=mini+sum;//store into dp
       }
+      //This is an MCM based problem 
+      //DP on Trees
     int optimalSearchTree(int keys[], int freq[], int n)
     {
         // code here
