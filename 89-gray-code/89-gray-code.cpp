@@ -8,7 +8,8 @@ public:
         int curr = 1;
         for(int i = 2; i <= n; i++){
            curr*=2;
-            for(int j = ans.size()-1; j >= 0; j--) 
+           int size=ans.size();
+            for(int j = size-1; j >= 0; j--) 
                 ans.push_back(curr+ans[j]);
         }    
         return ans;
