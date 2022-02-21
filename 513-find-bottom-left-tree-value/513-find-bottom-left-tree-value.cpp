@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+  /*
     int findBottomLeftValue(TreeNode* root) {
        if(!root) return 0;
        if(!root->left && !root->right) return root->val;
@@ -28,5 +29,22 @@ public:
           }
       }
       return ans[0];
+    }*/
+  //we're applying reverse bfs because in simple bfs we'll get right most node at the top of queue 
+  int findBottomLeftValue(TreeNode* root) {
+    if(!root) return 0;
+    queue<TreeNode* >q;
+    q.push(root);
+    while(!q.empty())
+    {
+        root=q.front();
+        q.pop();
+        if(root->right)
+            q.push(root->right);
+        if(root->left)
+            q.push(root->left);
+        
     }
+    return root->val;
+}
 };
