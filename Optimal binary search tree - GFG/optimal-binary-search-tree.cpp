@@ -10,7 +10,7 @@ using namespace std;
 class Solution{
     public:
      int dp[101][101];
-     //it'll give us sum
+     //it'll give us sum from i to j
       int sumFreq(int i,int j,int freq[]){
           int sum=0;
           for(int k=i;k<=j;k++){
@@ -29,7 +29,9 @@ class Solution{
           int mini=INT_MAX;
           //now check for every possible way
           for(int k=i;k<=j;k++){
-              int cost=optimalBST(keys,freq,i,k-1)+optimalBST(keys,freq,k+1,j);
+              int left=optimalBST(keys,freq,i,k-1);//found cost to create left subtree
+              int right=optimalBST(keys,freq,k+1,j);//found cost to create right subtree
+              int cost=left+right;
               mini=min(mini,cost);//take mini of them
           }
           return dp[i][j]=mini+sum;//store into dp
