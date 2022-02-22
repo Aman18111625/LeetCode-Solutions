@@ -1,5 +1,8 @@
 class Solution {
 public:
+  /*//Approach-1 Generate fibonacci series till k and then find minimum number
+  Time-Complexity:=>O(N)
+  Space-Complexity:=>O(N)
     int findMinFibonacciNumbers(int k) {
         vector<int>fib;
         fib.push_back(1);
@@ -17,5 +20,16 @@ public:
          }
        }
       return ans;
+    }*/
+   int  findMinFibonacciNumbers(int n) {
+    if (n <= 3) return n != 0;
+    int s = 1, e = 1;
+    while (e <= n) {
+        int temp = s + e;
+        s = e;
+        e = temp;
     }
+    return 1 + findMinFibonacciNumbers(n - s);
+}
+
 };
