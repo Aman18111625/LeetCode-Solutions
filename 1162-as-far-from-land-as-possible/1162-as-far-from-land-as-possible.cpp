@@ -2,15 +2,14 @@ class Solution {
 public:
     int maxDistance(vector<vector<int>>& grid) {
         queue<pair<int,int>>q;
-        bool flag=false;
         int n=grid.size();
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++)
                 if(grid[i][j]==1){
                     q.push({i,j});
                 }
-                else flag=true;
         }
+        if(q.empty() or q.size()==n*n) return -1;
         int count=0;
         vector<pair<int,int>>dir={{1,0},{-1,0},{0,1},{0,-1}};
         while(!q.empty()){
@@ -32,7 +31,6 @@ public:
                 }
             }
         }
-        if(!flag) return -1;
         return count-1;
     }
 };
