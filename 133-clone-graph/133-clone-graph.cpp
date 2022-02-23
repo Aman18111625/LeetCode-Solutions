@@ -20,6 +20,7 @@ public:
 */
 
 class Solution {
+  /*
     void dfs(Node *curr,Node *node,vector<Node*>&vis)
     {
         vis[node->val]=node;
@@ -53,5 +54,23 @@ public:
          }
        }
       return copy;
+    }
+  */
+  public:
+    unordered_map<Node*,Node*>vis={{NULL,NULL}};
+    Node* cloneGraph(Node* node) {
+        return clone(node);
+    }
+    
+    Node* clone(Node* node) {
+        if (vis.count(node))
+            return vis[node];
+        
+        auto newNode = new Node(node->val);
+        vis[node] = newNode;
+        for (auto &child : node->neighbors)
+            newNode->neighbors.push_back(clone(child));
+        
+        return newNode;
     }
 };
