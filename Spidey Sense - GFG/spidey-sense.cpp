@@ -8,26 +8,29 @@ class Solution{
     public:
     
 void bfs(vector<vector<char> >& matrix, int M, int N, int i, int j,vector<vector<int>>&v){
-        queue<pair<pair<int, int>,int>>q;
-        q.push({{i,j},0});
+        queue<pair<pair<int, int>,int>>q;//pair of i,j as key and distance as value
+        q.push({{i,j},0});//insert into queue
         int ans = -1;
-        vector<vector<bool>>visited(M, vector<bool>(N, false));
+        vector<vector<bool>>visited(M, vector<bool>(N, false));//to keep track of visited or not
         while(!q.empty()){
-            int r = q.front().first.first;
-            int c = q.front().first.second;
-            int distance = q.front().second;
+            int r = q.front().first.first;//i
+            int c = q.front().first.second;//j
+            int distance = q.front().second;//distance
             q.pop();
-            visited[r][c] = true;
-            if(matrix[r][c] == 'B'){
+            visited[r][c] = true;//mark as visited
+            if(matrix[r][c] == 'B'){//we got a 'B' so answer is this so return this
                 ans = distance;
                 break;
             }
+            //else check for all the possible 4-direction
             int nr[] = {r+1,r-1,r,r};
             int nc[] = {c,c,c+1,c-1};
             for(int x = 0;x<4;x++){
+                //if out of boundary then continue
                 if(nr[x]<0 || nc[x]<0 || nr[x]>=M || nc[x]>=N)continue;
+                //if already visited or a wall then continue;
                 if(matrix[nr[x]][nc[x]] == 'W' || visited[nr[x]][nc[x]] == true)continue;
-                
+                //push into queue new_i and new_j and distance as prev_distance+1
                 q.push({{nr[x], nc[x]}, distance + 1});
                 
             }
