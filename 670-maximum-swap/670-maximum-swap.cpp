@@ -12,7 +12,7 @@ public:
         if (ans[i] > maxDigit) {
             maxDigit = ans[i];
             maxDigitIndex = i;
-          //  continue;
+            continue;
         }
         if (ans[i] < maxDigit) {
             leftIndex = i;
