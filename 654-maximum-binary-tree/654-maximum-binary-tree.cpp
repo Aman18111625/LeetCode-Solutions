@@ -32,7 +32,6 @@ class Solution {
   }
 public:
     TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
-          if(nums.empty()) return NULL;
           int n=nums.size();
           return helper(nums,0,n-1);
     } 
