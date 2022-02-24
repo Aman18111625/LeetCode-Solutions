@@ -10,18 +10,19 @@
  * };
  */
 class Solution {
-    void helper(TreeNode* root,int &sum){
+    int sum;
+    void helper(TreeNode* root){
      if(!root) return ;
-     helper(root->right,sum);
+     helper(root->right);
      root->val+=sum;
      sum=root->val;
-     helper(root->left,sum);
+     helper(root->left);
    }
 public:
     TreeNode* convertBST(TreeNode* root) {
         if(!root) return root;
-        int sum=0;
-        helper(root,sum);
+        sum=0;
+        helper(root);
         return root;
     }
 };
