@@ -11,12 +11,11 @@
 class Solution {
   ListNode * midNode(ListNode *head)
 {  
-    ListNode *slow=head;
-    ListNode *fast=head;
-    while(fast->next and fast->next->next)
+    ListNode *slow=head,*fast=head;
+    while(fast->next &&  fast->next->next)
     {
          fast=fast->next->next;
-        slow=slow->next;
+         slow=slow->next;
     }
     return slow;
 }
@@ -29,7 +28,7 @@ ListNode * mergeTwoSLL(ListNode *l1,ListNode *l2)
     ListNode *ptr2=l2;
     ListNode *dummy=new ListNode(-1);
     ListNode *temp=dummy;
-    while(ptr1 and ptr2)
+    while(ptr1 && ptr2)
     {
      if(ptr1->val<=ptr2->val)
      {
