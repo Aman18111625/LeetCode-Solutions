@@ -10,6 +10,7 @@
  * };
  */
 class Solution {
+  /*
     void helper(TreeNode* root,int& val,int& depth,int level){
       if(!root) return ;
       if(level==depth-1){
@@ -33,5 +34,23 @@ public:
        }
        helper(root,val,depth,1);
        return root;
+    }*/
+  TreeNode* addOneRow(TreeNode *root, int val, int depth, string direction){
+    if(depth == 1){
+        TreeNode *curr = new TreeNode(val);
+        if(direction == "comingFromLeft") curr->left = root;
+        if(direction == "comingFromRight") curr->right = root;
+        return curr;
     }
+    
+    if(root == nullptr) return root;
+
+    root->left = addOneRow(root->left,val,depth-1,"comingFromLeft");
+    root->right = addOneRow(root->right,val,depth-1,"comingFromRight");
+    return root;
+}
+public:
+TreeNode* addOneRow(TreeNode* root, int val, int depth) {
+    return addOneRow(root,val,depth,"comingFromLeft");
+}
 };
