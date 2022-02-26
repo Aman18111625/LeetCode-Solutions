@@ -18,6 +18,7 @@ For char B it must occur after this. (index≤i)
 */
     string moveRobots(string s1, string s2){
         // code here 
+        /*
         if(s1==s2) return "Yes";
         stack<pair<char,int>>s;
         int n=s1.size();
@@ -36,7 +37,22 @@ For char B it must occur after this. (index≤i)
         if(s2[i]=='B' and s.top().second<=i) s.pop();
         
       }
-      return s.empty()?"Yes":"No";
+      return s.empty()?"Yes":"No";*/
+      int i=0,j=0,n=s1.size();
+      while(i<n && j<n){
+          if(s1[i]=='#') 
+          {
+              i++;
+          }
+          else if(s2[j]=='#'){
+              j++;
+          }
+          else if(s1[i]!=s2[j]) return "No";//robots are crossing each other
+          else if(s1[i]=='A' && s2[j]=='A' && i<j) return "No";
+          else if(s1[i]=='B' && s2[j]=='B' && i>j) return "No";
+          else i++,j++;
+      }
+      return "Yes";
     }
 };
 
