@@ -25,8 +25,8 @@ public:
                  TreeNode* temp=q.front().first; q.pop();
                  if(i==0) leftMost=curr;
                  if(i==size-1) rightMost=curr;
-                 if(temp->left) q.push({temp->left,curr*2+1});
-                 if(temp->right) q.push({temp->right,curr*2+2});
+                 if(temp->left) q.push({temp->left,(long long)curr*2+1});
+                 if(temp->right) q.push({temp->right,(long long)curr*2+2});
             }
             ans=max(ans,rightMost-leftMost+1);
         }
