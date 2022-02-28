@@ -1,7 +1,8 @@
 class Solution {
+  //MCM -> Partition DP based Question
   int dp[51][51];
   int helper(vector<int>&arr,int i,int j){
-    if(i>=j) return 0;
+    if(i==j) return 0;
     if(dp[i][j]!=-1) return dp[i][j];
     int res=INT_MAX;
     for(int k=i;k<j;k++){
