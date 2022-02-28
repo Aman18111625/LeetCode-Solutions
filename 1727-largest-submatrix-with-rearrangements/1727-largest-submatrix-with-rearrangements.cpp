@@ -1,5 +1,7 @@
 class Solution {
 public:
+  //TimeC:=>O(N*M*log(N))
+  //SC:=>O(N*M)(using extra space as temp matrix)
     int largestSubmatrix(vector<vector<int>>& mat) {
         int n=mat.size();
         int m=mat[0].size();
