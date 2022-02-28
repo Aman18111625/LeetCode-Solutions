@@ -15,23 +15,22 @@ class Solution {
   public:
     int mostBalloons(int N, pair<int, int> arr[]) {
         // Code here
-        int ans = 0;
-        unordered_map<double, int> counter;
-        for (int i = 0; i < N; i++)
-        {
-            counter.clear();
-            int dup = 1;
-            for (int j = i + 1; j < N; j++)
-            {
-                if (arr[i] == arr[j]) // if pairs are same then increase duplicate count
-                    dup++;
-                else
-                    counter[slope(arr[i], arr[j])]++; // else add slope of those two points into the map
-            }
-            ans = max(ans, dup);
-            // count max number of points on a line when arr[i] is starting points and updating ans
-            for (auto p : counter)
-                ans = max(ans, p.second + dup);
+        int ans=0;
+        unordered_map<double,int>mpp;
+        for(int i=0;i<N;i++){
+         mpp.clear();
+         int dup=1;
+         for(int j=i+1;j<N;j++){
+             if(arr[i]==arr[j]){//in case of same pair then increment dup by 1
+                 dup++;
+             }else{
+                 double s=slope(arr[i],arr[j]);//find slope of two points and store into hashmap
+                 mpp[s]++;
+             }
+         }
+         ans=max(ans,dup);
+        //count max number of points on a line when arr[i] is starting points and updating ans
+         for(auto &it: mpp) ans=max(ans,it.second+dup);
         }
         return ans;
     }
