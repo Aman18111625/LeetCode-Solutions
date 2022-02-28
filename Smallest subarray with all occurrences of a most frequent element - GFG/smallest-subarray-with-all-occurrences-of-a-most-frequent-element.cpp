@@ -14,9 +14,7 @@ class Solution{
     	int len=0;
     	for(int i=0;i<n;i++){
     	    mpp[a[i]]++;
-    	}
-    	for(auto &it:mpp){
-    	    len=max(it.second,len);
+    	    len=max(mpp[a[i]],len);
     	}
     	unordered_map<int,pair<int,int>>ump;
     	for(int i=0;i<n;i++){
