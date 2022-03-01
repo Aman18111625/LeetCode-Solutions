@@ -27,7 +27,7 @@ class Solution {
                  mpp[s]++;
              }
          }
-         ans=max(ans,dup);
+        // ans=max(ans,dup);
         //count max number of points on a line when arr[i] is starting points and updating ans
          for(auto &it: mpp) ans=max(ans,it.second+dup);
         }
