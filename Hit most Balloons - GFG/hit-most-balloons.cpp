@@ -16,9 +16,8 @@ class Solution {
     int mostBalloons(int N, pair<int, int> arr[]) {
         // Code here
         int ans=0;
-        unordered_map<double,int>mpp;
         for(int i=0;i<N;i++){
-         mpp.clear();
+         unordered_map<double,int>mpp;
          int dup=1;
          for(int j=i+1;j<N;j++){
              if(arr[i]==arr[j]){//in case of same pair then increment dup by 1
