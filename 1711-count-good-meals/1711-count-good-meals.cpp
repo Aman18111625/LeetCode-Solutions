@@ -23,6 +23,7 @@ public:
     }*/
   //Optimal Approach
   //Same As Two Sum 
+  //Time-Complexity:=>O(N*22)
    const int mod=1e9+7;
    int countPairs(vector<int>&d){
         int ans=0,n=d.size();
