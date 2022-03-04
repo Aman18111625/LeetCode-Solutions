@@ -1,4 +1,5 @@
 class NumMatrix {
+  /*
     vector<vector<int>>res;
 public:
     NumMatrix(vector<vector<int>>& mat) {
@@ -13,6 +14,18 @@ public:
          for(int row=row1;row<=row2;row++)
           sum += res[row][col2] - (col1 ? res[row][col1 - 1] : 0);
          return sum;
+    }*/
+  vector<vector<int> >res;
+public:
+    NumMatrix(vector<vector<int>>& m) {
+        res.resize(1 + size(m), vector<int>(1 + size(m[0])));        
+        for(int r = 1; r <= size(m); r++) 
+            for(int c = 1; c <= size(m[0]); c++) 
+        res[r][c] += m[r - 1][c - 1] + res[r - 1][c] + res[r][c - 1] - res[r - 1][c - 1];
+    }
+    
+    int sumRegion(int r1, int c1, int r2, int c2) {
+        return res[r2 + 1][c2 + 1] - res[r1][c2 + 1] - res[r2 + 1][c1] + res[r1][c1];
     }
 };
 
