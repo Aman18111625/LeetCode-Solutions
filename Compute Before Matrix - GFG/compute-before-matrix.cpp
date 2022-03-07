@@ -11,6 +11,7 @@ class Solution{
     public:
     vector<vector<int>> computeBeforeMatrix(int N, int M, vector<vector<int>> after){
         // Code here
+        /*
         vector<vector<int>>ans(N,vector<int>(M,0));
         for(int i=0;i<N;i++){
             for(int j=0;j<M;j++){
@@ -20,7 +21,21 @@ class Solution{
                 else ans[i][j]=after[i][j]-after[i-1][j]-after[i][j-1]+after[i-1][j-1];
             }
         }
-        return ans;
+        return ans;*/
+        for(int i=N-1;i>=0;i--){
+            for(int j=M-1;j>=0;j--){
+                if(i){
+                    after[i][j]-=after[i-1][j];
+                }
+                if(j){
+                    after[i][j]-=after[i][j-1];
+                }
+                if(i&&j){
+                    after[i][j]+=after[i-1][j-1];
+                }
+            }
+        }
+        return after;
     }
 };
 
