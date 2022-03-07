@@ -14,10 +14,14 @@ public:
     long long smallestpositive(vector<long long> array, int n)
     { 
         // code here 
-        long long total=1;
+        long long total=1,res=0;;
         sort(array.begin(),array.end());
         for(auto &val : array){
-            if(total>=val) total+=val;
+            //val is small or equal then this is  reachable
+           if(val<=total){
+               res+=val;
+               total=res+1;
+           }else return total;//not reachable so simply return total
         }
         return total;
     } 
