@@ -1,5 +1,5 @@
 # Smallest Positive Integer that can not be represented as Sum
-## Hard 
+##  Hard 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given an array of size N, find the smallest positive integer value that cannot be represented as sum of some elements from the array.</span></p>
 
