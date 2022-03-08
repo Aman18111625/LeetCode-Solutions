@@ -13,6 +13,8 @@ public:
       }
         return t[j];
     }*/
+  //TC:=>O(N)
+  //SC:=>O(26)(which is constant)
   char findTheDifference(string s, string t) {
        int freq[26]= {0};
         for(auto &it : s)
