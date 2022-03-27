@@ -7,6 +7,7 @@ public:
           int cnt=0;
           for(int j=0;j<mat[0].size();j++){
             if(mat[i][j]==1) cnt++;
+            else break;
           }
           vec.push_back({cnt,i});
         }
