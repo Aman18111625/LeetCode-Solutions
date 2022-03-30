@@ -34,6 +34,7 @@ int main()
 long long int calculate(int a[], int n)
 {
     // Complete the function
+    /*
     long long int cnt=0;
     for(int i=0;i<n;i++){
         for(int j=i+1;j<n;j++){
@@ -41,4 +42,19 @@ long long int calculate(int a[], int n)
         }
     }
     return cnt;
+    */
+   map<int,int>mpp;
+   long long int c =0;
+   for(int i = 0 ;i<n;i++)
+   {
+       mpp[a[i]]++;
+   }
+   long long ans  = 0 ;
+   for(auto it : mpp)
+   {
+       int x = it.second;
+       ans += (x*(x-1)/2);
+   }
+   return ans;
+    
 }
