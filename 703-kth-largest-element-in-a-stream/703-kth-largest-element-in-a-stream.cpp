@@ -8,7 +8,7 @@ public:
           pq.push(it);
           if(pq.size()>k) pq.pop();
         }
-      size=k;
+        size=k;
     }
     
     int add(int val) {
