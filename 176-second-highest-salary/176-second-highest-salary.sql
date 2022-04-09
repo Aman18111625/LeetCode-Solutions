@@ -6,4 +6,4 @@ select IFNULL(
      order by Salary desc limit 1 offset 1)
  )
 as SecondHighestSalary*/
-Select Max(sal) as SecondHighestSalary  from (select Salary as sal, Rank() OVER (order by salary desc) as Rnk from Employee) T where Rnk=2 ;
+Select IFNULL((select distinct salary from (select salary,dense_rank() over(order by salary desc) as denserank from Employee) temp where temp.denserank=2),NULL) as secondhighestsalary;
