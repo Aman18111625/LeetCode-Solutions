@@ -1,6 +1,6 @@
 class Solution {
   int dp[501][501];
-  int helper(string a,string b,int i,int j)
+  int helper(string& a,string& b,int i,int j)
     {
         if(i==a.size()) return b.size()-j;
         if(j==b.size()) return a.size()-i;
@@ -13,7 +13,7 @@ class Solution {
     }
 public:
     int minDistance(string word1, string word2) {
-      memset(dp,-1,sizeof(dp));
+        memset(dp,-1,sizeof(dp));
         return helper(word1,word2,0,0);
     }
 };
