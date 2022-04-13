@@ -34,6 +34,6 @@ You don't need to read or print anything. Your task is to complete the function&
 
 <p><span style="font-size:18px"><strong>Contstraints:</strong><br>
 1 &lt;= number of distinct denominations&nbsp;&lt;= 100</span><br>
-<span style="font-size:18px">1 &lt;= amount &lt;= 10000</span></p>
+<span style="font-size:18px">1 &lt;= amount &lt;= 10<sup>4</sup></span></p>
  <p></p>
             </div>
