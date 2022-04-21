@@ -11,6 +11,7 @@ class Solution{
 public:
     string remove(string s){
         // code here
+        /*
         while(1){
             int n=s.size(),i=0;
             string temp="";
@@ -23,7 +24,31 @@ public:
             if(s.size()==temp.size()) break;
             s=temp;
         }
-        return s;
+        return s;*/
+      int n=s.size();
+      if(n<=1) return s;
+      int cnt=0;
+      for(int i=0;i<n-1;i++){
+           if(s[i]!=s[i+1]) cnt++;
+       }
+       if(cnt==n-1) return s;
+       int i=0;
+       string ans="";
+       while(i<n-1){
+           if(s[i]!=s[i+1]){
+               ans.push_back(s[i]);
+               i++;
+               continue;
+           }
+           int st=i;
+           while(i<n and s[i]==s[st])
+            i++;
+       }
+       if(i==n-1){
+          ans.push_back(s[i]);
+          i++;
+        }
+        return remove(ans);
     }
 };
 
