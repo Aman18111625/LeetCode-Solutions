@@ -1,3 +1,4 @@
+/*
 class MyHashSet {
 public:
     unordered_map<int,int>mpp;
@@ -16,6 +17,24 @@ public:
     bool contains(int key) {
         return mpp.find(key)!=mpp.end();
     }
+};*/
+class MyHashSet {
+private:
+	vector<bool> table;
+public:
+	MyHashSet() : table(1e6 + 1, false) {}
+	
+	void add(int key) {
+		table[key] = true;
+	}
+	
+	void remove(int key) {
+		table[key] = false;
+	}
+	
+	bool contains(int key) {
+		return table[key];
+	}
 };
 
 /**
