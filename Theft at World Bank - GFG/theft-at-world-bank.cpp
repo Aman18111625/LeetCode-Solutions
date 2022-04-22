@@ -22,8 +22,7 @@ class Solution{
     
 	long double maximumProfit(int N, long long C, vector<long long> w, vector<long long> p){
 	    // Code here.
-	     vector<pair<long double, long long>> gold(N);
-	    
+	    vector<pair<long double, long long>> gold(N);
 	    for(int i=0 ; i<N ; i++)
 	    {
 	        gold[i] = {p[i], w[i]};
