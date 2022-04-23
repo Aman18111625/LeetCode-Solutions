@@ -6,8 +6,8 @@ public:
     string getCode() {
         string code = "";
         for (int i = 0; i < 6; i++) code += chars[rand() % 62];
-       // return "http://tinyurl.com/" + code;
-       return code;
+        return "http://tinyurl.com/" + code;
+      // return code;
     }
     
     string encode(string longUrl) {
