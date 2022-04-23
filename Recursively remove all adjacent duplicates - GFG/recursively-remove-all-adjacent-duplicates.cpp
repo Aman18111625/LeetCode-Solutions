@@ -27,11 +27,11 @@ public:
         return s;*/
       int n=s.size();
       if(n<=1) return s;
-      int cnt=0;
+      int cnt=0;//store how many different character
       for(int i=0;i<n-1;i++){
            if(s[i]!=s[i+1]) cnt++;
        }
-       if(cnt==n-1) return s;
+       if(cnt==n-1) return s;//now there is no adjacent duplicate character
        int i=0;
        string ans="";
        while(i<n-1){
@@ -41,13 +41,15 @@ public:
                continue;
            }
            int st=i;
-           while(i<n and s[i]==s[st])
-            i++;
+           //remove duplicats
+           while(i<n and s[i]==s[st])i++;
        }
-       if(i==n-1){
+       //for last character
+        if(i==n-1){
           ans.push_back(s[i]);
           i++;
         }
+        //now again  check for string ans 
         return remove(ans);
     }
 };
