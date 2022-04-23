@@ -15,30 +15,29 @@ class Solution{
 	
 	bool isPerfectSq(long long num)
 	{
-	    long long x = sqrt(num);
+	    long long x=sqrt(num);
 	    return (x*x==num);
 	}
 	
     
 	long double maximumProfit(int N, long long C, vector<long long> w, vector<long long> p){
 	    // Code here.
-	    vector<pair<long double, long long>> gold(N);
-	    for(int i=0 ; i<N ; i++)
+	    vector<pair<long double,long long>>gold(N);
+	    for(int i=0;i<N;i++)
 	    {
-	        gold[i] = {p[i], w[i]};
+	        gold[i]={p[i], w[i]};
 	    }
-	    
+	    //sort according to per unit profit
 	    sort(gold.begin(), gold.end(), compare());
 	    
 	    long double ans=0;
 	    
-	    for(int i=0 ; i<N && C>0 ; i++)
+	    for(int i=0;i<N && C>0;i++)
 	    {
 	        if(isPerfectSq(gold[i].second))
 	        {
 	            continue;
 	        }
-	        
 	        if(C>=gold[i].second)
 	        {
 	            ans += gold[i].first;
@@ -50,7 +49,6 @@ class Solution{
 	            C=0;
 	        }
 	    }
-	    
 	    return ans;
 	}
 };
