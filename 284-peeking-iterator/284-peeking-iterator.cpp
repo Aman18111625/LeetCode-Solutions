@@ -17,30 +17,54 @@
  *	};
  */
 
-class PeekingIterator : public Iterator {
-  queue<int>q;
+// class PeekingIterator : public Iterator {
+//   queue<int>q;
+// public:
+// 	PeekingIterator(const vector<int>& nums) : Iterator(nums) {
+// 	    // Initialize any member here.
+// 	    // **DO NOT** save a copy of nums and manipulate it directly.
+// 	    // You should only use the Iterator interface methods.
+// 	    for(auto &it : nums) q.push(it);
+// 	}
+	
+//     // Returns the next element in the iteration without advancing the iterator.
+// 	int peek() {
+//    return q.front();     
+// 	}
+	
+// 	// hasNext() and next() should behave the same as in the Iterator interface.
+// 	// Override them if needed.
+// 	int next() {
+// 	    int temp=q.front();
+//       q.pop();
+//       return temp;
+// 	}
+	
+// 	bool hasNext() const {
+// 	    return !q.empty();
+// 	}
+// };
+
+ class PeekingIterator : public Iterator {
 public:
+    int prev;
+    bool has;
 	PeekingIterator(const vector<int>& nums) : Iterator(nums) {
-	    // Initialize any member here.
-	    // **DO NOT** save a copy of nums and manipulate it directly.
-	    // You should only use the Iterator interface methods.
-	    for(auto &it : nums) q.push(it);
+        has = 1;
+	    next();
 	}
-	
-    // Returns the next element in the iteration without advancing the iterator.
 	int peek() {
-   return q.front();     
+        return prev;
 	}
-	
-	// hasNext() and next() should behave the same as in the Iterator interface.
-	// Override them if needed.
 	int next() {
-	    int temp=q.front();
-      q.pop();
-      return temp;
+        int temp = prev;
+	    if(Iterator::hasNext()==false)
+            has = false;
+        else
+            prev = Iterator::next();
+        return temp;
 	}
-	
 	bool hasNext() const {
-	    return !q.empty();
+	    return has;
 	}
 };
