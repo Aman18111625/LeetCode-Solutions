@@ -8,6 +8,6 @@ public:
           nums[i]=-nums[i];
           i=abs(nums[i]);
         }
-      return -1;
+        return -1;
     }
 };
