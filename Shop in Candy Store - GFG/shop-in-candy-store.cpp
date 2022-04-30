@@ -9,24 +9,38 @@ public:
     vector<int> candyStore(int candies[], int N, int k)
     {
         // Write Your Code here
+        // sort(candies,candies+N);
+        // vector<int>res;
+        // int min=0;
+        // int n=N;
+        // for(int i=0;i<n;i++){
+        //     min+=candies[i];
+        //     n-=k;
+        // }
+        // res.push_back(min);
+        // int max=0;
+        // n=N;
+        // int t=0;
+        // for(int i=n-1;i>=t;i--){
+        //     max+=candies[i];
+        //     t+=k;
+        // }
+        // res.push_back(max);
+        // return res;
+        int mini=0,maxi=0;
         sort(candies,candies+N);
-        vector<int>res;
-        int min=0;
-        int n=N;
-        for(int i=0;i<n;i++){
-            min+=candies[i];
-            n-=k;
+        int val=N/(k+1);
+        if(N%(k+1)!=0){
+            val++;
         }
-        res.push_back(min);
-        int max=0;
-        n=N;
-        int t=0;
-        for(int i=n-1;i>=t;i--){
-            max+=candies[i];
-            t+=k;
+        for(int i=0;i<N && i<val ;i++){
+            mini+=candies[i];
         }
-        res.push_back(max);
-        return res;
+        reverse(candies,candies+N);
+        for(int i=0;i<N && i<val ;i++){
+            maxi+=candies[i];
+        }
+        return {mini,maxi};
     }
 };
 
