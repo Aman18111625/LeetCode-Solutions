@@ -1,33 +1,41 @@
 class Solution {
 public:
-  /*
-  // initialize dp array with maximum constraints
-    int dp[2501][2501];
-	// ind is current index and prev is last index what we need to compare current indexed element with
-	// prev may be -1 that means its our first element of some temporary sequence
-    int solve(vector<int>& v,int ind,int prev){
-        int n=v.size();
-        if(ind==n) return 0;
-        // we cant store negative index so leave this case
-        if(prev>-1 and dp[ind][prev]!=-1) return dp[ind][prev];
-        int res=0;
-		
-		// if we dont take current element 
-        res = solve(v,ind+1,prev);
-		
-		// if we consider current element
-        if(prev==-1 or v[ind]>v[prev])
-        res = max(res,1+solve(v,ind+1,ind));
-		
-		 // we cant store negative index so leave this case
-        if(prev>-1) dp[ind][prev]=res;
-        return res;
-    }
+     //Recursive + Memoization ->giving TLE
+     //TC:=>O(N*N)
+     //SC:=>O(N*N)+O(N)(stack-space)
+//     int solve(vector<int>&arr,int ind,int prev,int &n,vector<vector<int>>&dp){
+//       if(ind==n) return 0;
+//       //not take
+//       if(dp[ind][prev+1]!=-1) return dp[ind][prev+1];
+//       int len=0+solve(arr,ind+1,prev,n,dp);//not take
+//       //take
+//       if(prev==-1 or arr[ind]>arr[prev]){
+//         len=max(len,1+solve(arr,ind+1,ind,n,dp)); 
+//       }
+//       return dp[ind][prev+1]=len;
+//     }
     
-    int lengthOfLIS(vector<int>& v) {
-        memset(dp,-1,sizeof(dp));
-        return solve(v,0,-1);
-    }*/
+//     int lengthOfLIS(vector<int>& v) {
+//         int n=v.size();
+//         vector<vector<int>>dp(n,vector<int>(n+1,-1));
+//         return solve(v,0,-1,n,dp);
+//     }
+       int lengthOfLIS(vector<int>& v) {
+         int n=v.size();
+         vector<vector<int>>dp(n+1,vector<int>(n+1,0));
+         for(int ind=n-1;ind>=0;ind--){
+           for(int prev=ind-1;prev>=-1;prev--){
+             int len=dp[ind+1][prev+1];
+             if(prev==-1 or v[ind]>v[prev]){
+               len=max(len,1+dp[ind+1][ind+1]);
+             }
+             dp[ind][prev+1]=len;
+           }
+         }
+        return dp[0][0];
+       }
+  /*
+  //TC:=>O(N^2) SC:=>O(N)
    int lengthOfLIS(vector<int>& v) {
         int n=v.size();
         vector<int>dp(n);
@@ -40,19 +48,5 @@ public:
         }
        return *max_element(dp.begin(),dp.end());
     }
-  /*
-  //TC:->O(N^2) SC:=>O(N)
-    int lengthOfLIS(vector<int>& nums) {
-        int n=nums.size();
-         vector<int>lis(n,1);
-        for(int i=1;i<n;i++)
-        {
-           for(int j=0;j<i;j++)
-           {
-             if(nums[i]>nums[j] && lis[i]<=lis[j])
-               lis[i]=1+lis[j];
-           }
-        }
-      return *max_element(lis.begin(),lis.end());
-    }*/
+ */
 };
