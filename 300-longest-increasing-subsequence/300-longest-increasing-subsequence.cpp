@@ -36,19 +36,33 @@ public:
        //  return dp[0][0];
        // }
   //TC:=>O(N^2) SC:=>O(N)
-   int lengthOfLIS(vector<int>& v) {
-        int n=v.size();
-        vector<int>next(n+1,0),curr(n+1,0);
-        for(int ind=n-1;ind>=0;ind--){
-          for(int prev=ind-1;prev>=-1;prev--){
-            int len=next[prev+1];
-            if(prev==-1 or v[ind]>v[prev]){
-              len=max(len,1+next[ind+1]);
-            }
-            curr[prev+1]=len;
-          }
-          next=curr;
-        }
-        return next[0];
-    }
+   // int lengthOfLIS(vector<int>& v) {
+   //      int n=v.size();
+   //      vector<int>next(n+1,0),curr(n+1,0);
+   //      for(int ind=n-1;ind>=0;ind--){
+   //        for(int prev=ind-1;prev>=-1;prev--){
+   //          int len=next[prev+1];
+   //          if(prev==-1 or v[ind]>v[prev]){
+   //            len=max(len,1+next[ind+1]);
+   //          }
+   //          curr[prev+1]=len;
+   //        }
+   //        next=curr;
+   //      }
+   //      return next[0];
+   //  }
+   int lengthOfLIS(vector<int>&v){
+     int n=v.size();
+     vector<int>dp(n,1);
+     int maxi=1;
+     for(int ind=0;ind<n;ind++){
+       for(int prev=0;prev<ind;prev++){
+         if(v[prev]<v[ind]){
+           dp[ind]=max(dp[ind],1+dp[prev]);
+         }
+       }
+       maxi=max(maxi,dp[ind]);
+     }
+    return maxi;
+   }
 };
