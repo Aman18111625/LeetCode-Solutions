@@ -8,6 +8,8 @@ using namespace std;
 // User function Template for C++
 
 class Solution{
+    /*
+    //simple BFS Function
      int BFS(vector<vector<int>>&adj,int ind,vector<int>&vis){
          queue<int>q;
          q.push(ind);
@@ -30,13 +32,39 @@ public:
     int partyHouse(int N, vector<vector<int>> &adj){
         // code here
         int ans=INT_MAX;
+        //call BFS for every node ->BFS will return max distance for each node 
+        //we have to take min out of all distance
         for(int i=1;i<=N;i++){
             vector<int>vis(N+1,false);
             int curr=BFS(adj,i,vis);
             ans=min(ans,curr);
         }
         return ans;
+    }*/
+    public:
+    int maxd=0;
+    
+    void dfs(int node,vector<vector<int>>&adj,vector<int>&vis,int curr){
+        vis[node]=true;
+        maxd=max(maxd,curr);
+        for(int i : adj[node]){
+            if(!vis[i]){
+                dfs(i,adj,vis,curr+1);
+            }
+        }
     }
+    
+    int partyHouse(int N, vector<vector<int>> &adj){
+        int ans=INT_MAX;
+        for(int i=1;i<=N;i++){
+            vector<int>vis(N+1,0);
+            maxd=0;//store fartest distance node from ith node 
+            dfs(i,adj,vis,0);//call dfs for every node
+            ans=min(ans,maxd);//we have to take minimum everytime
+        }
+        return ans;
+    }
+    
 };
 
 // { Driver Code Starts.
