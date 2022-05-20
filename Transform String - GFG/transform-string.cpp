@@ -11,31 +11,21 @@ class Solution
     int transform (string A, string B)
     {
         //code here.
-       int n=A.size();
-       int m=B.size();
-       if(n!=m) return -1;
-       int i=n-1,j=m-1;
-       map<char,int> m1;
-       map<char,int> m2;
-       for(int k=0;k<=i;k++){
-           m1[A[k]]++;
-           m2[B[k]]++;
+        if(A.size()!=B.size()) return -1;
+        vector<int>freq(256,0);
+        for(auto e : A) freq[e]++;
+        for(auto e: B) freq[e]--;
+        for(int i=0;i<256;i++) if(freq[i]!=0) return -1;
+        int i=A.size()-1,j=B.size()-1;
+        int cnt=0;
+        while(i>=0 && j>=0){
+            while(i>=0 && A[i]!=B[j]){
+                i--;
+                cnt++;
+            }
+            i--,j--;
         }
-       if(m1!=m2) return -1;
-       int cnt=0;
-       while(i>=0 && j>=0){
-           if(A[i]==B[j]){
-               i--;
-               j--;
-           }
-           else{
-               while(A[i]!=B[j] && i>=0 && j>=0){
-                   i--;
-                   cnt++;
-               }
-           }
-       }
-       return cnt;
+        return cnt;
     }
 };
 
