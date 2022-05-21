@@ -38,10 +38,10 @@ public:
         if(mat.empty()) return false;
         int row = 0;
         int n=mat.size(),m=mat[0].size();
-        while ((row < mat.size()) && (mat[row].back() < target))
+        while (row <n  && (mat[row].back() < target))
             row++;
         
-        if (row >= mat.size()) return false;
+        if (row >= n) return false;
         
         return binarySearch(mat[row], target);
     }
