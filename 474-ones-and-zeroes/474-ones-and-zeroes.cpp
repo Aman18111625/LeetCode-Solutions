@@ -7,7 +7,7 @@ public:
   //SC:=>O(M*N)
     int findMaxForm(vector<string>& strs, int m, int n) {
         vector<vector<int>>dp(m+1,vector<int>(n+1,0));//store size of largest subset of stsr with maximum limit of 1 and maximum limit of 0.
-        for(auto &str : strs){
+        for(auto str : strs){
            int count_0=count(begin(str),end(str),'0');
            int count_1=size(str)-count_0;
            for(int i=m;i>=count_0;i--){
