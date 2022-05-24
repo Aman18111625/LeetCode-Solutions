@@ -1,7 +1,6 @@
 class Solution {
 public:
     int longestValidParentheses(string s) {
-        stack<char>CS;//to store char
         stack<int>IS;//to store index
         int ans=0;
         int n=s.length();
@@ -10,14 +9,12 @@ public:
         {
           if(s[i]=='(') //opening ->then push
           {
-             CS.push(s[i]);
              IS.push(i);
           }
           else //closing
           { 
-            if(!CS.empty() and CS.top()=='(')//pop and find max ans
+            if(IS.top()!=-1 and s[IS.top()]=='(')
             {
-              CS.pop();
               IS.pop();
               ans=max(ans,i-IS.top());
             }
