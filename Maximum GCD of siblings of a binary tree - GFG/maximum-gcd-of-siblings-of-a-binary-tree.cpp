@@ -8,7 +8,9 @@ using namespace std;
 
 class Solution {
   public:
-    int a
+    int gcd(int a,int b){
+        return b==0?a:gcd(b,a%b);
+    }
     int maxBinTreeGCD(vector<vector<int>> arr, int N) {
         // code here
         int n=arr.size();
@@ -17,7 +19,7 @@ class Solution {
         for(int i=0;i<n-1;i++){
             if(arr[i][0]!=arr[i+1][0]) continue;
             else{
-                ans=max(ans,__gcd(max(arr[i][1],arr[i+1][1]),min(arr[i][1],arr[i+1][1])));
+                ans=max(ans,gcd(max(arr[i][1],arr[i+1][1]),min(arr[i][1],arr[i+1][1])));
                 i++;
             }
         }
