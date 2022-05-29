@@ -44,7 +44,7 @@ public:
     }*/
   
   //Approach-2 
-  //Time-Complexity:=>O(N^3)
+  //Time-Complexity:=>O(N^3)(three for loop)+O(NLOGN)(sorting)
   //Space-Complexity:=>O(1)
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
         vector<vector<int>>res;
@@ -55,7 +55,7 @@ public:
         {
           for(int j=i+1;j<n-2;j++)
           {
-           int target_2=target-nums[i]-nums[j];
+             int target_2=target-nums[i]-nums[j];
               int front =j+1;
               int back=n-1;
               while(front<back)
@@ -63,9 +63,9 @@ public:
                   int two_sum=nums[front]+nums[back];
                   if(two_sum<target_2) front++;
                   else if(two_sum>target_2) back--;
-                  else
+                  else//we find our group of 4 number whose sum equal to target
                   {
-                       vector<int>quadruplets(4,0);
+                      vector<int>quadruplets(4,0);
                       quadruplets[0]=nums[i];
                       quadruplets[1]=nums[j];
                       quadruplets[2]=nums[front];
