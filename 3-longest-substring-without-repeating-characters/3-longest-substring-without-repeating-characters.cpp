@@ -24,21 +24,42 @@ public:
     //TC:=>O(2*N)
    //SC:=>O(N)
   //Approach: We will have two pointers left and right. Pointer ‘left’ is used for maintaining the starting point of substring while ‘right’ will maintain the endpoint of the substring.’ right’ pointer will move forward and check for the duplicate occurrence of the current element if found then ‘left’ pointer will be shifted ahead so as to delete the duplicate elements.
-   int lengthOfLongestSubstring(string str){
-      int maxans = 0;
-      int n=str.size();
-      unordered_set < int > set;
-      int l = 0;
-     for (int r = 0; r < n; r++) {// outer loop for traversing the string
-      if (set.find(str[r]) != set.end()) {//if duplicate element is found
-      while (l < r && set.find(str[r]) != set.end()) {
-        set.erase(str[l]);
-        l++;
+  //  int lengthOfLongestSubstring(string str){
+  //     int maxans = 0;
+  //     int n=str.size();
+  //     unordered_set < int > set;
+  //     int l = 0;
+  //    for (int r = 0; r < n; r++) {// outer loop for traversing the string
+  //     if (set.find(str[r]) != set.end()) {//if duplicate element is found
+  //     while (l < r && set.find(str[r]) != set.end()) {
+  //       set.erase(str[l]);
+  //       l++;
+  //     }
+  //    }
+  //    set.insert(str[r]);
+  //    maxans = max(maxans, r - l + 1);
+  //  }
+  //  return maxans;
+  // }
+  
+  //Optimized Approach-2
+  //TC:=>O(N)
+  //SC:=>O(1)
+ // Approach: In this approach, we will make a map that will take care of counting the elements and maintaining the frequency of each and every element as a unity by taking the latest index of every element.
+  int lengthOfLongestSubstring(string s) {
+      vector < int > mpp(256, -1);
+      int left = 0, right = 0;
+      int n = s.size();
+      int len = 0;
+      while (right < n) {
+        if (mpp[s[right]] != -1)
+          left = max(mpp[s[right]] + 1, left);
+
+        mpp[s[right]] = right;
+
+        len = max(len, right - left + 1);
+        right++;
       }
-     }
-     set.insert(str[r]);
-     maxans = max(maxans, r - l + 1);
-   }
-   return maxans;
-  }
+      return len;
+    }
 };
