@@ -12,11 +12,11 @@ public:
     int shortestPath( int x, int y){ 
         // code here 
        int ans = 0;
+       //parent's value=child's value/2
+       //so basically we have to find common house-> common house means parent's value should be same
        while(x != y){
-           if(x > y) 
-               x /= 2;
-           else 
-               y /= 2;
+           if(x > y) x /= 2;
+           else y /= 2;
            ans++;
        }
        return ans;
