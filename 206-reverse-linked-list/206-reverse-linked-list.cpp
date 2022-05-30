@@ -14,23 +14,39 @@ public:
   //Store all the values in the array and reverse that arary and create new LL
   //TC:=>O(N)
   //SC:=>O(N+N)
-    ListNode* reverseList(ListNode* head) {
-         if(!head || !head->next) return head;
-         ListNode* curr=head;
-         vector<int>ans;
-         while(curr){
-           ans.push_back(curr->val);
-           curr=curr->next;
-         }
-         reverse(ans.begin(),ans.end());
-         ListNode* newhead=new ListNode(ans[0]);
-         ListNode* temp=newhead;
-         int i=1,n=ans.size();
-         while(i<n){
-           temp->next=new ListNode(ans[i]);
-           temp=temp->next;
-           i++;
-         }
-        return newhead;
+    // ListNode* reverseList(ListNode* head) {
+    //      if(!head || !head->next) return head;
+    //      ListNode* curr=head;
+    //      vector<int>ans;
+    //      while(curr){
+    //        ans.push_back(curr->val);
+    //        curr=curr->next;
+    //      }
+    //      reverse(ans.begin(),ans.end());
+    //      ListNode* newhead=new ListNode(ans[0]);
+    //      ListNode* temp=newhead;
+    //      int i=1,n=ans.size();
+    //      while(i<n){
+    //        temp->next=new ListNode(ans[i]);
+    //        temp=temp->next;
+    //        i++;
+    //      }
+    //     return newhead;
+    // }
+  //Optimal Approach-1 Iterative
+  //TC:=>O(N)
+  //SC:=>O(1)
+  ListNode* reverseList(ListNode* head){
+    if(!head || !head->next) return head;//base condition
+    ListNode* curr=head;
+    ListNode* prev=NULL,*nex;
+    while(curr){
+      nex=curr->next;
+      curr->next=prev;
+      prev=curr;
+      curr=nex;
     }
+    head=prev;
+    return head;
+  }
 };
