@@ -36,17 +36,31 @@ public:
   //Optimal Approach-1 Iterative
   //TC:=>O(N)
   //SC:=>O(1)
-  ListNode* reverseList(ListNode* head){
-    if(!head || !head->next) return head;//base condition
-    ListNode* curr=head;
-    ListNode* prev=NULL,*nex;
-    while(curr){
-      nex=curr->next;
-      curr->next=prev;
-      prev=curr;
-      curr=nex;
-    }
-    head=prev;
-    return head;
-  }
+  // ListNode* reverseList(ListNode* head){
+  //   if(!head || !head->next) return head;//base condition
+  //   ListNode* curr=head;
+  //   ListNode* prev=NULL,*nex;
+  //   while(curr){
+  //     nex=curr->next;
+  //     curr->next=prev;
+  //     prev=curr;
+  //     curr=nex;
+  //   }
+  //   head=prev;
+  //   return head;
+  // }
+  //Optimal Approach-Recursive
+  //TC:=>O(N)
+  //SC:=>O(N) (stack-Space)
+   ListNode* reverseList(ListNode* head){
+     if(!head || !head->next) return head;
+     ListNode* newHead=NULL;
+     while(head){
+       ListNode* nex=head->next;
+       head->next=newHead;
+       newHead=head;
+       head=nex;
+     }
+     return newHead;
+   }
 };
