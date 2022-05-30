@@ -14,9 +14,9 @@ class Solution {
     
     int maxBinTreeGCD(vector<vector<int>> arr, int N) {
         // code here
-        int n=arr.size();
+        if(N==0 or N==1) return 0;
         sort(arr.begin(),arr.end());
-        int ans=0;
+        int ans=0,n=arr.size();
         for(int i=0;i<n-1;i++){
             if(arr[i][0]!=arr[i+1][0]) continue;//not same parent node that means they're not siblinhs
             else{
