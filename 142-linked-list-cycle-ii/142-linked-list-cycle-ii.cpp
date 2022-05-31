@@ -22,10 +22,10 @@ public:
                 break;
             }
         }
-        if(!found) return NULL;
+        if(!found) return NULL;//there's no loop in the LL.
         if(slow==head)
         {
-            while(fast->next!=slow) fast=fast->next;
+          while(fast->next!=slow) fast=fast->next;
         }else if(slow==fast)
         {
             slow=head;
