@@ -17,19 +17,16 @@ public:
           dummy->next=head;
          ListNode *cur=dummy,*pre=dummy,*nex=dummy;
          int count=0;
-       //step-1 count the length of linked list
-        while(cur->next) 
-        {
+        //step-1 count the length of linked list
+        while(cur->next) {
          cur=cur->next;
          count++;
         }
-         //step-2 reverse in k-size of group
-        while(count>=k)
-        {
+        //step-2 reverse in k-size of group .Here we don't have to reverse those groups whose size is less than k.
+        while(count>=k){
             cur=pre->next;
             nex=cur->next;
-            for(int i=1;i<k;i++)
-            {
+            for(int i=1;i<k;i++){
                 cur->next=nex->next;
                 nex->next=pre->next;
                 pre->next=nex;
