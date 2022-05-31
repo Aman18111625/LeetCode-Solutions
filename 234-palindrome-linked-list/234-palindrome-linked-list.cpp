@@ -37,8 +37,7 @@ public:
         ListNode* slow=head,*fast=head;
         while(fast && fast->next){
             slow=slow->next;
-            fast=fast->next;
-            if(fast) fast=fast->next;
+            fast=fast->next->next;
         }
         return slow;
     }
@@ -70,6 +69,7 @@ public:
        if(!head or !head->next) return true;
         ListNode* curr=head;
         ListNode* mid=findMid(curr);
+     //   cout<<mid->val<<" ";
         ListNode* head1=reverseList(mid);
         return compareList(head,head1);
     }
