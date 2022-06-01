@@ -43,7 +43,7 @@ public:
         Node *temp=dummy;
         while(iter)
         {
-           front=iter->next->next;
+            front=iter->next->next;
             //extract the copy
             temp->next=iter->next;
             iter->next=front;
