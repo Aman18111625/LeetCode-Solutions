@@ -27,21 +27,44 @@ public:
       //Better Approach->Instead of find leftMax and rightMax everytime we can pre-compute them 
   //TC:=>O(N)
   //SC:=>O(N)
-      int trap(vector<int>& height) {
-        int n=height.size();
-        vector<int>leftMax(n),rightMax(n);
-        leftMax[0]=height[0];
-        for(int i=1;i<n;i++){
-          leftMax[i]=max(leftMax[i-1],height[i]);
+      // int trap(vector<int>& height) {
+      //   int n=height.size();
+      //   vector<int>leftMax(n),rightMax(n);
+      //   leftMax[0]=height[0];
+      //   for(int i=1;i<n;i++){
+      //     leftMax[i]=max(leftMax[i-1],height[i]);
+      //   }
+      //   rightMax[n-1]=height[n-1];
+      //   for(int i=n-2;i>=0;i--){
+      //     rightMax[i]=max(rightMax[i+1],height[i]);
+      //   }
+      //   int ans=0;
+      //   for(int i=0;i<n;i++){
+      //     ans+=min(leftMax[i],rightMax[i])-height[i];
+      //   }
+      //   return ans;
+      // }
+       
+       //Optimal Approach ->Using Two Pointer
+      //TC:=>O(N)
+      //SC:=>O(1)
+        int trap(vector<int>&arr){
+          int n=arr.size();
+          int left=0,right=n-1;
+          int leftMax=0,rightMax=0;
+          int ans=0;
+          while(left<right){
+            if(arr[left]<=arr[right]){
+                if(leftMax<=arr[left]) leftMax=arr[left];
+                else ans+=(leftMax-arr[left]);
+                left++;
+            }else{
+                if(arr[right]>=rightMax) rightMax=arr[right];
+               else ans+=(rightMax-arr[right]);
+                right--;
+            }
+          }
+          return ans;
         }
-        rightMax[n-1]=height[n-1];
-        for(int i=n-2;i>=0;i--){
-          rightMax[i]=max(rightMax[i+1],height[i]);
-        }
-        int ans=0;
-        for(int i=0;i<n;i++){
-          ans+=min(leftMax[i],rightMax[i])-height[i];
-        }
-        return ans;
-      }
+  
 };
