@@ -10,7 +10,7 @@ class Solution {
     }
     
     bool helper(vector<vector<int>>&mat,vector<vector<int>>&res,int i,int j,int n){
-        //if reach to destination
+        //reach to destination
         if(i==n-1 && j==n-1){
             res[i][j]=1;
             return true;
@@ -18,10 +18,13 @@ class Solution {
         
         if(isSafe(mat,i,j,n)){
             res[i][j]=1;
+            //now check for every possible val till mat[i][j].
             for(int k=1;k<=mat[i][j] && k<n ;k++){
+                //if anyone of two is give true then we'll return true->it means we can reach the destination
                 if(helper(mat,res,i,j+k,n)) return true;
                 if(helper(mat,res,i+k,j,n)) return true;
             }
+           //not able to reach the destination
              res[i][j]=0;
             return false;
         }
@@ -31,8 +34,8 @@ public:
 	vector<vector<int>> ShortestDistance(vector<vector<int>>&mat){
 	   // Code here
 	   int n=mat.size();
-	   if(mat[0][0]==0 && n!=1) return {{-1}};
-	   vector<vector<int>>res(n,vector<int>(n,0));
+	   if(mat[0][0]==0 && n!=1) return {{-1}};//we can't move ahead
+	   vector<vector<int>>res(n,vector<int>(n,0));//to store res
 	   helper(mat,res,0,0,n);
 	   return res;
 	}
