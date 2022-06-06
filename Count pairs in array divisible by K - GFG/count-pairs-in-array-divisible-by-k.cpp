@@ -11,15 +11,15 @@ using namespace std;
 class Solution
 {
     public:
-    int countKdivPairs(int A[], int n, int K)
+    long long countKdivPairs(int A[], int n, int K)
     {
         //code here
         vector<int>freq(K,0);
-        int ans = 0;
+        long long ans = 0;
         for(int i=0; i<n; i++){
             //find complement
             int comp = (K-(A[i]%K))%K;
-            ans = ans+freq[comp];
+            ans+=freq[comp];
             freq[A[i]%K]++;
         }
         return ans;
