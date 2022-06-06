@@ -45,7 +45,9 @@ public:
         
 //         return binarySearch(mat[row], target);
 //     }
-     //Another way using Binary Search
+       //Another way using Binary Search
+      //Time complexity: O(log(m*n))
+      //Space complexity: O(1)
        bool searchMatrix(vector<vector<int>>& matrix, int target) {
         int lo = 0;
         if(!matrix.size()) return false;
