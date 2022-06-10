@@ -17,15 +17,19 @@ class Solution
         return val;
     }
     //Function to merge two nodes a and b.
-    void union_( int a, int b, int par[], int rank[]) 
+    void union_( int a, int b, int par[], int rank1[]) 
     {
         //code here
-        int p1=find_parent(a,par);
-        int p2=find_parent(b,par);
-        if(rank[p1]<rank[p2]) par[p1]=p2;
-        else if(rank[p1]>rank[p2]) par[p2]=p1;
-        else par[p1]=p2;
-        rank[p2]++;
+        a=find_parent(a,par);
+        b=find_parent(b,par);
+        if(a==b) return;
+        if(rank1[a]>=rank1[b]){
+            rank1[a]+=rank1[b];
+            par[b]=a;
+        }else{
+            rank1[b]+=rank1[a];
+            par[a]=b;
+        }
     }
     
     //Function to check whether 2 nodes are connected or not.
