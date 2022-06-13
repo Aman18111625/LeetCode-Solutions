@@ -4,9 +4,10 @@ using namespace std;
 
  // } Driver Code Ends
 class Solution{
+    //Recursive+Memoization
     int helper(string &s,int ind,int prevSum,vector<vector<int>>&dp){
         if(ind==s.size()) return 1;
-        if(dp[ind][prevSum]==-1) {
+        if(dp[ind][prevSum]!=-1) return dp[ind][prevSum];
         dp[ind][prevSum]=helper(s,ind+1,prevSum+(s[ind]-'0'),dp);
         int sum=0;
         for(int j=ind;j<s.size();j++){
@@ -16,7 +17,6 @@ class Solution{
                break;   
             }
         }
-      }
       return dp[ind][prevSum];
     }
 	public:
