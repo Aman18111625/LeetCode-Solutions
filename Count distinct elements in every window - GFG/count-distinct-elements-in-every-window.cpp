@@ -14,13 +14,14 @@ class Solution{
         unordered_map<int,int>mpp;
         vector<int>res;
         int i=0,j=0;
-        for(;i<k-1;i++) mpp[arr[i]]++;
+        for(;i<k;i++) mpp[arr[i]]++;
+        res.push_back(mpp.size());
         while(i<n)
         {
             mpp[arr[i]]++;
-            res.push_back(mpp.size());
             mpp[arr[j]]--;
             if(mpp[arr[j]]==0) mpp.erase(arr[j]);
+            res.push_back(mpp.size());
             j++;
             i++;
         }
