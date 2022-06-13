@@ -63,6 +63,9 @@ public:
       return dp[0][0];
     }*/
   
+   //Space-Optimization
+  //Time-Complexity:=>O(N*N)
+  //Space-Complexity:=>O(N)+O(N)
    int minimumTotal(vector<vector<int>>& triangle) {
       int n=triangle.size();
        vector<int>prev(n);
