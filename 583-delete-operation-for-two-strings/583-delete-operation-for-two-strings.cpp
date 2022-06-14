@@ -22,18 +22,38 @@ class Solution {
   //Tabulation or Top-Down Approach
   //TC:=>O(N*M)
   //SC:=>O(N*M)
+//   int minDistance(string& word1, string& word2) {  
+//    int n=word1.size(),m=word2.size();
+// 	 vector<vector<int> >dp(n+1, vector<int>(m+1));
+// 	 for(int i = 0; i <=n; i++){
+// 		for(int j = 0; j <= m; j++){ 
+// 			if(!i || !j) 
+//       dp[i][j] = i + j;//if one word == "",all other char of other word need to be deleted
+// //if char match?dont delete:1 delete+min to equalize after delete of (word1[i], word2[j])
+// 			else
+//         dp[i][j]=word1[i-1] == word2[j-1]?dp[i-1][j-1]:1+min(dp[i-1][j], dp[i][j-1]);
+//     }
+//    }
+// 	 return dp[n][m];
+// }
+  //Space-Optimization
+  //TC:=>O(N*M)
+  //SC:=>O(M)
   int minDistance(string& word1, string& word2) {  
-   int n=word1.size(),m=word2.size();
-	 vector<vector<int> >dp(n+1, vector<int>(m+1));
-	 for(int i = 0; i <=n; i++){
-		for(int j = 0; j <= m; j++){ 
-			if(!i || !j) 
-      dp[i][j] = i + j;//if one word == "",all other char of other word need to be deleted
-//if char match?dont delete:1 delete+min to equalize after delete of (word1[i], word2[j])
-			else
-        dp[i][j]=word1[i-1] == word2[j-1]?dp[i-1][j-1]:1+min(dp[i-1][j], dp[i][j-1]);
-    }
+     int n=word1.size(),m=word2.size();
+     vector<int>prev(m+1,0),curr(m+1,0);
+	  for(int i = 0; i <=n; i++) {
+	  	for(int j = 0; j <= m; j++){
+       if(i==0 || j==0) curr[j] =0;
+		 	 else curr[j] =(word1[i-1] == word2[j-1])? 1+prev[j-1] :  max(prev[j], curr[j-1]);
+     }
+		prev=curr;
    }
-	 return dp[n][m];
+  //Track how many characters are extra in both strings. Extra means difference between string length and lcs length 
+	return n+m-2*prev[m];
 }
 };
+
+           
+      
+ 
