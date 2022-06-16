@@ -30,22 +30,50 @@ class Solution {
   //Iterative Approach-1 :->Using Two Stacks
   //TC:=>O(N)
   //SC:=>O(N)
-    vector<int> postorderTraversal(TreeNode* root){
-      vector<int>ans;
-      if(!root) return ans;
-      stack<TreeNode*>st1,st2;
-      st1.push(root);
-      while(!st1.empty()){
-        root=st1.top() ; st1.pop();
-        st2.push(root);
-        if(root->left) st1.push(root->left);
-        if(root->right) st1.push(root->right);
-      }
+//     vector<int> postorderTraversal(TreeNode* root){
+//       vector<int>ans;
+//       if(!root) return ans;
+//       stack<TreeNode*>st1,st2;
+//       st1.push(root);
+//       while(!st1.empty()){
+//         root=st1.top() ; st1.pop();
+//         st2.push(root);
+//         if(root->left) st1.push(root->left);
+//         if(root->right) st1.push(root->right);
+//       }
       
-      while(!st2.empty()){
-        ans.push_back(st2.top()->val);
-        st2.pop();
-      } 
-      return ans;
+//       while(!st2.empty()){
+//         ans.push_back(st2.top()->val);
+//         st2.pop();
+//       } 
+//       return ans;
+//     }
+  
+  //Iterative Approach-2 Using Single Stack
+  vector<int> postorderTraversal(TreeNode* root){
+    vector<int>ans;
+    if(!root) return ans;
+    stack<TreeNode*>st;
+    while(root || !st.empty()){
+       if(root){
+         st.push(root);
+         root=root->left;
+       }else{
+         TreeNode* node=st.top()->right;
+         if(!node){
+           node=st.top();
+           st.pop();
+           ans.push_back(node->val);
+           while(!st.empty() && node==st.top()->right){
+             node = st.top();
+             st.pop();
+             ans.push_back(node -> val);
+           }
+          }else{
+            root=node; 
+         }
+       }
     }
+    return ans;
+  }
 };
