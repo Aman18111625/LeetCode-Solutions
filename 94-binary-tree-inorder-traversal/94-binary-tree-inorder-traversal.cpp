@@ -11,7 +11,7 @@
  */
 class Solution {
   public:
-   //DFS 
+   //Recursive
    //TC:->O(N)(N->no of total nodes)
   //SC:->O(N) 
 //     void helper(TreeNode* root,vector<int>&inorder){
@@ -26,23 +26,54 @@ class Solution {
 //         helper(root,inorder);
 //         return inorder;
 //     }
-      vector<int> inorderTraversal(TreeNode* root) {
-        vector<int>ans;
-        if(!root) return ans;
-        stack<TreeNode*>st;
-        while(1){
-          if(root){
-            st.push(root);
-            root=root->left;
-          }else{
-            if(st.empty()) break;
-            root=st.top(); st.pop();
-            ans.push_back(root->val);
-            root=root->right;
-          }
-        }
-        return ans;
-      }
+     
+  //Iterative
+  //TC:=>O(N)
+  //SC:=>O(N)
+      // vector<int> inorderTraversal(TreeNode* root) {
+      //   vector<int>ans;
+      //   if(!root) return ans;
+      //   stack<TreeNode*>st;
+      //   while(1){
+      //     if(root){
+      //       st.push(root);
+      //       root=root->left;
+      //     }else{
+      //       if(st.empty()) break;
+      //       root=st.top(); st.pop();
+      //       ans.push_back(root->val);
+      //       root=root->right;
+      //     }
+      //   }
+      //   return ans;
+      // }
+  //Using Morris Traversal
+  //TC:=>O(N)
+  //SC:=>O(1)
+  vector<int> inorderTraversal(TreeNode* root){
+     vector<int>ans;
+     if(!root) return ans;
+     TreeNode* curr=root;
+     while(curr){
+       if(!curr->left){
+        ans.push_back(curr->val);
+        curr=curr->right;
+       }else{
+         TreeNode* prev=curr->left;
+         while(prev->right && prev->right!=curr){
+           prev=prev->right;
+         }
+         if(!prev->right){
+           prev->right=curr;
+           curr=curr->left;
+         }else{
+           prev->right=NULL;
+           ans.push_back(curr->val);
+           curr=curr->right;
+         }
+       }
+     }
+     return ans;
+  }
 };
-
  
