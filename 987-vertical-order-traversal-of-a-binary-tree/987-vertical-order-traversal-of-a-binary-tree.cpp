@@ -10,11 +10,11 @@
  * };
  */
 class Solution {
-    public:
+public:
  vector<vector<int>> verticalTraversal(TreeNode* root) {
   map < int, map < int, multiset < int >>> nodes;
   queue <pair<TreeNode* ,pair < int, int >>> todo;
-  todo.push({root,{0,0}}); //initial vertical and level
+  todo.push({root,{0,0}}); //key->node, value-> {vertical and level}
   while (!todo.empty()) {
     auto p = todo.front();
     todo.pop();
