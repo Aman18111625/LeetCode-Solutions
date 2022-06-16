@@ -8,13 +8,14 @@ class Solution{
     public:
     int findSubString(string str)
     {
-        // Your code goes here   
-        if(str.size()==1) return 1;
-        set<char>st(str.begin(),str.end());
+        // Your code goes here  
+        int n=str.size();
+        if(n<=1) return n;
+        set<char>st(str.begin(),str.end());//size of set will tell us no of distinct chara
         int len=st.size();
         int i=0,j=1,cnt=1;
         int ans=INT_MAX;
-        unordered_map<char,int>freq;
+        unordered_map<char,int>freq;//to keep track of freq
         freq[str[i]]++;
         while(i<=j && j<str.size()){
             if(cnt<len){
@@ -22,10 +23,10 @@ class Solution{
                 freq[str[j]]++;
                 j++;
             }
-            
+            //if all chara are same then Try to minimize the window i.e. remove characters
             while(cnt==len){
                 ans=min(ans,j-i);
-                if(freq[str[i]]==1) cnt--;
+                if(freq[str[i]]==1) cnt--;//decrease 
                 freq[str[i]]--;
                 i++;
             }
