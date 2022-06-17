@@ -20,7 +20,7 @@ class Solution {
     }
 public:
     int diameterOfBinaryTree(TreeNode* root) {
-     if(!root) return 0;
+        if(!root) return 0;
         int diameter=0;
         helper(root,diameter);
         return diameter;
