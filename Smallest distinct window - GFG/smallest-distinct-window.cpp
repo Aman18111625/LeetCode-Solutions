@@ -18,12 +18,14 @@ class Solution{
         unordered_map<char,int>freq;//to keep track of freq
         freq[str[i]]++;
         while(i<=j && j<str.size()){
+            //cnt =no of distinct char till now
+            //if cnt<len then move j by 1
             if(cnt<len){
                 if(freq[str[j]]==0) cnt++;
                 freq[str[j]]++;
                 j++;
             }
-            //if all chara are same then Try to minimize the window i.e. remove characters
+            //if all chara are same then Try to minimize the window i.e. remove characters from front
             while(cnt==len){
                 ans=min(ans,j-i);
                 if(freq[str[i]]==1) cnt--;//decrease 
