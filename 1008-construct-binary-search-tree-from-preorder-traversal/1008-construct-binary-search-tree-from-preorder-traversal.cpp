@@ -16,7 +16,7 @@ class Solution {
         TreeNode* root= NULL;
         if(key>mini && key<maxi)
         {
-            root=new TreeNode(key);
+             root=new TreeNode(key);
             *preStart=*preStart+1;
             if(*preStart<n)
             {
