@@ -106,22 +106,27 @@ struct Node
 
 Node* inpre(Node* root)
 {
-    Node* p=root->left;
-    while(p->right) p=p->right;
-    return p;
+    if(!root) return root;
+    Node* temp=root->left;
+    while(temp->right) temp=temp->right;
+    return temp;
 }
 
 Node* insuc(Node* root)
 {
-    Node* p=root->right;
-    while(p->left) p=p->left;
-    return p;
+    if(!root) return root;
+    Node* temp=root->right;
+    while(temp->left) temp=temp->left;
+    return temp;
 }
+
 
 // This function finds predecessor and successor of key in BST.
 // It sets pre and suc as predecessor and successor respectively
 void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
 {
+
+// Your code goes here
    if(!root) return ;
    if(root->key==key)
    {
