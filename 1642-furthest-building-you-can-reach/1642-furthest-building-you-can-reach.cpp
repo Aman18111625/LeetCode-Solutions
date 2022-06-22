@@ -13,34 +13,55 @@ Now, for any further jumps, we need to use bricks since the first L jumps have u
 
 2. If curJumpHeight <= min-heap top : There's no way to minimize usage of bricks for current jump. We need to spend atleast curJumpHeight number of bricks
   */
-    int furthestBuilding(vector<int>& heights, int bricks, int ladders) {
-        int i=0,size=heights.size();
-        //min heap
-       priority_queue<int,vector<int>,greater<int>>pq;
-//first ladder number of jumps would be assumed to be the largest hence, push all these jumps into the pq
-      while(i<size-1 && pq.size()<ladders){
-        int jumpHeight=heights[i+1]-heights[i];
-        if(jumpHeight>0) pq.push(jumpHeight);
-        i++;
-      }
+  
+  //TC:->O(NLogK)
+  //SC:->O(K)
+//     int furthestBuilding(vector<int>& heights, int bricks, int ladders) {
+//         int i=0,size=heights.size();
+//         //min heap
+//        priority_queue<int,vector<int>,greater<int>>pq;
+// //first ladder number of jumps would be assumed to be the largest hence, push all these jumps into the pq
+//       while(i<size-1 && pq.size()<ladders){
+//         int jumpHeight=heights[i+1]-heights[i];
+//         if(jumpHeight>0) pq.push(jumpHeight);
+//         i++;
+//       }
       
-      //from here ,we  can't use ladder and need to spend bricks from now
-      while(i<size-1){
-      int jumpHeight=heights[i+1]-heights[i];
-      if(jumpHeight>0){
-//First check if we have a previous jump requiring less number of bricks than currentDiff
-			if(!pq.empty() && pq.top() < jumpHeight) {                    
-				// if there is, just use bricks for that jump and assign ladder for current one
-				bricks -= pq.top(); pq.pop(); 
-				pq.push(jumpHeight);                    
-			}
-	 //jumpHeight is already minimum jump size. So, no choice than spending that many bricks
-			else bricks -= jumpHeight;
-      }
-      if(bricks<0) return i;//bricks become negative,so we can't travel any more as all bricks and ladders are used till now.
-      i++;
-    }
-    return i;
-  }
+//       //from here ,we  can't use ladder and need to spend bricks from now
+//       while(i<size-1){
+//       int jumpHeight=heights[i+1]-heights[i];
+//       if(jumpHeight>0){
+// //First check if we have a previous jump requiring less number of bricks than currentDiff
+// 			if(!pq.empty() && pq.top() < jumpHeight) {                    
+// 				// if there is, just use bricks for that jump and assign ladder for current one
+// 				bricks -= pq.top(); pq.pop(); 
+// 				pq.push(jumpHeight);                    
+// 			}
+// 	 //jumpHeight is already minimum jump size. So, no choice than spending that many bricks
+// 			else bricks -= jumpHeight;
+//       }
+//       if(bricks<0) return i;//bricks become negative,so we can't travel any more as all bricks and ladders are used till now.
+//       i++;
+//     }
+//     return i;
+//   }
+   int furthestBuilding(vector<int>& heights, int bricks, int ladders){
+       int i=0,diff=0,n=heights.size();
+       priority_queue<int>maxHeap;
+       for(i=0;i<n-1;i++){
+         diff=heights[i+1]-heights[i];
+         if(diff<=0)continue;
+         bricks-=diff;
+         maxHeap.push(diff);
+         
+         if(bricks<0){
+           bricks+=maxHeap.top();
+           maxHeap.pop();
+           ladders--;
+         }
+         if(ladders<0) return i;
+       }
+       return i;
+   }
 };
 
