@@ -8,57 +8,58 @@ class Solution
 	public:
 	//Function to return list containing vertices in Topological order. 
 	//BFS
-// 	vector<int> topoSort(int V, vector<int> adj[]) 
-// 	{
-// 	    // code here
-// 	    vector<int>indegree(V,0);
-// 	    queue<int>q;
-// 	    vector<int>ans;
-// 	    for(int i=0;i<V;i++)
-// 	    {
-// 	      for(auto &it: adj[i])
-// 	       indegree[it]++;
-// 	    }
-// 	    for(int i=0;i<V;i++) 
-// 	     if(indegree[i]==0) q.push(i);
-// 	    while(!q.empty())
-// 	    {
-// 	        auto idx=q.front();
-// 	        q.pop();
-// 	        ans.push_back(idx);
-// 	        for(auto &it: adj[idx])
-// 	        {
-// 	            indegree[it]--;
-// 	            if(indegree[it]==0) q.push(it);
-// 	        }
-// 	    }
-// 	    return ans;
-// 	}
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    // code here
+	    vector<int>indegree(V,0);
+	    queue<int>q;
+	    vector<int>ans;
+	    for(int i=0;i<V;i++)
+	    {
+	      for(auto &it: adj[i])
+	       indegree[it]++;
+	    }
+	    for(int i=0;i<V;i++) 
+	     if(indegree[i]==0) q.push(i);
+	    while(!q.empty())
+	    {
+	        auto idx=q.front();
+	        q.pop();
+	        ans.push_back(idx);
+	        for(auto &it: adj[idx])
+	        {
+	            indegree[it]--;
+	            if(indegree[it]==0) q.push(it);
+	        }
+	    }
+	    return ans;
+	}
 
-void dfs(vector<int>adj[],vector<int>&vis,stack<int>&st,int node){
-    vis[node]=1;
-    for(auto it : adj[node]){
-        if(!vis[it]){
-            dfs(adj,vis,st,it);
-        }
-    }
-    st.push(node);
-}
+//DFS
+// void dfs(vector<int>adj[],vector<int>&vis,stack<int>&st,int node){
+//     vis[node]=1;
+//     for(auto it : adj[node]){
+//         if(!vis[it]){
+//             dfs(adj,vis,st,it);
+//         }
+//     }
+//     st.push(node);
+// }
 
-  vector<int> topoSort(int V, vector<int> adj[]) {
-     vector<int>ans,vis(V+1,0);
-     stack<int>st;
-     for(int i=0;i<V;i++){
-         if(!vis[i]){
-             dfs(adj,vis,st,i);
-         }
-     }
-     while(!st.empty()){
-         ans.push_back(st.top());
-         st.pop();
-     }
-     return ans;
-  }
+//   vector<int> topoSort(int V, vector<int> adj[]) {
+//      vector<int>ans,vis(V+1,0);
+//      stack<int>st;
+//      for(int i=0;i<V;i++){
+//          if(!vis[i]){
+//              dfs(adj,vis,st,i);
+//          }
+//      }
+//      while(!st.empty()){
+//          ans.push_back(st.top());
+//          st.pop();
+//      }
+//      return ans;
+//   }
 };
 
 // { Driver Code Starts.
