@@ -14,7 +14,7 @@ class Solution{
     */
     vector <int> bellman_ford(int V, vector<vector<int>> adj, int S) {
         // Code here
-          int inf = 1e8;
+        int inf = 1e8;
         vector<int> dis(V, inf);
         dis[S] = 0;
         for(int i=1; i<=V-1; i++) {
