@@ -8,35 +8,40 @@ using namespace std;
 class Solution
 {
 	public:
-	typedef pair<int,int> pii;
 	//Function to find sum of weights of edges of the Minimum Spanning Tree.
     int spanningTree(int V, vector<vector<int>> adj[])
     {
         // code here
-        vector<int>key(V,INT_MAX),parent(V,-1),mst(V,false);
-        priority_queue<pii,vector<pii>,greater<pii>>pq;
-         parent[0]=-1;
-         key[0]=0;
-         pq.push({0,0});
-         while(!pq.empty())
-         {
-            int node =pq.top().second;
-            mst[node] = 1;
-            pq.pop();
-            for(auto& it: adj[node]) {
-                int x = it[0];
-                int wt = it[1];
-                if(mst[x]==0 and wt<key[x]) {
-                    key[x] = wt;
-                    parent[x] = node;
-                   pq.push({wt, x});
-                }
+        int parent[V];
+        int key[V]; 
+        bool mstSet[V]; 
+  
+        for (int i = 0; i < V; i++) 
+            key[i] = INT_MAX, mstSet[i] = false; 
+        
+        key[0] = 0; 
+        parent[0] = -1; 
+        int ansWeight = 0;
+        for (int count = 0; count < V - 1; count++){ 
+            int mini = INT_MAX, u; 
+            for (int v = 0; v < V; v++) {
+            if (mstSet[v] == false && key[v] < mini) 
+                mini = key[v], u = v; 
             }
-             
-         }
-      int sum=0;
-      for(auto it: key) sum+=it;
-      return sum;
+            
+            mstSet[u] = true; 
+            for (auto it : adj[u]) {
+             int v = it[0];
+             int weight = it[1];
+             if (mstSet[v] == false && weight < key[v]) 
+                parent[v] = u, key[v] = weight; 
+            }
+        } 
+         int sum=0;
+         for(int i=1;i<V;i++)
+                sum+=key[i];
+                
+        return sum;
     }
 };
 
