@@ -9,40 +9,80 @@ class Solution
 {
 	public:
 	//Function to find sum of weights of edges of the Minimum Spanning Tree.
-    int spanningTree(int V, vector<vector<int>> adj[])
-    {
-        // code here
-        int parent[V];
-        int key[V]; 
-        bool mstSet[V]; 
+	//Brute-Force
+	//TC:->O(N^2)
+	//SC:O(N)
+    // int spanningTree(int V, vector<vector<int>> adj[])
+    // {
+    //     // code here
+    //     int parent[V];
+    //     int key[V]; 
+    //     bool mstSet[V]; 
   
-        for (int i = 0; i < V; i++) 
-            key[i] = INT_MAX, mstSet[i] = false; 
+    //     for (int i = 0; i < V; i++) 
+    //         key[i] = INT_MAX, mstSet[i] = false; 
         
-        key[0] = 0; 
-        parent[0] = -1; 
-        int ansWeight = 0;
-        for (int count = 0; count < V - 1; count++){ 
-            int mini = INT_MAX, u; 
-            for (int v = 0; v < V; v++) {
-            if (mstSet[v] == false && key[v] < mini) 
-                mini = key[v], u = v; 
-            }
+    //     key[0] = 0; 
+    //     parent[0] = -1; 
+    //     int ansWeight = 0;
+    //     for (int count = 0; count < V - 1; count++){ 
+    //         int mini = INT_MAX, u; 
+    //         for (int v = 0; v < V; v++) {
+    //         if (mstSet[v] == false && key[v] < mini) 
+    //             mini = key[v], u = v; 
+    //         }
             
-            mstSet[u] = true; 
-            for (auto it : adj[u]) {
-             int v = it[0];
-             int weight = it[1];
-             if (mstSet[v] == false && weight < key[v]) 
-                parent[v] = u, key[v] = weight; 
-            }
-        } 
-         int sum=0;
-         for(int i=1;i<V;i++)
-                sum+=key[i];
+    //         mstSet[u] = true; 
+    //         for (auto it : adj[u]) {
+    //          int v = it[0];
+    //          int weight = it[1];
+    //          if (mstSet[v] == false && weight < key[v]) 
+    //             parent[v] = u, key[v] = weight; 
+    //         }
+    //     } 
+    //      int sum=0;
+    //      for(int i=1;i<V;i++)
+    //             sum+=key[i];
                 
+    //     return sum;
+    // }
+    int spanningTree(int V, vector<vector<int>> adj[]){
+        int sum=0;
+        int parent[V];
+        int key[V];
+        bool MST[V];
+        
+      priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+        for(int i=0;i<V;i++){
+            key[i]=INT_MAX;
+            parent[i]=-1;
+            MST[i]=false;
+        }
+        key[0]=0;
+        pq.push({0,0}); // {node,index}
+        
+        while(!pq.empty()){
+            int u=pq.top().second; // index of minimal element
+            pq.pop();
+            
+            MST[u]=true;  // now this node is part of MST
+            
+            for(auto it:adj[u]){ // traverse its neighbous
+                int v=it[0];
+                int weight=it[1];
+                
+                if(MST[v]==false && weight<key[v]){
+                    parent[v]=u;
+                    key[v]=weight;
+                    pq.push({key[v],v});     
+                }
+            }
+        }
+        for(int i=1;i<V;i++)
+          sum+=key[i];
+          
         return sum;
-    }
+   }
 };
 
 // { Driver Code Starts.
