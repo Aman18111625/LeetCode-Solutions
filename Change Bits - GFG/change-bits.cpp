@@ -12,17 +12,20 @@ class Solution {
     vector<int> changeBits(int N) {
         // code here
         
-        int n=N,i=0,m=0;
-        while(n){
-           if((1&n)==0){
-               m|=(1<<i);
-           }else{
-               m|=(1<<i);
-           }
-           i++;
-           n>>=1;
-        }
-        return {(m-N),m};
+        // int n=N,i=0,m=0;
+        // while(n){
+        //   if((1&n)==0){
+        //       m|=(1<<i);
+        //   }else{
+        //       m|=(1<<i);
+        //   }
+        //   i++;
+        //   n>>=1;
+        // }
+        // return {(m-N),m};
+       int n = log2(N)+1;
+       n = (1<<n)-1;
+       return {abs(n-N),n};
     }
 };
 
