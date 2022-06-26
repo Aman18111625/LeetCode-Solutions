@@ -19,7 +19,7 @@ class Solution {
   }
 public:
     bool canCross(vector<int>& stones) {
-        int n=stones.size();
+      int n=stones.size();
       if(n==2) return stones[1]<=1;
       memset(dp,-1,sizeof(dp));
       return helper(stones,0,0);
