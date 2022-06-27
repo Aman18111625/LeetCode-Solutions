@@ -18,21 +18,38 @@ public:
   //Better Approach:->find prefix and suffix sum
   //TC:=>O(3*N)
   //SC:=>O(2*N)
-  int pivotIndex(vector<int>& nums) {
-         int n=nums.size();
-         vector<int>prefix(n),suffix(n);
-         prefix[0]=nums[0];
-         for(int i=1;i<n;i++)
-            prefix[i]=prefix[i-1]+nums[i];
+//   int pivotIndex(vector<int>& nums) {
+//          int n=nums.size();
+//          vector<int>prefix(n),suffix(n);
+//          prefix[0]=nums[0];
+//          for(int i=1;i<n;i++)
+//             prefix[i]=prefix[i-1]+nums[i];
     
-         suffix[n-1]=nums[n-1];
-         for(int i=n-2;i>=0;i--){
-           suffix[i]=suffix[i+1]+nums[i];
-         }
+//          suffix[n-1]=nums[n-1];
+//          for(int i=n-2;i>=0;i--){
+//            suffix[i]=suffix[i+1]+nums[i];
+//          }
         
-         for(int i=0;i<n;i++){
-           if(prefix[i]==suffix[i]) return i;
-         }
-         return -1;
+//          for(int i=0;i<n;i++){
+//            if(prefix[i]==suffix[i]) return i;
+//          }
+//          return -1;
+//     }
+  
+  //Optimal Approach
+  //TC:->O(2*N)
+  //SC:->O(1)
+  int pivotIndex(vector<int>& nums) {
+        int n= nums.size();
+        int sum=0;
+        for(int i=0; i<n; i++)
+            sum += nums[i];
+        
+        int curr=0;
+        for(int i=0; i<n; i++){
+            if(curr == (sum-nums[i]-curr)) return i;
+            curr+=nums[i];
+        }
+        return -1;
     }
 };
