@@ -9,17 +9,25 @@ using namespace std;
 
 class Solution {
   public:
-    int solve(int A[],int N,int ind){
-        if(ind>=N-1) return true;
-        for(int i=1;i<=A[ind];i++){
-            if(solve(A,N,ind+i)) return true;
-        }
-        return false;
-    }
+    // int solve(int A[],int N,int ind){
+    //     if(ind>=N-1) return true;
+    //     for(int i=1;i<=A[ind];i++){
+    //         if(solve(A,N,ind+i)) return true;
+    //     }
+    //     return false;
+    // }
    
+    // int canReach(int A[], int N) {
+    //     // code here
+    //   return solve(A,N,0);
+    // }
+    
     int canReach(int A[], int N) {
-        // code here
-       return solve(A,N,0);
+        int end=N-1;
+        for(int i=N-1;i>0;i--){
+            if(A[i]+i>=end) end=i;
+        }
+        return A[0]>=end;
     }
 };
 
