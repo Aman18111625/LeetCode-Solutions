@@ -10,7 +10,7 @@ using namespace std;
 class Node{
     public:
     int val;
-    vector<int> adj;
+    vector<int>adj;
     Node(int v){
         val=v;
         adj=vector<int>();
@@ -18,22 +18,19 @@ class Node{
 };
 
 void dfsTopo(int idx, vector<int>&visited, vector<Node*>&alpha ,string&ans){
-    
     visited[idx]=1;
-    string s="";
     for(auto i: alpha[idx]->adj){
         if(!visited[i]){
             dfsTopo(i,visited,alpha,ans);
         }
     }
-    
     ans+=(char)('a'+idx);
 }
 
 class Solution{
     public:
     string findOrder(string dict[], int N, int K) {
-        vector<Node*> alpha;
+        vector<Node*>alpha;
         for(int i=0;i<26;i++){
             Node* n=new Node(i);
             alpha.push_back(n);
