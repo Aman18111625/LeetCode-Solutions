@@ -1,42 +1,44 @@
 class Solution {
 public:
-    int minDeletion(vector<int>& nums) {
-        int n=nums.size();
-        stack<int>st;
-        int ind=-1,count=0;
-        for(int i=0;i<n;i++){
-        //if stack is not empty() && for even ind if nums[i]==st.top() then we need to delete it.
-         if(!st.empty() &&  nums[i]==st.top() && ind%2==0){
-             count++; 
-         }else{//odd ind,so simply push
-           ind++;
-           st.push(nums[i]);
-         }
-        }
-        if(ind%2==0) count++;//for last ind
-        return count;
+  //Approach-1 : Using Stack
+  //TC:=>O(N)
+  //SC:=>O(N)
+    // int minDeletion(vector<int>& nums) {
+    //     int n=nums.size();
+    //     stack<int>st;
+    //     int ind=-1,count=0;
+    //     for(int i=0;i<n;i++){
+    //     //if stack is not empty() && for even ind if nums[i]==st.top() then we need to delete it.
+    //      if(!st.empty() &&  nums[i]==st.top() && ind%2==0){
+    //          count++; 
+    //      }else{//odd ind,so simply push
+    //        ind++;
+    //        st.push(nums[i]);
+    //      }
+    //     }
+    //     if(ind%2==0) count++;//for last ind
+    //     return count;
+    // }
+  
+  
+  //Optimized Approach:=>Using Two Pointer
+  //TC:=>O(N)
+  //SC:=>O(1)
+    int minDeletion(vector<int>&nums){
+      int n=nums.size();
+      int count=0,i;
+      for(i=0;i<n-1;i++){
+        int curr_ind=i-count;//since index is change after every deletion
+        if( curr_ind%2==0 && nums[i+1]==nums[i]) count++;//if curr_ind is even
+      }
+      if((i-count)%2==0) count++;
+      return count;
     }
 };
 
 /*
 
-int minDeletion(vector<int>& a) {
-        stack<int>s;
-        int n=a.size(),index=-1,count=0;
-        for(int i=0;i<n;i++){
-            if(!s.empty() && a[i]==s.top() && index%2==0){
-                count++;
-            }
-            else{
-                index++;
-                s.push(a[i]);
-            }
-        }
-        if(index%2==0)
-            count++;
-        return count;
-    }
-};
+
 Using two pointer .. O(1) space:
 
 class Solution{
