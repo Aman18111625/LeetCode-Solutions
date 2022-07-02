@@ -49,9 +49,9 @@ public:
   //   head=prev;
   //   return head;
   // }
-  //Optimal Approach-Recursive
+  //Optimal Approach- 2.Recursive
   //TC:=>O(N)
-  //SC:=>O(N) (stack-Space)
+  //SC:=>O(1) 
    // ListNode* reverseList(ListNode* head){
    //   if(!head || !head->next) return head;
    //   ListNode* newHead=NULL;
@@ -63,7 +63,9 @@ public:
    //   }
    //   return newHead;
    // }
-  //Recursive
+  //Using Recursion
+  //TC:=>O(N)
+  //SC:=>O(N)(stack-space)
    ListNode* reverseList(ListNode* head){
         if (!head|| !head->next) return head;
         ListNode* nnode = reverseList(head->next);
