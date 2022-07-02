@@ -18,10 +18,12 @@ public:
     //     return cnt;
     // }
   
-    //Optima
+    //Optimal Approach Using Binary Search
+    //TC:=>O(N*LOGM)
+    //SC:=>O(1)
      int findTheDistanceValue(vector<int>& arr1, vector<int>& arr2, int d) {
        int cnt=0;
-       sort(begin(arr2),end(arr2));
+       sort(begin(arr2),end(arr2));//if array is sorted then we can apply BS that's why we sort the BS
        for(auto num1 : arr1){
          int low=0,high=arr2.size()-1;
          bool flag=true;
