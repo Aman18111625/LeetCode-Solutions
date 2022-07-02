@@ -15,14 +15,14 @@ public:
     //we know that sum of  number from 1 to n = n*(n+1)/2;
     //here min sum can be =0 && maxi can be =n*(n+1)/2 -> this is our search space
     int arrangeCoins(int n){
-        long lo = 0, hi = n, mid, tmp;
-        while (lo <= hi) {
-            mid = lo + (hi - lo) / 2;
+        long low = 0, high = n, mid, tmp;
+        while (low <= high) {
+            mid = low + (high - low) / 2;
             tmp = mid * (mid + 1) / 2;
             if (tmp == n) return mid;
-            if (tmp <= n) lo = mid + 1;
-            else hi = mid - 1;
+            if (tmp <= n) low = mid + 1;
+            else high = mid - 1;
         }
-        return lo-1;
+        return low-1;
     }
 };
