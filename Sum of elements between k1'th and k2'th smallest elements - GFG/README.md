@@ -16,8 +16,8 @@ K1 = 3, K2 = 6
 <strong>Explanation:</strong></span><span style="font-size:18px">
 3rd smallest element is 10
 6th smallest element is 20
-Sum of all element between
-K1 &amp; K2 is 12 + 14 = 26</span></span></pre>
+Element between 10 and 20 
+12,14. Their sum = 26.</span></span></pre>
 
 <p>&nbsp;</p>
 
