@@ -10,8 +10,6 @@ using namespace std;
 class Solution {
   public:
     vector<int> changeBits(int N) {
-        // code here
-        
         // int n=N,i=0,m=0;
         // while(n){
         //   if((1&n)==0){
