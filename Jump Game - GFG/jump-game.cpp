@@ -23,11 +23,13 @@ class Solution {
     // }
     
     int canReach(int A[], int N) {
-        int end=N-1;
-        for(int i=N-1;i>0;i--){
-            if(A[i]+i>=end) end=i;
-        }
-        return A[0]>=end;
+       int maxi=A[0];
+       for(int i=1;i<N;i++){
+           if(i<=maxi){
+               maxi=max(maxi,i+A[i]);
+           }
+       }
+       return maxi>=N-1;
     }
 };
 
