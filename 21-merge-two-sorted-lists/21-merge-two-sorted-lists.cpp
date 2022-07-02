@@ -46,6 +46,8 @@ public:
 //     }
   
   //Efficient Approach-> Without Using Extra Space
+  //TC:=>O(M+N)
+  //SC:=>O(1)                                   
   ListNode* mergeTwoLists(ListNode* list1, ListNode* list2){
        if(!list1 && !list2) return NULL;
        if(!list2) return list1;
