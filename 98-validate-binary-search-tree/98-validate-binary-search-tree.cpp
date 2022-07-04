@@ -10,6 +10,9 @@
  * };
  */
 class Solution {
+  //A binary search tree is a binary tree where left values < root value and right values > root values 
+  //TC:->O(N)
+  //SC:->O(H)
     bool helper(TreeNode* root,TreeNode* mini,TreeNode* maxi)
     {
         if(!root) return true;
