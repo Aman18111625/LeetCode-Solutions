@@ -1,6 +1,8 @@
 class Solution {
 public:
 //DFS Approach
+//Time Complexity : O(n x m)
+//Space Complexity: O(n x m)
 //     void dfs(vector<vector<char>>&grid,int i,int j){
 //       if(i<0 or i>=grid.size() or j<0 or j>=grid[0].size()) return ;
 //       // return if current position is of water or is already visited
@@ -25,7 +27,9 @@ public:
 //       return ans;
 //     }
   
-  //BFS 
+  //BFS
+  //Time Complexity : O(n x m)
+  //Space Complexity: O(n x m)
   int numIslands(vector<vector<char>>& grid) {
        int m = grid.size();
        if(m==0) return 0;
