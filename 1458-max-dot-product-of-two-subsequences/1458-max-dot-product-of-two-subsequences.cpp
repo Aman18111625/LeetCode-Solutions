@@ -43,18 +43,48 @@ public:
   //TC:=>O(N*M)
   //SC:=>O(N*M)
 //Intution:=>Very similar to LCS, dp[i][j] means what is the maximum dot product if we use nums1[0..i-1] and nums2[0...j-1]
-//Boundary case is we end up creating an empty dot product. That can happen only when one array is completely negative and one is completely positive. Therefore for such cases we keep special which tracks the maximum multiplication. If answer is zero (empty set) we return special
+//Boundary case is we end up creating an empty dot product. That can happen only when one array is completely negative and one is completely positive. Therefore for such cases we find max and min of both the array and took max(max1*min2,max2*min1)
   
+//   int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
+//         int n = nums1.size(), m = nums2.size();
+//         vector<vector<int>> dp(n+1, vector<int>(m+1, 0));
+//         for(int i=1; i<=n; i++){
+//             for(int j=1; j<=m; j++){
+//               dp[i][j] = max(dp[i-1][j-1] + nums1[i-1] * nums2[j-1], max(dp[i-1][j], dp[i][j-1]));
+//             }
+//         }
+//         //edge case
+//         if(dp[n][m]==0){
+//           int maxi1=INT_MIN,mini1=INT_MAX;
+//           int maxi2=INT_MIN,mini2=INT_MAX;
+//           for(auto &num : nums1){
+//             maxi1=max(maxi1,num);
+//             mini1=min(mini1,num);
+//           }
+//           for(auto &num : nums2){
+//             maxi2=max(maxi2,num);
+//             mini2=min(mini2,num);
+//           }
+//           return max(mini1*maxi2,maxi1*mini2);
+//         }
+//         return dp[n][m];
+//     }
+  
+  
+  //space-optimization
+  //TC:=>O(N*M)
+  //SC:=>O(M)
   int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
         int n = nums1.size(), m = nums2.size();
-        vector<vector<int>> dp(n+1, vector<int>(m+1, 0));
+        vector<int>prev(m+1, 0),curr(m+1,0);
         for(int i=1; i<=n; i++){
             for(int j=1; j<=m; j++){
-              dp[i][j] = max(dp[i-1][j-1] + nums1[i-1] * nums2[j-1], max(dp[i-1][j], dp[i][j-1]));
+              curr[j] = max(prev[j-1] + nums1[i-1] * nums2[j-1], max(prev[j], curr[j-1]));
             }
+            prev=curr;
         }
-        
-        if(dp[n][m]==0){
+        //edge case
+        if(prev[m]==0){
           int maxi1=INT_MIN,mini1=INT_MAX;
           int maxi2=INT_MIN,mini2=INT_MAX;
           for(auto &num : nums1){
@@ -67,7 +97,7 @@ public:
           }
           return max(mini1*maxi2,maxi1*mini2);
         }
-        return dp[n][m];
+        return prev[m];
     }
 };
 
