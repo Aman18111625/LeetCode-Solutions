@@ -32,6 +32,8 @@ public:
       for(int i=3;i<=n;i++) dp[i]=dp[i-1]+dp[i-2];
       return dp[n];
     }*/
+  //Space-Optimization
+  //TC:=>O(N) SC:=>O(1)
    int climbStairs(int n) {
     if(n<2) return 1;
      int prev=1,next=2,curr=2;
