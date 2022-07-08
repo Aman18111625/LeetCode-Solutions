@@ -14,14 +14,12 @@ public:
           //char are present in map
          if(mpp.find(s[end])!=mpp.end()){
            mpp[s[end]]--;//decrease it count in map
-           if(mpp[s[end]]==0)
-              cnt--;
+           if(mpp[s[end]]==0)  cnt--;
          }
         if(end-start+1<window)//length of substring from start to end is <k then continue
           end++;
         else if(end-start+1==window){
-            if(cnt==0)
-              ans.push_back(start);
+            if(cnt==0) ans.push_back(start);
             if(mpp.find(s[start])!=mpp.end()){
                     mpp[s[start]]++;
                     if(mpp[s[start]]==1)
