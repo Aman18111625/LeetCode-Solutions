@@ -32,7 +32,7 @@ public:
         int n=cost.size();
         for(int i=n-1;i>=0;i--)
         {
-          int dpi=cost[i]+min(dp1,dp2);
+            int dpi=cost[i]+min(dp1,dp2);
             dp2=dp1;
             dp1=dpi;
         }
