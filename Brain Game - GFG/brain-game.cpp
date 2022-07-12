@@ -7,17 +7,18 @@ class Solution{
 	public:
     bool brainGame(vector<int>nums) {
         // Code here.
-        vector<int>a(1005);
+        //first find factors 
+        vector<int>factor(1005);
     	for(int i = 2; i<= 1000; i++){
     		for(int j = 2*i; j <= 1000; j+=i)
-    			a[j] = max(a[j], 1 + a[i]);
+    			factor[j] = max(factor[j], 1 + factor[i]);
     	}
-    	int x = 0;
-    	for(int i = 0; i < nums.size(); i++){
-    		x = x ^ a[nums[i]];
+    	//NimSum ->xor of all elements ->if Xor ==0 then A won't be able make the last move else B won't be able to make the last move
+    	int x = 0,n=nums.size();
+    	for(int i = 0; i < n; i++){
+    		x = x ^ factor[nums[i]];
     	}
-    	if(x == 0)
-    		return false;
+    	if(x == 0)	return false;
     	return true;
     }
 };
