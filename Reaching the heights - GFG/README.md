@@ -31,7 +31,7 @@ Output :</strong>  Not Possible </span></pre>
 This is a function problem. The input is already taken care of by the driver code. You only need to complete the function <strong>game_with_number()</strong> that takes sizeOfArray <strong>(n)</strong>, an array <strong>(arr)</strong>, and return the sorted array or if it is Not Possible return <strong>-1</strong>. The driver code takes care of the printing.</span></p>
 
 <p><span style="font-size:18px"><strong>Expected Time Complexity:</strong>&nbsp;O(N*LOG(N)).<br>
-<strong>Expected Auxiliary Space:</strong>&nbsp;O(1).</span></p>
+<strong>Expected Auxiliary Space:</strong>&nbsp;O(N).</span></p>
 
 <p>&nbsp;</p>
 
