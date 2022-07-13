@@ -9,8 +9,8 @@ class Solution {
         // code here
         int n=s.size(),m=t.size();
         vector<vector<int>>dp(n+1,vector<int>(m+1));
-        for(int i=1;i<=n;i++) dp[i][0]=1;
-        for(int j=0;j<=m;j++) dp[0][j]=1e4;
+        for(int i=1;i<=n;i++) dp[i][0]=1;//if m==0 then there's only 1 shortest uncommen subsequence
+        for(int j=0;j<=m;j++) dp[0][j]=1e4;//if n==0 then not exist
         
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
