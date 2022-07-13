@@ -36,7 +36,11 @@ int main() {
 
 vector<int> reaching_height(int n, int a[]) {
     // Complete the function
+   if(n==1) return {a[0]};
    sort(a,a+n);
+   if(a[0]==a[n-1]){
+       return {-1};
+   }
    vector<int> ans(n);
    int j=0;
    for(int i=1;i<n;i+=2){
@@ -53,11 +57,6 @@ vector<int> reaching_height(int n, int a[]) {
        else
        sum-=ans[i];
    }
-   if(sum ==0){
-       vector<int> v={-1};
-       // v.push_back(-1);
-       return v;
-   }
-   else
+   if(sum==0) return {-1};
    return ans;
 }
