@@ -57,6 +57,6 @@ vector<int> reaching_height(int n, int a[]) {
        else
        sum-=ans[i];
    }
-   if(sum==0) return {-1};
+ //  if(sum==0) return {-1};
    return ans;
 }
