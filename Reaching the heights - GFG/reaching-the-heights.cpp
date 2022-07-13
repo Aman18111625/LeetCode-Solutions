@@ -36,7 +36,7 @@ int main() {
 
 vector<int> reaching_height(int n, int a[]) {
     // Complete the function
-    sort(a,a+n);
+   sort(a,a+n);
    vector<int> ans(n);
    int j=0;
    for(int i=1;i<n;i+=2){
