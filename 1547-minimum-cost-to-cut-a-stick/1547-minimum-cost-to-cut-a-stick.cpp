@@ -17,6 +17,7 @@ public:
        return solve(cuts,0,n,0,cuts.size()-1);
     }*/
   public:
+  //Bottom-UP Approach
    int minCost(int n, vector<int>& arr) {
         vector<int>nums = {0};
         int size=arr.size();
