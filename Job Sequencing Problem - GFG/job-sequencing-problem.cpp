@@ -38,8 +38,7 @@ class Solution
         for(int i=0;i<n;i++){
             maxi=max(maxi,arr[i].dead);
         }
-        int slot[maxi+1];
-        memset(slot,-1,sizeof(slot));
+        vector<int>slot(maxi+1,-1);
         
         int cntJob=0,maxProfit=0;
         for(int i=0;i<n;i++){
