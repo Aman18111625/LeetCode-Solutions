@@ -10,8 +10,7 @@
  * };
  */
 class Solution {
-    TreeNode* helper(vector<int>&pre,int sp,int ep,vector<int>&in,int si,int ei)
-    {
+    TreeNode* helper(vector<int>&pre,int sp,int ep,vector<int>&in,int si,int ei){
         if(si>ei) return NULL;
         int idx=si;
         while(pre[sp]!=in[idx]) idx++;
