@@ -12,25 +12,24 @@ class Solution
     public:
     
     struct Node{
-      int cnt{0};
+      int cnt{0};//store occurance of every char 
       Node* children[26]={0};
     };
-    
+    //insert into trie
     void insert(Node* root,string& word){
-        for(auto ch: word)
-        {
+        for(auto ch: word){
             int c=ch-'a';
-            if(!root->children[c]) root->children[c]= new Node;
+            if(!root->children[c]) root->children[c]= new Node();
             root->cnt++;
             root=root->children[c];
         }
     }
-    
+    //if occurance of a char is 1 then it'll be our smallest prefix otherwise we'll add character
+    //in our answer till we get  a char whose occurance is 1 or till end of the string
     string getPrefix(Node* root,string& word)
     {
         string prefix="";
-        for(auto &ch: word)
-        {
+        for(auto &ch: word){
             int c=ch-'a';
             if(root->cnt==1) break;
             prefix+=ch;
@@ -46,11 +45,11 @@ class Solution
         for(int i=0;i<n;i++)
           insert(trie,arr[i]);
           
-          vector<string>ans;
-          for(int i=0;i<n;i++)
-           ans.push_back(getPrefix(trie,arr[i]));
+        vector<string>ans;
+        for(int i=0;i<n;i++)
+         ans.push_back(getPrefix(trie,arr[i]));
           
-          return ans;
+        return ans;
     }
 };
 
