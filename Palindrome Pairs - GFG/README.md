@@ -36,7 +36,7 @@ The driver code itself prints 1 if returned value is true and prints 0 if return
 &nbsp;</p>
 
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
-1 ≤ N ≤ 10<sup>4</sup></span><br>
+1 ≤ N ≤ 2*10<sup>4</sup></span><br>
 <span style="font-size:18px">1 ≤ |arr[i]| ≤ 10</span></p>
  <p></p>
             </div>
