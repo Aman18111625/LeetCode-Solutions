@@ -50,20 +50,16 @@ class Solution{
        void push(int x){
            
            //Write your code here
-           if(s.empty())
-    {
-        minEle=x;
-        s.push(x);
-    }
-    else if(x>=minEle)
-    {
-        s.push(x);
-    }
-    else 
-    {
-        s.push(2*x-minEle);
-        minEle=x;
-    }
+           if(s.empty()){
+            minEle=x;
+            s.push(x);
+           }
+           else if(x>=minEle){
+             s.push(x);
+           }else{
+           s.push(2*x-minEle);
+           minEle=x;
+         }
        }
 };
 
