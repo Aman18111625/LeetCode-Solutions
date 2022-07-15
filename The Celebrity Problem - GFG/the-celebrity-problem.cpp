@@ -28,11 +28,13 @@ class Solution
        }
        int cel=st.top();
        int countone=0;
+       //check that celebrity don't know anyone
        for(int i=0;i<n;i++){
            if(m[cel][i] !=0){
                return -1;
            }
        }
+       //check that celebrity is known by everyone
        for(int i=0;i<n;i++){
            if(m[i][cel] ==1 ){
                countone++;
