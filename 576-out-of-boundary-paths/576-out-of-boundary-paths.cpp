@@ -19,29 +19,60 @@ public:
 //         memset(dp,-1,sizeof(dp));
 //         return dfs(startRow,startColumn,m,n,maxMove);
 //     }
+
   
-  //all 4-adjacent direction
+//Tabulation
+//TC:=>O(M*N*MaxMove) && SC:=>O(M*N*MaxMove)
+//all 4-adjacent direction
+//   vector<vector<int>>dir={{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+  
+//   bool outOfBounds(int m,int n,int i,int j){
+//     return (i<0 or j<0 or i>=m or j>=n);
+//   }
+  
+// int findPaths(int m, int n, int maxMove, int r, int c) {
+//   uint dp[51][51][51]{};
+// 	for(int M = 1; M <= maxMove; M++){ // iterate for all available moves
+// 	 	for(int i = 0; i < m; i++){ 
+// 			for(int j = 0; j < n; j++){ 
+// 				for(int k = 0; k < 4; k++){  // for each cell, try all 4 possible moves
+//            int x=i+dir[k][0];
+//            int y=j+dir[k][1];
+//            if(outOfBounds(m,n,x,y)) dp[i][j][M]++;
+//            else dp[i][j][M]=(dp[i][j][M]%mod+dp[x][y][M-1]%mod);
+//         }	
+//       }
+//     }
+//   }
+// 	return dp[r][c][maxMove] % mod;
+// }
+  
+  
+  //Space-Optimization
+  //TC:=>O(N*M*MaxMove)
+  //SC:=>O(N*M)
   vector<vector<int>>dir={{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-  
+
   bool outOfBounds(int m,int n,int i,int j){
     return (i<0 or j<0 or i>=m or j>=n);
   }
   
 int findPaths(int m, int n, int maxMove, int r, int c) {
-  uint dp[51][51][51]{};
+  uint dp[50][50][2]{};
+  int k;
 	for(int M = 1; M <= maxMove; M++){ // iterate for all available moves
 	 	for(int i = 0; i < m; i++){ 
 			for(int j = 0; j < n; j++){ 
-				for(int k = 0; k < 4; k++){  // for each cell, try all 4 possible moves
+				for(k = 0,dp[i][j][M & 1] = 0; k < 4; k++){// for each cell,try all 4 possible moves
            int x=i+dir[k][0];
            int y=j+dir[k][1];
-           if(outOfBounds(m,n,x,y)) dp[i][j][M]++;
-           else dp[i][j][M]=(dp[i][j][M]%mod+dp[x][y][M-1]%mod);
+           if(outOfBounds(m,n,x,y)) dp[i][j][M&1]++;
+           else dp[i][j][M&1]+=dp[x][y][(M-1)&1]%mod;
         }	
       }
     }
   }
-	return dp[r][c][maxMove] % mod;
+	return dp[r][c][maxMove&1] % mod;
 }
   
 };
