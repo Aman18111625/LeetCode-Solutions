@@ -11,7 +11,7 @@ public:
   
      int numMatchingSubseq(string s, vector<string>& words) {
         int count=0;
-        unordered_map<string,bool>map;
+        map<string,bool>map;
         for(int i=0;i<words.size();i++){
          if(map.find(words[i])!=map.end()){
           if(map[words[i]]) count++;
