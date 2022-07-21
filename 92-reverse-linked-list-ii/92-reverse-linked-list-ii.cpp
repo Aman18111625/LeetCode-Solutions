@@ -44,8 +44,7 @@ public:
         ListNode* t=newnode;
         vector<int>v;
         
-        while(curr)
-        {
+        while(curr){
             v.push_back(curr->val);
             curr=curr->next;
         }
