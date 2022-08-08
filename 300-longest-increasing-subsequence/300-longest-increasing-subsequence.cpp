@@ -51,6 +51,9 @@ public:
    //      }
    //      return next[0];
    //  }
+  //Best Solution
+  //TC:=>O(N*N)
+  //SC:=>O(N)
    int lengthOfLIS(vector<int>&v){
      int n=v.size();
      vector<int>dp(n,1);
