@@ -5,13 +5,14 @@ public:
   
     int helper(vector<int>&arr,unordered_map<int,int>&hash,int product){
       if(dp.find(product)!=dp.end()) return dp[product];
-      long long cnt=1;
+      int cnt=1;
       for(auto a: arr){
+        //if both factor are available then increase cnt
         if((product%a==0) && hash[product/a]){
           cnt=(cnt+ (helper(arr,hash,a)%mod*1LL*helper(arr,hash,product/a)%mod)%mod)%mod;
         }
       }
-      return dp[product] = (int)cnt;
+      return dp[product] = cnt;
     }
    
     int numFactoredBinaryTrees(vector<int>& arr) {
