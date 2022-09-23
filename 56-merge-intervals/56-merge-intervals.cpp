@@ -1,18 +1,18 @@
 class Solution {
 public:
-     // Brute Force Solution
-    //TC:->O(N^2) 
-    //Auxiliary Space:-> O(1)
+    //Brute Force Solution
+   //TC:->O(N^2) 
+  //Auxiliary Space:-> O(1)
+  //Approach:->Simply run two for loop and merge the intervals that are overlapping
       vector<vector<int>> merge(vector<vector<int>>& intervals) {
         int len=intervals.size();
-        if(len<=1)
-            return intervals;
+        if(len<=1) return intervals;
         sort(intervals.begin(),intervals.end()); //Time taken by sort() is O(NlogN)
         vector<vector<int>> res;
         for(int i=0;i<len;i++){
             int a=intervals[i][0];
             int b=intervals[i][1];
-            // for loop inside for loop takes time of O(N^2)
+            //for loop inside for loop takes time of O(N^2)
             for(int j=i+1;j<len;j++){
                 int c=intervals[j][0];
                 int d=intervals[j][1];
