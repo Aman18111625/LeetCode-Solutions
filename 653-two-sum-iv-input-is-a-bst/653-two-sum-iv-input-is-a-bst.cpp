@@ -11,8 +11,7 @@
  */
 class Solution {
     unordered_set<int>s;
-    bool helper(TreeNode* root,int k)
-    {
+    bool helper(TreeNode* root,int k){
         if(!root) return false;
         if(s.count(k-root->val)) return true;
         else s.insert(root->val);
