@@ -101,8 +101,7 @@ struct Node {
 class Tuple{
     public:
     int max, min,size;
-    Tuple(int mini,int maxi,int maxSize)
-    {
+    Tuple(int mini,int maxi,int maxSize){
         this->max=maxi;
         this->min=mini;
         this->size=maxSize;
@@ -111,13 +110,13 @@ class Tuple{
 
 
 class Solution{
-    Tuple helper(Node* root)
-    {
-        if(!root) return Tuple(INT_MAX,INT_MIN,0);
-        auto left=helper(root->left);
-        auto right=helper(root->right);
+    Tuple helper(Node* root){
+      if(!root) return Tuple(INT_MAX,INT_MIN,0);
+      auto left=helper(root->left);
+      auto right=helper(root->right);
       if(left.max<root->data && root->data<right.min) 
-      return Tuple(min(root->data,left.min),max(root->data,right.max),left.size+right.size+1);
+       return Tuple(min(root->data,left.min),
+             max(root->data,right.max),left.size+right.size+1);
          
     return Tuple(INT_MIN,INT_MAX,max(left.size,right.size));
     } 
