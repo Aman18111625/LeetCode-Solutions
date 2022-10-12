@@ -1,7 +1,6 @@
 # Median in a row-wise sorted Matrix
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a row wise sorted matrix of size RxC where R and C are always odd,&nbsp;find the median of the matrix.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a row wise sorted matrix of size RxC where R and C are always odd,&nbsp;find the median of the matrix.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -41,5 +40,4 @@ You don't need to read input or print anything. Your task is to complete the fun
 1&lt;= matrix[i][j] &lt;=2000</span><br>
 <br>
 &nbsp;</p>
- <p></p>
-            </div>
+</div>
