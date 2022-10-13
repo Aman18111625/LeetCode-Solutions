@@ -1,7 +1,6 @@
 # Smallest distinct window
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a string '<strong>s</strong>'. The task is to find the <strong>smallest </strong>window length&nbsp;that contains all the characters of the given string at least one time.<br>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a string '<strong>s</strong>'. The task is to find the <strong>smallest </strong>window length&nbsp;that contains all the characters of the given string at least one time.<br>
 For eg. A = <strong>aabcbcdbca</strong>, then the result would be 4 as of the smallest window will be <strong>dbca</strong>.</span></p>
 
 <p>&nbsp;</p>
@@ -44,5 +43,4 @@ You don't need to read input or print anything. Your task is to complete the fun
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ |S| ≤ 10<sup>5</sup><br>
 String may contain both type of English Alphabets.</span></p>
- <p></p>
-            </div>
+</div>
