@@ -1,23 +1,22 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution {
-  public:
    int solve(string s,int left,int right){
-       if(s.size()==0 or left>right) return 0;
+       if(s.empty() or left>right) return 0;
        while(left>=0 && right<s.size() && s[left]==s[right]){
            left--;
            right++;
        }
        return right-left-1;
    }
-  
+  public:
     string longestPalin (string s) {
         // code here
-        int n = s.size();
+        int n=s.size();
         if(n<=1) return s;
         int start=0,end=0;
         int ans=0;
@@ -36,7 +35,7 @@ class Solution {
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main()
 {
@@ -50,4 +49,5 @@ int main()
     }
 }
 // Contributed By: Pranay Bansal
-  // } Driver Code Ends
+
+// } Driver Code Ends
