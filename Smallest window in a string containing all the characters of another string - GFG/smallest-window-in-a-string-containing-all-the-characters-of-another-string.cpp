@@ -12,28 +12,25 @@ class Solution
     string smallestWindow (string s, string p)
     {
         // Your code here
-        int map[256]={0};
+        vector<int>freq(256,0);
         int count=0;
-        for(auto ch : p) 
-        {
-            if(map[ch-'a']==0) count++;
-            map[ch-'a']++;
+        for(auto ch : p){
+            if(freq[ch-'a']==0) count++;
+            freq[ch-'a']++;
         }
-        int n=s.size();
-        int res=INT_MAX;
+        int n=s.size(),res=INT_MAX;
         int i=0,j=0,start=0;
-        string ans="-1";
         while(j<n){
-            map[s[j]-'a']--;
-            if(map[s[j]-'a']==0) count--;
+            freq[s[j]-'a']--;
+            if(freq[s[j]-'a']==0) count--;
             if(count==0){//i got all distinct character of string p
               while(count==0){
                   if(j-i+1<res){
                       res=(j-i+1);
                       start=i;
                   }
-                  map[s[i]-'a']++;
-                  if(map[s[i]-'a']==1) count++;
+                  freq[s[i]-'a']++;
+                  if(freq[s[i]-'a']==1) count++;
                   i++;
               }
             }
