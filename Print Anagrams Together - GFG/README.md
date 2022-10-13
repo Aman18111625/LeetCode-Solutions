@@ -1,9 +1,8 @@
 # Print Anagrams Together
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array of strings, return all groups of strings that are anagrams. The groups must be created in order of their appearance in the original array. Look at the sample case for clarification.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array of strings, return all groups of strings that are anagrams. The groups must be created in order of their appearance in the original array. Look at the sample case for clarification.</span></p>
 
-<p><strong><span style="font-size:18px">Note: The finial output will be in&nbsp;lexicographic order.</span></strong></p>
+<p><strong><span style="font-size:18px">Note: The final output will be in&nbsp;lexicographic order.</span></strong></p>
 
 <p><br>
 <span style="font-size:18px"><strong>Example 1:</strong></span></p>
@@ -26,12 +25,13 @@ anagrams "god", "dog" make group 1.
 </strong>N = 3
 words[] = {no,on,is}
 <strong>Output: 
-</strong>no on
-is<strong>
+</strong>is
+no on<strong>
 Explanation:
 </strong>There are 2 groups of
-anagrams "no", "on" make group 1.
-"is" makes group 2.&nbsp;</span></pre>
+anagrams "is" makes group 1.
+"no", "on" make group 2.
+</span></pre>
 
 <p><br>
 <span style="font-size:18px"><strong>Your Task:</strong><br>
@@ -46,5 +46,4 @@ The task is to complete the function <strong>Anagrams()</strong> that takes a li
 1&lt;=N&lt;=100</span></p>
 
 <p><span style="font-size:18px">1&lt;=|S|&lt;=10</span></p>
- <p></p>
-            </div>
+</div>
