@@ -8,27 +8,27 @@ public:
     int minimumNumberOfSwaps(string s){
         // code here 
     vector<int> pos;
-    for (int i = 0; i < s.length(); ++i)
-        if (s[i] == '[') pos.push_back(i);
+    int n=s.size();
+    for (int i = 0; i < n ; i++)
+        if (s[i] == '[')
+          pos.push_back(i);
  
-    int count = 0;
-    int p = 0; 
-    long sum = 0;
-    for (int i = 0; i < s.length(); ++i){
-        if (s[i] == '['){
-            ++count;
-            ++p;
+    int count=0,p=0,sum=0;
+    for (int i = 0; i < n; ++i){
+        if(s[i]=='['){
+            count++;
+            p++;
         }
         else if (s[i] == ']')
-            --count;
+            count--;
  
         if (count < 0){
             sum += pos[p] - i;
             swap(s[i], s[pos[p]]);
-            ++p;
+            p++;
             count = 1;
         }
-    }
+     }
      return sum;
     }
 };
