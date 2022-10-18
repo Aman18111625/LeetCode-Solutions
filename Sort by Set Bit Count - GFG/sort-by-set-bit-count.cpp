@@ -1,41 +1,23 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution{
-    int countSetBit(int num)
-    {
-        if(num==0) return 0;
-        int cnt=0;
-        while(num)
-        {
-            if(num&1) cnt++;
-            num>>=1;
-        }
-        return cnt;
-    }
+    
     public:
+    static bool comp(int a,int b)
+    {
+        return __builtin_popcount(a)>__builtin_popcount(b);
+    }
     void sortBySetBitCount(int arr[], int n)
     {
-        // Your code goes here
-        map<pair<int,int>,int,greater<pair<int,int>>>m;
-        int val=0;
-        for(int i=0;i<n;i++)
-        {
-            val=countSetBit(arr[i]);
-            m[{val,n-i}]=arr[i];
-        }
-        int j=0;
-        for(auto & it : m)
-        {
-            arr[j++]=it.second;
-        }
+        stable_sort(arr,arr+n,comp);
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main()
 {
@@ -56,4 +38,5 @@ int main()
     }
     return 0;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
