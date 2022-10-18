@@ -1,7 +1,6 @@
 # Find All Four Sum Numbers
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array of integers and another number. Find all the <strong>unique&nbsp;</strong>quadruple from the given array that sums up to the given number.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array of integers and another number. Find all the <strong>unique&nbsp;</strong>quadruple from the given array that sums up to the given number.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -34,5 +33,4 @@ You don't need to read input or print anything. Your task is to complete the fun
 -1000 &lt;= K &lt;= 1000<br>
 -100 &lt;= A[] &lt;= 100</span><br>
 &nbsp;</p>
- <p></p>
-            </div>
+</div>
