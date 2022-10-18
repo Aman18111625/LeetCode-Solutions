@@ -1,7 +1,6 @@
 # Zero Sum Subarrays
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">You are given an array arr[] of size n. Find&nbsp;the total count of sub-arrays having their sum equal to 0.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">You are given an array arr[] of size n. Find&nbsp;the total count of sub-arrays having their sum equal to 0.</span></p>
 
 <p><br>
 <span style="font-size:18px"><strong>Example 1:</strong></span></p>
@@ -38,5 +37,4 @@ You don't need to read input or print anything.&nbsp;Complete the<strong> </stro
 -10<sup>10</sup> &lt;= arr<sub>i</sub> &lt;= 10<sup>10</sup></span></p>
 
 <p>&nbsp;</p>
- <p></p>
-            </div>
+</div>
