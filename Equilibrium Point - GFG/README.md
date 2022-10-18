@@ -1,7 +1,6 @@
 # Equilibrium Point
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array A of n&nbsp;positive numbers. The task is to find the first Equilibium Point in the array.&nbsp;<br>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array A of n&nbsp;positive numbers. The task is to find the first Equilibium Point in the array.&nbsp;<br>
 Equilibrium Point in an array is a position such that the sum of elements before it is equal to the sum of elements after it.</span></p>
 
 <p><strong><span style="font-size:18px">Note: Retun the index of Equilibrium point. (1-based index)</span></strong></p>
@@ -12,7 +11,7 @@ Equilibrium Point in an array is a position such that the sum of elements before
 </strong>n = 5 
 A[] = {1,3,5,2,2} 
 <strong>Output: </strong>3<strong> 
-Explanation: </strong>For second test case 
+Explanation: </strong> 
 equilibrium point is at position 3 
 as elements before it (1+3) = 
 elements after it (2+2).<strong> </strong></span>
@@ -41,5 +40,4 @@ The task is to complete the function <strong>equilibriumPoint()</strong> which t
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 &lt;= n&nbsp;&lt;= 10<sup>6</sup><br>
 1 &lt;= A[i]&nbsp;&lt;= 10<sup>8</sup></span></p>
- <p></p>
-            </div>
+</div>
