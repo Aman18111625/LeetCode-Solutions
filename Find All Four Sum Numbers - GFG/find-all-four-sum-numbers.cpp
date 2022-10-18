@@ -30,6 +30,7 @@ class Solution{
                         curr[2]=arr[low];
                         curr[3]=arr[high];
                         ans.push_back(curr);
+                        //steps to avoid duplicants
                         while(low<high && arr[low]==curr[2]) ++low;
                         while(low<high && arr[low]==curr[3]) --high;
                     }
