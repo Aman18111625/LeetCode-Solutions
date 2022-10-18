@@ -1,11 +1,11 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 // C++ program to remove recurring digits from
 // a given number
 #include <bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
     
 
 class Solution{
@@ -13,19 +13,20 @@ class Solution{
     public:
     vector<int> leaders(int a[], int n){
         // Code here
-        vector<int>ans;
-        ans.push_back(a[n-1]);
-        int greater=a[n-1];
+        vector<int>maxi(n);
+        maxi[n-1]=a[n-1];
         for(int i=n-2;i>=0;i--){
-            greater=max(greater,a[i]);
-            if(a[i]>=greater) ans.push_back(a[i]);
+            maxi[i]=max(maxi[i+1],a[i]);
         }
-        reverse(ans.begin(),ans.end());
+        vector<int>ans;
+        for(int i=0;i<n;i++){
+            if(a[i]>=maxi[i]) ans.push_back(maxi[i]);
+        }
         return ans;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main()
 {
@@ -55,4 +56,5 @@ int main()
 
    }
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
