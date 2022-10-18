@@ -1,7 +1,6 @@
 # Leaders in an array
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array A of positive integers. Your task is to find the leaders in the array.&nbsp;An element of array is leader if it is greater than or equal to all the elements to its right side. The rightmost element is always a leader.&nbsp;</span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array A of positive integers. Your task is to find the leaders in the array.&nbsp;An element of array is leader if it is greater than or equal to all the elements to its right side. The rightmost element is always a leader.&nbsp;</span></p>
 
 <p>&nbsp;</p>
 
@@ -44,5 +43,4 @@ You don't need to read input or print anything.&nbsp;The task is to complete the
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 &lt;= n&nbsp;&lt;= 10<sup>7</sup><br>
 0 &lt;= A<sub>i</sub> &lt;= 10<sup>7</sup></span></p>
- <p></p>
-            </div>
+</div>
