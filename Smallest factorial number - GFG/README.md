@@ -1,7 +1,6 @@
 # Smallest factorial number
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a number&nbsp;<strong>n</strong>. The task is to find the smallest number whose factorial contains at least n trailing zeroes.</span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a number&nbsp;<strong>n</strong>. The task is to find the smallest number whose factorial contains at least n trailing zeroes.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -29,5 +28,4 @@ Complete the function&nbsp;<strong>findNum()</strong>&nbsp;which takes an intege
 
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 &lt;= n &lt;= 10<sup>4</sup></span></p>
- <p></p>
-            </div>
+</div>
