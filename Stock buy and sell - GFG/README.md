@@ -1,8 +1,8 @@
 # Stock buy and sell
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">The cost of stock on each day is given in an array <strong>A</strong>[] of size <strong>N</strong>. Find all the days on which you buy and sell the stock so that in between those days your profit is maximum.<br>
-<strong>Note: </strong>There may be multiple possible solutions. Return any one of them. Any correct solution will result in an output of <strong>1</strong>, whereas wrong solutions will result in an output of <strong>0</strong>.<br>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">The cost of stock on each day is given in an array <strong>A</strong>[] of size <strong>N</strong>. Find all the segment of days on which you buy and sell the stock so that in between those days your profit is maximum.<br>
+<br>
+<strong>Note:</strong></span>&nbsp;<span style="font-size:18px">Since there can be multiple solutions</span>, <span style="font-size:18px">the driver code will return 1 if your answer is correct, otherwise, it will return 0. In case there's no profit the driver code will return the string "<strong>No Profit</strong>" for a correct solution.<br>
 <br>
 <strong>Example 1:</strong></span></p>
 
@@ -37,10 +37,6 @@ give us maximum profit.</span></pre>
 <span style="font-size:18px"><strong>Your Task:</strong><br>
 The task is to complete the function <strong>stockBuySell()</strong> which takes an array A[] and N as input parameters and finds the days of buying and selling stock. The function must return a 2D list of integers containing all the buy-sell pairs i.e. first value of pair will represent the day on which you buy&nbsp;the stock and second value represent the day on which you sell that stock. If there is No Profit, return an empty list. </span></p>
 
-<p>&nbsp;</p>
-
-<p><span style="font-size:18px"><strong>Note:</strong></span>&nbsp;<span style="font-size:18px">Since there can be multiple solutions</span>, <span style="font-size:18px">the driver code will return 1 if your answer is correct, otherwise, it will return 0. In case there's no profit the driver code will return the string "No Profit" for a correct solution.</span></p>
-
 <p><br>
 <span style="font-size:18px"><strong>Expected Time Complexity:</strong> O(N)<br>
 <strong>Expected Auxiliary Space:</strong> O(N)</span></p>
@@ -49,5 +45,4 @@ The task is to complete the function <strong>stockBuySell()</strong> which takes
 <span style="font-size:18px"><strong>Constraints:</strong><br>
 2 ≤&nbsp;N ≤&nbsp;10<sup>6</sup><br>
 0 ≤&nbsp;A[i] ≤&nbsp;10<sup>6</sup></span></p>
- <p></p>
-            </div>
+</div>
