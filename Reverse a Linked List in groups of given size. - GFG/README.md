@@ -1,7 +1,6 @@
 # Reverse a Linked List in groups of given size.
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a linked list of size <strong>N</strong>. The task is to reverse every <strong>k</strong> nodes (where k is an input to the function) in the linked list. If the number of nodes is not a multiple of&nbsp;<em>k</em>&nbsp;then left-out nodes, in the end, should be considered as a group and must be&nbsp;reversed (See Example 2 for clarification).</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a linked list of size <strong>N</strong>. The task is to reverse every <strong>k</strong> nodes (where k is an input to the function) in the linked list. If the number of nodes is not a multiple of&nbsp;<em>k</em>&nbsp;then left-out nodes, in the end, should be considered as a group and must be&nbsp;reversed (See Example 2 for clarification).</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -37,5 +36,4 @@ You don't need to read input or print anything. Your task is to complete the fun
 
 <div><span style="font-size:18px">1 &lt;= N &lt;= 10<sup>4</sup></span><br>
 <span style="font-size:18px">1 &lt;= k &lt;= N</span></div>
- <p></p>
-            </div>
+</div>
