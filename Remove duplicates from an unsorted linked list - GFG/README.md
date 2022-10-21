@@ -1,7 +1,6 @@
 # Remove duplicates from an unsorted linked list
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an unsorted linked list of <strong>N</strong> nodes. The task is to remove duplicate&nbsp;elements from this&nbsp;unsorted Linked List. When a value appears in multiple nodes, the node which appeared first should be kept, all others duplicates are to be removed.</span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an unsorted linked list of <strong>N</strong> nodes. The task is to remove duplicate&nbsp;elements from this&nbsp;unsorted Linked List. When a value appears in multiple nodes, the node which appeared first should be kept, all others duplicates are to be removed.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -39,5 +38,4 @@ You have to complete the method&nbsp;<strong>removeDuplicates</strong>() which t
 <span style="font-size:18px">0 &lt;= numbers in list &lt;= 10</span><sup>4</sup></p>
 
 <p>&nbsp;</p>
- <p></p>
-            </div>
+</div>
