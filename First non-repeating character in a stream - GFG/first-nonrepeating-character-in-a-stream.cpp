@@ -12,34 +12,26 @@ class Solution {
             int arr[26]={0};
             int j,i;
             queue<char> q;
-            for(i=0;i<len;i++)
-            {
+            for(i=0;i<len;i++){
                int index = A[i]-'a';
                q.push(A[i]);
                arr[index]++;
                int check=0;
-               while(!q.empty())
-               {
-                   
+               while(!q.empty()){
                    char c = q.front();
                    index = c-'a';
-                   if(arr[index]==1)
-                   {
-                       res.push_back(char(c));
+                   if(arr[index]==1){
+                       res+=c;
                        check=1;
                        break;
                    }
                    q.pop();
                 }
                 if(check==0) 
-               {
                    res.push_back('#');
-               }
-                
             }
             return res;
 		}
-
 };
 
 // { Driver Code Starts.
