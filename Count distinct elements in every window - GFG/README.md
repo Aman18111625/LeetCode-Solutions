@@ -1,7 +1,6 @@
 # Count distinct elements in every window
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array of integers and a number K. Find the count of distinct elements in every window of size K in the array.</span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array of integers and a number K. Find the count of distinct elements in every window of size K in the array.</span></p>
 
 <p><strong><span style="font-size:18px">Example 1:</span></strong></p>
 
@@ -36,5 +35,4 @@ Your task is to complete the function&nbsp;<strong>countDistinct()</strong>&nbsp
 <p><span style="font-size:18px"><strong>Constraints:</strong></span><br>
 <span style="font-size:18px">1 &lt;= K&nbsp;&lt;= N&nbsp;&lt;= 10<sup>5</sup></span><br>
 <span style="font-size:18px">1 &lt;= A[i] &lt;= 10<sup>5&nbsp;</sup>, for each valid i</span></p>
- <p></p>
-            </div>
+</div>
