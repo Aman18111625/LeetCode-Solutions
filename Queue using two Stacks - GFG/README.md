@@ -1,7 +1,6 @@
 # Queue using two Stacks
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Implement a Queue using 2 stacks<strong> s1</strong> and<strong> s2</strong> .<br>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Implement a Queue using 2 stacks<strong> s1</strong> and<strong> s2</strong> .<br>
 A Query <strong>Q</strong> is of 2 Types<br>
 <strong>(i)</strong> 1 x (a query of this type means&nbsp;&nbsp;pushing <strong>'x'</strong> into the queue)<br>
 <strong>(ii)</strong> 2 &nbsp; (a query of this type means to pop&nbsp;element from queue and print the poped element)</span></p>
@@ -53,5 +52,4 @@ Explanation:
 1 &lt;= x &lt;= 100</span></p>
 
 <p><span style="font-size:18px">Note:The <strong>Input/Ouput</strong> format and <strong>Example</strong> given are used for system's internal purpose, and should be used by a user for <strong>Expected Output</strong> only. As it is a function problem, hence a user should not read any input from stdin/console. The task is to complete the function specified, and not to write the full code.</span></p>
- <p></p>
-            </div>
+</div>
