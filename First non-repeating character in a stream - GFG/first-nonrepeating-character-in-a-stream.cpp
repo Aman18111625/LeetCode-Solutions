@@ -7,30 +7,27 @@ class Solution {
 	public:
 		string FirstNonRepeating(string A){
 		    // Code here
-		    int len = A.size();
-            string res;
-            int arr[26]={0};
-            int j,i;
-            queue<char> q;
-            for(i=0;i<len;i++){
-               int index = A[i]-'a';
-               q.push(A[i]);
-               arr[index]++;
-               int check=0;
-               while(!q.empty()){
-                   char c = q.front();
-                   index = c-'a';
-                   if(arr[index]==1){
-                       res+=c;
-                       check=1;
-                       break;
-                   }
-                   q.pop();
-                }
-                if(check==0) 
-                   res.push_back('#');
-            }
-            return res;
+		    vector<int>freq(26,0);
+		    string ans;
+		    vector<char>v;
+		    int n=A.size();
+		    for(int i=0;i<n;i++){
+		        if(!freq[A[i]-'a']){
+		            v.push_back(A[i]);
+		        }
+		        freq[A[i]-'a']++;
+		        int flag=1;
+		        int m=v.size();
+		        for(int j=0;j<m;j++){
+		            if(freq[v[j]-'a']==1){
+		                ans+=v[j];
+		                flag=0;
+		                break;
+		            }
+		        }
+		        if(flag) ans.push_back('#');
+		    }
+		    return ans;
 		}
 };
 
