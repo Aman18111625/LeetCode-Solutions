@@ -32,6 +32,7 @@ class Solution
     double fractionalKnapsack(int W, Item arr[], int n)
     {
         // Your code here
+        //sort in desc order of ratio of value/weight
         sort(arr,arr+n,comp);
         int currW=0;
         double ans=0.0;
