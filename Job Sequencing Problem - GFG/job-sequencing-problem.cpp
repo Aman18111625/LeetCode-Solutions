@@ -35,11 +35,12 @@ class Solution
         // your code here
         sort(arr,arr+n,comp);//sort in desc order of profit;
         int maxi=0;
+        //find maximum date of deadline
         for(int i=0;i<n;i++){
             maxi=max(maxi,arr[i].dead);
         }
         vector<int>slot(maxi+1,-1);
-        
+        //we'll assign each and every job to possible last date for completing it
         int cntJob=0,maxProfit=0;
         for(int i=0;i<n;i++){
             for(int j=arr[i].dead;j>0;j--){
