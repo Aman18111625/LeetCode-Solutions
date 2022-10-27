@@ -19,6 +19,7 @@ class Solution
             arr[i]={start[i],end[i]};
         }
          int res = 1;
+         //sort according to the end time
          sort(arr.begin(),arr.end(),comp);
          int lastDoneAct = arr[0].second;
          for(int i=1;i<n;i++){
