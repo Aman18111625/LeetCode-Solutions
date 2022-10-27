@@ -1,7 +1,6 @@
 # Choose and Swap
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">You are given a string <strong>s</strong> of lower case english alphabets. You can choose any two characters in the string and replace all the occurences of the first character with the second character and replace all the occurences of the second character with the first character. Your aim is to find the lexicographically smallest string that can be obtained by doing this operation at most once.</span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">You are given a string <strong>s</strong> of lower case english alphabets. You can choose any two characters in the string and replace all the occurences of the first character with the second character and replace all the occurences of the second character with the first character. Your aim is to find the lexicographically smallest string that can be obtained by doing this operation at most once.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -40,5 +39,4 @@ You don't need to read input or print anything. Your task is to complete the fun
 1&lt;= |A| &lt;=10<sup>5</sup></span></p>
 
 <p>&nbsp;</p>
- <p></p>
-            </div>
+</div>
