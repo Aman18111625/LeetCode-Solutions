@@ -1,7 +1,6 @@
 # Shop in Candy Store
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">In a candy store, there are <strong>N</strong> different types of candies available and the prices of all the N different types of candies are provided to you.<br>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">In a candy store, there are <strong>N</strong> different types of candies available and the prices of all the N different types of candies are provided to you.<br>
 You are now provided with an attractive offer.<br>
 You can buy a single candy from the store and get at most <strong>K</strong> other candies ( all are different types ) for free.<br>
 Now you have to answer two questions. Firstly, you have to find what is the <strong>minimum amount of money</strong> you have to spend to buy all the<strong> N </strong>different candies. Secondly, you have to find what is the <strong>maximum amount of money</strong> you have to spend to buy all the N different candies.<br>
@@ -61,5 +60,4 @@ for free.</span>
 1 &lt;=&nbsp;<strong>N&nbsp;</strong>&lt;= 100000<br>
 &nbsp;0 &lt;= <strong>K</strong> &lt;= N-1<br>
 1 &lt;= <strong>candies[i]</strong>&nbsp;&lt;= 10000</span></p>
- <p></p>
-            </div>
+</div>
