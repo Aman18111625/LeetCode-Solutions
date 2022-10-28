@@ -1,29 +1,34 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution{
     public:
     long long int maximizeSum(long long int a[], int n, int k)
     {
         // Your code goes here
         sort(a,a+n);
-        int i=0;
-        while(i<n && a[i]<0 && k){
-            a[i]*=-1;
-            i++;
-            k--;
+        int sum=0,mini=INT_MAX;
+        for(int i=0;i<n;i++){
+            if(a[i]<0 && k>0) {
+                a[i]*=-1;
+                k--;
+            }
+            sum+=a[i];
+            mini=min((long long int)mini,a[i]);
         }
-        if(i<n && a[i]!=0 && k%2) a[i]*=-1;
-        if(i==n && k%2) a[n-1]*=-1;
-        long long int sum=0;
-        for(int i=0;i<n;i++) sum+=a[i];
+        if(k){
+            if(k&1){
+                mini*=-2;
+                sum+=mini;
+            }
+        }
         return sum;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main()
  {
      int t;
@@ -40,4 +45,5 @@ int main()
      }
 	
 	return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
