@@ -8,27 +8,51 @@ using namespace std;
 
 class Solution {
   public:
-    void dfs(int node,vector<vector<int>>adj,vector<int>&vis,int V){
-        vis[node]=true;
-        for(int i=0;i<V;i++){
-          if(adj[node][i] && !vis[i]){
-              vis[i]=1;
-              dfs(i,adj,vis,V);
-          }
-        }
-    }
+    // void dfs(int node,vector<vector<int>>adj,vector<int>&vis,int V){
+    //     vis[node]=true;
+    //     for(int i=0;i<V;i++){
+    //       if(adj[node][i] && !vis[i]){
+    //           vis[i]=1;
+    //           dfs(i,adj,vis,V);
+    //       }
+    //     }
+    // }
   
+    // int numProvinces(vector<vector<int>> adj, int V) {
+    //     // code here
+    //     vector<int>vis(V,0);
+    //     int ans=0;
+    //     for(int i=0;i<V;i++){
+    //         if(!vis[i]){
+    //             ans++;
+    //             dfs(i,adj,vis,V);
+    //         }
+    //     }
+    //     return ans;
+    // }
     int numProvinces(vector<vector<int>> adj, int V) {
         // code here
-        vector<int>vis(V,0);
-        int ans=0;
-        for(int i=0;i<V;i++){
+        int cnt=0;
+        vector<bool>vis(V,false);
+        queue<int>q;
+        for(int i=0;i<V;++i){
             if(!vis[i]){
-                ans++;
-                dfs(i,adj,vis,V);
+                cnt++;
+                q.push(i);
+                vis[i]=true;
+                while(!q.empty()){
+                    int node=q.front();
+                    q.pop();
+                    for(int j=0;j<adj[node].size();++j){
+                        if(adj[node][j] && !vis[j]){
+                            vis[j]=true;
+                            q.push(j);
+                        }
+                    }
+                }
             }
         }
-        return ans;
+        return cnt;
     }
 };
 
