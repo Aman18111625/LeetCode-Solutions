@@ -8,10 +8,7 @@ class Solution
     public:
     //Function to find distance of nearest 1 in the grid for each cell.
 	bool isSafe(int i,int j,int n,int m,vector<vector<bool>> &vis){
-        if(i >= 0 && i < n && j >=0 && j < m){
-            if(vis[i][j])return false;
-            return true;
-        }
+        if(i >= 0 && i < n && j >=0 && j < m && !vis[i][j]) return true;
         return false;
     }
     
@@ -21,7 +18,7 @@ class Solution
 	    int m = grid[0].size();
 	    vector<vector<int>> res(n, vector<int>(m , 0));
 	    vector<vector<bool>> vis(n , vector<bool>(m , false));
-	 
+	   //to store pair of {i,j}
 	    queue<pair<int,int>> q;
 	    for(int i = 0;i < n;i++){
 	        for(int j = 0;j < m;j++){
@@ -32,29 +29,21 @@ class Solution
 	        }
 	    }
 	    
+	    int delRow[]={-1,0,1,0};
+	    int delCol[]={0,-1,0,1};
+	    
 	    while(!q.empty()){
 	        pair<int,int>p = q.front();
 	        q.pop();
-	        int i = p.first,j = p.second;
-	        if(isSafe(i+1,j,n,m,vis)){
-	            vis[i+1][j] = true;
-	            res[i+1][j] = res[i][j] + 1;
-	            q.push({i+1,j});
-	        }
-	        if(isSafe(i-1,j,n,m,vis)){
-	            vis[i-1][j] = true;
-	            res[i-1][j] = res[i][j] + 1;
-	            q.push({i-1,j});
-	        }
-	        if(isSafe(i,j+1,n,m,vis)){
-	            vis[i][j+1] = true;
-	            res[i][j+1] = res[i][j] + 1;
-	            q.push({i,j+1});
-	        }
-	        if(isSafe(i,j-1,n,m,vis)){
-	            vis[i][j-1] = true;
-	            res[i][j-1] = res[i][j] + 1;
-	            q.push({i,j-1});
+	        int i=p.first,j=p.second;
+	        for(int dir=0;dir<4;dir++){
+	          int nrow =delRow[dir]+i;
+	          int ncol =delCol[dir]+j;
+	          if(isSafe(nrow,ncol,n,m,vis)){
+	              vis[nrow][ncol]=true;
+	              res[nrow][ncol]=1+res[i][j];
+	              q.push({nrow,ncol});
+	          }
 	        }
 	    }
 	    return res;
