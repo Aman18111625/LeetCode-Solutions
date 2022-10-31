@@ -7,53 +7,58 @@ using namespace std;
  // } Driver Code Ends
 // User function Template for C++
 
-class Node{
-    public:
-    int val;
-    vector<int>adj;
-    Node(int v){
-        val=v;
-        adj=vector<int>();
-    }
-};
-
-void dfsTopo(int idx, vector<int>&visited, vector<Node*>&alpha ,string&ans){
-    visited[idx]=1;
-    for(auto i: alpha[idx]->adj){
-        if(!visited[i]){
-            dfsTopo(i,visited,alpha,ans);
-        }
-    }
-    ans+=(char)('a'+idx);
-}
 
 class Solution{
+    string findTopologicalSort(vector<int> adj[], int k){
+            //This will be our ans, which will give alphabetical order in alien language
+            string ans = "";
+            vector<int> inDegree(k, 0);
+            //inDegree vector will store inDegree of each vertex(alphabet)
+            //inDegree means number of character which are atleast before any alphabet
+            for(int i = 0; i < k; i++){
+                for(auto &e: adj[i]){
+                    inDegree[e]++;
+                }
+            }
+            queue<int> q;
+            //Pushing those vertices in queue, whose inDegree is 0, it means they must be first in the order
+            for(int i = 0; i < k; i++){
+                if(inDegree[i] == 0){
+                    q.push(i);
+                }
+            }
+            while(q.empty() == false){
+                int curr = q.front();
+                q.pop();
+                ans += char(curr + 'a');
+                for(auto &b : adj[curr]){
+                    //Reducing the indegree for each adjacent vertex of current vertex and if indegree becomes 0, it means we will push it to the queue and now it should come in the alphabetical order
+                    inDegree[b]--;
+                    if(inDegree[b] == 0){
+                        q.push(b);
+                    }
+                }
+            }
+            return ans;
+        }
+    
     public:
     string findOrder(string dict[], int N, int K) {
-        vector<Node*>alpha;
-        for(int i=0;i<26;i++){
-            Node* n=new Node(i);
-            alpha.push_back(n);
-        }
-        
-        for(int i=1;i<N;i++){
-            int j=0;
-            int t=min(dict[i-1].size(),dict[i].size());
-            while(j<t&&dict[i-1][j]==dict[i][j]) j++;
-                
-            if(j<t){
-                (alpha[dict[i-1][j]-'a']->adj ).push_back(dict[i][j]-'a');
+        vector<int> adj[K];
+        for(int i = 0; i < N - 1; i++){
+            string s1 = dict[i];
+            string s2 = dict[i + 1];
+            int len = min(s1.length(), s2.length());
+            for(int ptr = 0; ptr < len; ptr++){
+                if(s1[ptr] != s2[ptr]){
+                    adj[s1[ptr] - 'a'].push_back(s2[ptr] - 'a');
+                    break;
+                }
             }
         }
         
-        string ans="";
-        vector<int>visited(26,0);
-        for(int i=0;i<26;i++)
-            if(!visited[i])
-                dfsTopo(i,visited,alpha,ans);
-        
-        reverse(ans.begin(),ans.end());
-        return ans;
+        //Applying topological sort
+        return findTopologicalSort(adj, K);
     }
 };
 
