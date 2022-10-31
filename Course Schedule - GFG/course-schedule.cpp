@@ -11,8 +11,11 @@ class Solution
     vector<int> findOrder(int n, int m, vector<vector<int>> prerequisites) 
     {
         //code here
+        //so  basically we have to check there is cycle exist or not
+        //if not then we'll return true else return false
         vector<vector<int>>adj(n);
         vector<int>indegree(n,0);
+        //create graph && find indegree of each edge
         for(auto it : prerequisites){
             adj[it[0]].push_back(it[1]);
             adj[it[1]].push_back(it[0]);
@@ -31,7 +34,7 @@ class Solution
                 if(indegree[it]==0) q.push(it);
             }
         }
-        if(topo.size()!=n) return {};
+        if(topo.size()!=n) return {};//it means there's a cycle 
         return topo;
     }
 };
