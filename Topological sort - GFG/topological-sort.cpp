@@ -1,68 +1,40 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution
 {
+    void dfs(int src,vector<int>adj[],vector<int>&vis,stack<int>&st){
+        vis[src]=1;
+        for(auto it: adj[src]){
+           if(!vis[it])
+             dfs(it,adj,vis,st);
+        }
+        st.push(src);
+    }
 	public:
 	//Function to return list containing vertices in Topological order. 
-	//BFS
 	vector<int> topoSort(int V, vector<int> adj[]) 
 	{
 	    // code here
-	    vector<int>indegree(V,0);
-	    queue<int>q;
-	    vector<int>ans;
-	    for(int i=0;i<V;i++)
-	    {
-	      for(auto &it: adj[i])
-	       indegree[it]++;
-	    }
-	    for(int i=0;i<V;i++) 
-	     if(indegree[i]==0) q.push(i);
-	    while(!q.empty())
-	    {
-	        auto idx=q.front();
-	        q.pop();
-	        ans.push_back(idx);
-	        for(auto &it: adj[idx])
-	        {
-	            indegree[it]--;
-	            if(indegree[it]==0) q.push(it);
+	    vector<int>vis(V,0);
+	    stack<int>st;
+	    for(int i=0;i<V;i++){
+	        if(!vis[i]){
+	            dfs(i,adj,vis,st);
 	        }
+	    }
+	    vector<int>ans;
+	    while(!st.empty()){
+	        ans.push_back(st.top());
+	        st.pop();
 	    }
 	    return ans;
 	}
-
-//DFS
-// void dfs(vector<int>adj[],vector<int>&vis,stack<int>&st,int node){
-//     vis[node]=1;
-//     for(auto it : adj[node]){
-//         if(!vis[it]){
-//             dfs(adj,vis,st,it);
-//         }
-//     }
-//     st.push(node);
-// }
-
-//   vector<int> topoSort(int V, vector<int> adj[]) {
-//      vector<int>ans,vis(V+1,0);
-//      stack<int>st;
-//      for(int i=0;i<V;i++){
-//          if(!vis[i]){
-//              dfs(adj,vis,st,i);
-//          }
-//      }
-//      while(!st.empty()){
-//          ans.push_back(st.top());
-//          st.pop();
-//      }
-//      return ans;
-//   }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 /*  Function to check if elements returned by user
 *   contains the elements in topological sorted form
@@ -109,4 +81,5 @@ int main() {
     }
     
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
