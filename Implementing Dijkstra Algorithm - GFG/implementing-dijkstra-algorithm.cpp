@@ -11,24 +11,49 @@ class Solution
     vector <int> dijkstra(int v, vector<vector<int>> adj[], int src)
     {
         // Code here
-       vector<int>distance(v,INT_MAX);    
-       priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
-       pq.push({0,src});
-       distance[src]=0;
-       while(!pq.empty()){
-         int dist=pq.top().first;
-         int prev=pq.top().second;
-         pq.pop();
+    //Using Priority-Queue
+    //   vector<int>distance(v,INT_MAX);    
+    //   priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+    //   pq.push({0,src});
+    //   distance[src]=0;
+    //   while(!pq.empty()){
+    //      int dist=pq.top().first;
+    //      int prev=pq.top().second;
+    //      pq.pop();
+    //      for(auto it:adj[prev]){
+    //           int next_dist=it[1];
+    //           int next_node=it[0];
+    //           if(dist+next_dist<distance[next_node]){
+    //               distance[next_node]=dist+next_dist;
+    //               pq.push({distance[next_node],next_node});
+    //           }
+    //       }
+    //   }
+    //   return distance;
+    
+    //Using Set
+      vector<int>distance(v,INT_MAX);    
+      set<pair<int,int>>st;//set stores everything in the asc order
+      st.insert({0,src});
+      distance[src]=0;
+      while(!st.empty()){
+         auto top =*(st.begin());
+         int dist=top.first;
+         int prev=top.second;
+         st.erase(top);
          for(auto it:adj[prev]){
               int next_dist=it[1];
               int next_node=it[0];
               if(dist+next_dist<distance[next_node]){
-                   distance[next_node]=dist+next_dist;
-                   pq.push({distance[next_node],next_node});
-               }
-           }
-       }
-       return distance;
+                  if(distance[next_node]!=INT_MAX){
+                      st.erase({distance[next_node],next_node});
+                  }
+                  distance[next_node]=dist+next_dist;
+                  st.insert({distance[next_node],next_node});
+              }
+          }
+      }
+      return distance;
     }
 };
 
