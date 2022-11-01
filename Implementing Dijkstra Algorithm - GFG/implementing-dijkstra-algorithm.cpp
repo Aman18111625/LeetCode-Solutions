@@ -22,8 +22,7 @@ class Solution
          for(auto it:adj[prev]){
               int next_dist=it[1];
               int next_node=it[0];
-              if(distance[next_node]>dist+next_dist)
-               {
+              if(dist+next_dist<distance[next_node]){
                    distance[next_node]=dist+next_dist;
                    pq.push({distance[next_node],next_node});
                }
