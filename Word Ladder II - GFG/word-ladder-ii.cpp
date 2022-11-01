@@ -15,12 +15,14 @@ public:
         if(st.count(end)==0) return ans; 
         queue<vector<string>>q;
         q.push({begin});
+        st.erase(begin);
         vector<string>used;
         used.push_back(begin);
         int level=0;
         while(!q.empty()){
             auto temp=q.front();
             q.pop();
+            //remove words from prev level
             if(temp.size()>level){
                 level++;
                 for(auto &it : used){
