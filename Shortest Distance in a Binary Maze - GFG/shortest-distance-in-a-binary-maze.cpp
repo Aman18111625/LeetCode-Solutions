@@ -15,28 +15,30 @@ class Solution {
     }
     
     int shortestPath(vector<vector<int>> &grid, pair<int, int> src,
-                     pair<int, int> destination) {
+                     pair<int, int> dest) {
         // code here
-        if(grid[src.first][src.second]==0 or grid[destination.first][destination.second]==0) 
+        //edge case
+        if(grid[src.first][src.second]==0 || grid[dest.first][dest.second]==0) 
            return -1;
         int n=grid.size(),m=grid[0].size();
+        //to keep track of visited or not
         vector<vector<bool>>vis(n,vector<bool>(m,false));
-        queue<pair<int,pair<int,int>>>q;
+        queue<pair<int,pair<int,int>>>q;//key->dist,value->{i,j}
         vis[src.first][src.second]=true;
         q.push({0,src});
         while(!q.empty()){
             auto temp=q.front();
             q.pop();
             int dist=temp.first;
-            pair<int,int> dest=temp.second;
-            if(dest==destination){
+            pair<int,int>d=temp.second;
+            if(d==dest){
                 return dist;
             }
             int rowNum[] = {-1, 0, 0, 1};
             int colNum[] = {0, -1, 1, 0};
             for(int i=0;i<4;i++){
-                int x=temp.second.first+rowNum[i];
-                int y=temp.second.second+colNum[i];
+                int x=d.first+rowNum[i];
+                int y=d.second+colNum[i];
                 if(isSafe(grid,vis,n,m,x,y)){
                   q.push({dist+1,{x,y}});
                   vis[x][y]=true;
