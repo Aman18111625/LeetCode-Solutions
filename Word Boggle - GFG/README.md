@@ -1,7 +1,6 @@
 # Word Boggle
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a dictionary of distinct <strong>words</strong> and an <strong>M x N</strong> board where every cell has one character. Find all possible words from the dictionary that can be formed by a sequence of adjacent characters on the board. We can move to any of 8 adjacent characters</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a dictionary of distinct <strong>words</strong> and an <strong>M x N</strong> board where every cell has one character. Find all possible words from the dictionary that can be formed by a sequence of adjacent characters on the board. We can move to any of 8 adjacent characters</span></p>
 
 <p><span style="font-size:18px"><strong>Note:</strong>&nbsp;While forming a word we can move to&nbsp;any of the 8 adjacent cells. A&nbsp;cell can be used&nbsp;only once in one word.</span></p>
 
@@ -52,5 +51,4 @@ You dont need to read input or print anything. Your task is to complete the func
 1 ≤ R, C&nbsp;≤ 50<br>
 1 ≤ length of Word&nbsp;≤ 60<br>
 Each word can consist of both lowercase and uppercase letters.</span></p>
- <p></p>
-            </div>
+</div>
