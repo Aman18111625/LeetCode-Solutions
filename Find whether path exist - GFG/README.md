@@ -1,7 +1,6 @@
 # Find whether path exist
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a grid of size n*n&nbsp;filled with 0, 1, 2, 3. Check whether there is a path possible from the source to destination.&nbsp;You can traverse up, down, right and left.<br>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a grid of size n*n&nbsp;filled with 0, 1, 2, 3. Check whether there is a path possible from the source to destination.&nbsp;You can traverse up, down, right and left.<br>
 The description of cells is as follows:</span></p>
 
 <ul>
@@ -43,7 +42,7 @@ i,e destination.</span>
 <p>&nbsp;</p>
 
 <p><span style="font-size:18px"><strong>Your Task:</strong><br>
-You don't need to read or print anything. Your task is to complete the function <strong>is_Possible()&nbsp;</strong>which takes the grid as input parameter and returns boolean value true if there is a path otherwise returns false.</span><br>
+You don't need to read or print anything. Your task is to complete the function <strong>is_Possible()&nbsp;</strong>which takes the grid as input parameter and returns boolean value <strong>1</strong> if there is a path otherwise returns <strong>0</strong>.</span><br>
 &nbsp;</p>
 
 <p><span style="font-size:18px"><strong>Expected Time Complexity:&nbsp;</strong>O(n<sup>2</sup>)<br>
@@ -52,5 +51,4 @@ You don't need to read or print anything. Your task is to complete the function 
 
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ n ≤ 500</span></p>
- <p></p>
-            </div>
+</div>
