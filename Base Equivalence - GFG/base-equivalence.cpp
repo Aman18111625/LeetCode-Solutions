@@ -8,7 +8,7 @@ using namespace std;
 class Solution {
     int inBase(int num , int base){
         int count = 0;
-        while(num != 0){
+        while(num){
             count++;
             num /= base;
         }
