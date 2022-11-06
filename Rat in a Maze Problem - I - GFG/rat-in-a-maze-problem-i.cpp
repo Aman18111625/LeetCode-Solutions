@@ -12,7 +12,7 @@ class Solution{
     void helper(vector<vector<int>>&mat,int i,int j,int& n,string path,vector<string>&ans,
     vector<vector<int>>&vis){
         if(i<0 or j<0 or i>=n or j>=n or mat[i][j]==0) return ;//out of boundary or blocked
-        if(vis[i][j]==1) return ;//already visited
+        if(vis[i][j]) return ;//already visited
         vis[i][j]=1;//mark visited
         //reach to destination
         if(i==n-1 && j==n-1){
@@ -30,7 +30,7 @@ class Solution{
         // Your code goes here
         vector<string>ans;
         vector<vector<int>>vis(n,vector<int>(n,0));
-        if(m[0][0]==0 or m[n-1][n-1]==0) return ans;//src or destination is blocked
+        if(m[0][0]==0 or m[n-1][n-1]==0) return ans;//source or destination is blocked
         helper(m,0,0,n,"",ans,vis);
         sort(ans.begin(),ans.end());
         return ans;
