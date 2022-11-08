@@ -1,30 +1,29 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution {
 public:
-    vector<vector<int>> overlappedInterval(vector<vector<int>>& inter) {
-        //Your code here
-        sort(begin(inter),end(inter));
-        if(inter.empty()) return inter;
-        vector<vector<int>>ans;
-        vector<int>temp=inter[0];
-        for(auto &it : inter){
-            if(it[0]<=temp[1]){
-                temp[1]=max(it[1],temp[1]);
-            }else{
-                ans.push_back(temp);
-                temp=it;
-            }
-        }
-        ans.push_back(temp);
-        return ans;
+    vector<vector<int>> overlappedInterval(vector<vector<int>>& intervals) {
+         // Code here
+         sort(intervals.begin(),intervals.end());
+         vector<int>temp=intervals[0];
+         vector<vector<int>>ans;
+         for(auto it: intervals){
+             if(temp[1]>=it[0]){
+                 temp[1]=max(temp[1],it[1]);
+             }else{
+                 ans.push_back(temp);
+                 temp=it;
+             }
+         }
+         ans.push_back(temp);
+         return ans;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main(){
 	int tc;
 	cin >> tc;
@@ -48,4 +47,5 @@ int main(){
 		cout << "\n";
 	}
 	return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
