@@ -1,40 +1,40 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution
-{
+{ 
+    void helper(string s,int start,int end,unordered_set<string>&st){
+        if(start==end){
+            st.insert(s);
+            return ;
+        }
+        for(int i=start;i<=end;i++){
+            swap(s[start],s[i]);
+            helper(s,start+1,end,st);
+            swap(s[start],s[i]);
+        }
+    }
 	public:
-	  void printAllCombinations(string s,int start,int end,vector<string>&ans){
-	        if(start==end){
-	             ans.push_back(s);
-	             return ;
-	        }
-	        for(int i=start;i<=end;i++){
-	             swap(s[start],s[i]);
-	             printAllCombinations(s,start+1,end,ans);
-	             swap(s[start],s[i]);
-	        }
-	        
-	    }
-	    
-		vector<string>find_permutation(string S)
+		vector<string>find_permutation(string s)
 		{
 		    // Code here there
 		    vector<string>ans;
-		    printAllCombinations(S,0,S.length()-1,ans);
-		    map<string,int>hash;
-		    for(auto it : ans) hash[it]++;
-		    ans.clear();
-		    for(auto it : hash) ans.push_back(it.first);
+		    unordered_set<string>st;
+		    int n=s.size();
+		    for(int i=0;i<n;i++){
+		        helper(s,i,n-1,st);
+		    }
+		    for(auto it: st) ans.push_back(it);
+		    sort(ans.begin(),ans.end());
 		    return ans;
 		}
 };
 
 
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main(){
     int t;
     cin >> t;
@@ -52,4 +52,5 @@ int main(){
     }
 	return 0;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
