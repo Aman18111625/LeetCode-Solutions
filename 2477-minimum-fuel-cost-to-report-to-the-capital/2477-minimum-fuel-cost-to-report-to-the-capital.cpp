@@ -1,7 +1,7 @@
 class Solution {
   long long ans=0;
   //return how many seats required for all the adjacent 
-  long long dfs(int src,int seats,vector<int>&vis,vector<vector<int>>&adj){
+  long long dfs(int src,int &seats,vector<int>&vis,vector<vector<int>>&adj){
     vis[src]=1;//mark vis
     long long cnt=1;
     //run dfs for all the adjacent
