@@ -1,7 +1,6 @@
 # Add Binary Strings
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given two binary strings<strong> A</strong>&nbsp;and <strong>B</strong> consisting of only 0s and 1s. Find the resultant string after adding the two Binary Strings.<br>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given two binary strings<strong> A</strong>&nbsp;and <strong>B</strong> consisting of only 0s and 1s. Find the resultant string after adding the two Binary Strings.<br>
 <strong>Note:&nbsp;</strong>The input strings may contain leading zeros but the output string should not have any leading zeros.</span></p>
 
 <p><br>
@@ -38,5 +37,4 @@ You don't need to read input or print anything. Your task is to complete the fun
 <p><br>
 <span style="font-size:18px"><strong>Constraints:</strong></span><br>
 <span style="font-size:18px">1 ≤ |A|, |B| ≤ 10<sup>6</sup></span></p>
- <p></p>
-            </div>
+</div>
