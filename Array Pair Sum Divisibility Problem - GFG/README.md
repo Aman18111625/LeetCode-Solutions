@@ -1,7 +1,6 @@
 # Array Pair Sum Divisibility Problem
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array of integers and a number k, write a function that returns true if given array can be divided into pairs such that sum of every pair is divisible by k.</span><br>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array of integers and a number k, write a function that returns true if given array can be divided into pairs such that sum of every pair is divisible by k.</span><br>
 &nbsp;</p>
 
 <p><span style="font-size:18px"><strong>Example 1 :</strong></span></p>
@@ -32,8 +31,7 @@ You don't need to read or print anything. Your task is to complete the function&
 &nbsp;</p>
 
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
-1 &lt;= length of array &lt;= 100000<br>
-1 &lt;= elements of array &lt;= 100000<br>
-1 &lt;= k &lt;= 100000</span></p>
- <p></p>
-            </div>
+1 &lt;= length of array &lt;= 10^5<br>
+1 &lt;= elements of array &lt;= 10^5<br>
+1 &lt;= k &lt;= 10^5</span></p>
+</div>
