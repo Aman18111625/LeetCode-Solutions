@@ -1,67 +1,71 @@
-// { Driver Code Starts
-#include<bits/stdc++.h>
+//{ Driver Code Starts
+#include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
-//User function Template for C++
+// } Driver Code Ends
+// User function Template for C++
 
-class Solution{
-	public:
-	/*  Function to implement Dijkstra
-    *   adj: vector of vectors which represents the graph
+class Solution {
+  public:
+    /*  Function to implement Bellman Ford
+    *   edges: vector of vectors which represents the graph
     *   S: source vertex to start traversing graph with
     *   V: number of vertices
     */
-    vector <int> bellman_ford(int V, vector<vector<int>> adj, int S) {
+    vector<int> bellman_ford(int V, vector<vector<int>>& edges, int S) {
         // Code here
-        int inf = 1e8;
-        vector<int> dis(V, inf);
-        dis[S] = 0;
-        for(int i=1; i<=V-1; i++) {
-            for(auto& it: adj) {
-                if(dis[it[0]]==inf) continue;
-                if(dis[it[0]] + it[2] < dis[it[1]]) 
-                    dis[it[1]] = dis[it[0]] + it[2];
+        vector<int> dist(V, 1e8);
+        dist[S] = 0;
+        bool flag=false;//to check negative cycle
+        for (int i = 0; i <=V ; i++){
+            for (auto x : edges){
+                int u = x[0];
+                int v = x[1];
+                int wt = x[2];
+                if (dist[u] + wt < dist[v]){
+                    if(i==V) flag=true;
+                     dist[v] = dist[u] + wt;
+                }
             }
         }
-        return dis;
+        if(flag) return {-1};
+        return dist;
     }
 };
 
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
-
-int main()
-{
+int main() {
     int t;
     cin >> t;
     while (t--) {
-        int V, E;
-        cin >> V >> E;
-        vector<vector<int>> adj;
-        int i=0;
-        while (i++<E) {
-            int u, v, w;
-            cin >> u >> v >> w;
-            vector<int> t1;
-            t1.push_back(u);
-            t1.push_back(v);
-            t1.push_back(w);
-            adj.push_back(t1);
-        }
-        int S;
-        cin>>S;
-        
-        Solution obj;
-    	vector<int> res = obj.bellman_ford(V, adj, S);
-    	
-    	for(int i=0; i<V; i++)
-    	    cout<<res[i]<<" ";
-    	cout<<endl;
-    }
+        int N, m;
+        cin >> N >> m;
+        vector<vector<int>> edges;
 
+        for (int i = 0; i < m; ++i) {
+            vector<int> temp;
+            for (int j = 0; j < 3; ++j) {
+                int x;
+                cin >> x;
+                temp.push_back(x);
+            }
+            edges.push_back(temp);
+        }
+
+        int src;
+        cin >> src;
+
+        Solution obj;
+        vector<int> res = obj.bellman_ford(N, edges, src);
+
+        for (auto x : res) {
+            cout << x << " ";
+        }
+        cout << "\n";
+    }
     return 0;
 }
 
-  // } Driver Code Ends
+// } Driver Code Ends
