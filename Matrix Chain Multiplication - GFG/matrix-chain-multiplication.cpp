@@ -8,7 +8,7 @@ using namespace std;
 // User function Template for C++
 
 class Solution{
-     int dp[101][101];
+    int dp[101][101];
     int solve(int arr[],int i,int j)
     {
         if(i>=j) return 0;
