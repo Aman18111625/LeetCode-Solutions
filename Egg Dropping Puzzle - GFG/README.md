@@ -1,7 +1,6 @@
 # Egg Dropping Puzzle
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">You are given <strong>N</strong> identical eggs and you have access to a <strong>K</strong>-floored building from&nbsp;<strong>1</strong>&nbsp;to&nbsp;<strong>K</strong>.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">You are given <strong>N</strong> identical eggs and you have access to a <strong>K</strong>-floored building from&nbsp;<strong>1</strong>&nbsp;to&nbsp;<strong>K</strong>.</span></p>
 
 <p><span style="font-size:18px">There exists a floor <strong>f</strong>&nbsp;where <strong>0</strong> &lt;= <strong>f</strong> &lt;= <strong>K&nbsp;</strong>such that any egg dropped at a floor higher than <strong>f</strong>&nbsp;will break, and any egg dropped <strong>at or below&nbsp;</strong>floor <strong>f </strong>will <strong>not break</strong>. There are few rules given below.&nbsp;</span></p>
 
@@ -15,7 +14,7 @@
 
 <p><span style="font-size:18px">Return the minimum number of moves that you need to determine with certainty what the value of&nbsp;<strong>f</strong>&nbsp;is.</span></p>
 
-<p><span style="font-size:18px">For more description on this problem see <a href="http://en.wikipedia.org/wiki/Dynamic_programming#Egg_dropping_puzzle" target="_blank">wiki page</a></span></p>
+<p><span style="font-size:18px">For more description on this problem see <a href="http://en.wikipedia.org/wiki/Dynamic_programming#Egg_dropping_puzzle">wiki page</a></span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -46,5 +45,4 @@ Complete the function&nbsp;<strong>eggDrop()</strong>&nbsp;which takes two&nbsp;
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1&lt;=N&lt;=200<br>
 1&lt;=K&lt;=200</span></p>
- <p></p>
-            </div>
+</div>
