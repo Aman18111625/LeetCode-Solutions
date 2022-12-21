@@ -1,11 +1,11 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial template for C++
 
 #include <bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function template for C++
 
 // A : given string to search
@@ -14,30 +14,26 @@ using namespace std;
 class Solution
 {
 public:
+   bool solve(unordered_map<string, int> &mp, int i, string &A){
+        if(i == A.length()) return true;
+        string temp = "";
+        while(i < A.length()) {
+            temp += A[i++];
+            if (mp.find(temp) != mp.end() && solve(mp, i, A)) return true;
+        }
+        return false;
+    }
+    
     int wordBreak(string A, vector<string> &B) {
         //code here
-        int n = A.length();
-       unordered_set<string>us(B.begin(), B.end());//store all the dict words in the set
-       vector<bool>dp(n+1, false);//tells us whether possible or not
-          dp[n] = 1;//base case
-       for(int i=n-1;i>=0;i--)
-       {
-           string res = "";
-           for(int j=i;j<n;j++)//check every word in the set if exist then true else false
-           {
-               res += A[j];
-               if(us.find(res)!=us.end())
-               {
-                   dp[i] = dp[i] || dp[j+1];
-               }
-           }
-       }
-       
-       return dp[0];
+        unordered_map<string, int> mp;
+        for(string s: B)
+            mp.insert({s, 1});
+        return solve(mp, 0, A) == true;    
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main(){
     int t;
@@ -57,4 +53,5 @@ int main(){
         cout<<ob.wordBreak(line, dict)<<"\n";
     }
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
