@@ -33,25 +33,25 @@ class Solution {
     int solve(int N, int K, vector<int> &arr) {
         // code here
         for(int i=1;i<N;i++) arr[i]+=arr[i-1];
-        vector<int> Vec;
+        vector<int>vec;
         for(int i=1;i*i<=arr[N-1];i++) {
             if(arr[N-1]%i==0) {
-                Vec.push_back(i);
-                Vec.push_back(arr[N-1]/i);
+                vec.push_back(i);
+                vec.push_back(arr[N-1]/i);
             }
         }
 
-        int Res=1;
-        for(int fact : Vec){
+        int res=1;
+        for(int fact : vec){
             int count=0;
             for(int a : arr) {
                 if(a%fact==0) {
                     count++;
                 }
             }
-            if(count>=K) Res=max(Res,fact);
+            if(count>=K) res=max(res,fact);
         }
-        return Res;
+        return res;
     }
 };
 
