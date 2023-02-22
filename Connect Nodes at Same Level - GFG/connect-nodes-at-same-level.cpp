@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -125,44 +125,43 @@ void inorder(Node *root)
 }
 
 
- // } Driver Code Ends
-/* struct Node
-{
-  int data;
-  Node *left,  *right;
-  Node *nextRight;  // This has garbage value in input trees
-}; */
+// } Driver Code Ends
+/* struct Node {
+    int data;
+    Node* left;
+    Node* right;
+    Node* nextRight;
+};*/
 
-
-class Solution
-{
+class Solution{
     public:
-    //Function to connect nodes at same level.
     void connect(Node *root)
     {
-       // Your Code Here
-       if(!root) return ;
-        queue<Node*>q;
-        q.push(root);
-        while(!q.empty()){
-            int size=q.size();
-            Node* temp=NULL;
-            for(int i=0;i<size;i++){
-                auto node=q.front(); q.pop();
-                node->nextRight=temp;
-                if(node->right) q.push(node->right);
-                if(node->left) q.push(node->left);
-                temp=node;
-            }
+       // Code Here
+       if(!root) return;
+       queue<Node*>q;
+       q.push(root);
+       while(!q.empty()){
+          int n=q.size();
+          for(int i=0;i<n;i++){
+               Node*temp=q.front();
+               q.pop();
+               if(i==n-1)  temp->nextRight=NULL;
+               else
+                  temp->nextRight=q.front();
+
+              if(temp->left) q.push(temp->left);
+              if(temp->right) q.push(temp->right);
+           }
         }
     }    
-      
 };
 
 
 
 
-// { Driver Code Starts.
+
+//{ Driver Code Starts.
 
 
 /* Driver program to test size function*/
@@ -185,4 +184,5 @@ int main()
   }
   return 0;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
