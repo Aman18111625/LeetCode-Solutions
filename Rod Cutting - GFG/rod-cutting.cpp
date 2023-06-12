@@ -1,18 +1,18 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 // Initial Template for C++
 
 #include <bits/stdc++.h>
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 // User function Template for C++
 
 class Solution{
   public:
     int cutRod(int price[], int n) {
-        //code here    
-        int length=n;
+        //code here
+       int length=n;
        int dp[n+1][length+1];
      
        for(int i=0;i<=n;i++){
@@ -30,7 +30,7 @@ class Solution{
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main() {
     int t;
@@ -47,4 +47,5 @@ int main() {
         cout << ob.cutRod(a, n) << endl;
     }
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
