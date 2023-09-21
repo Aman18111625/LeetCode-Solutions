@@ -11,15 +11,16 @@ class Solution
     int FindMaxSum(int arr[], int n)
     {
         // Your code here
-        int dp[n+1];
-        memset(dp,0,sizeof(dp));
-        dp[0]=0;
-        dp[1]=arr[0];
-        dp[2]=arr[0]>arr[1]?arr[0]:arr[1];
-        for(int i=3;i<=n;i++)
-        dp[i]=max(arr[i-1]+dp[i-2],dp[i-1]);
-        
-        return dp[n];
+        int prev=0,prev2=arr[0];
+        int curr=0;
+        for(int i=1;i<n;i++){
+            int pick=arr[i]+prev;
+            int notPick=prev2;
+            curr=max(pick,notPick);
+            prev=prev2;
+            prev2=curr;
+        }
+        return prev2;
     }
 };
 
